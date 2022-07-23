@@ -18,7 +18,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 == Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
 
 [cols="1,1"]
-|==
+|===
 |_:_
 |rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
 
