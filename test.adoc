@@ -1,3 +1,11 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
 Istnieja #jeszcze inne# tryby programu opisane krotko ponizej lub w helpie. W kazdym z trybow mozna poruszac sie po tekstcie za pomoca strzalek. Do wychodzenia z roznych trybow do trybu normalnego sluzy klawisz <Esc>.
 
 == Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
