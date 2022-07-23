@@ -10,6 +10,7 @@ Istnieja #jeszcze inne# tryby programu opisane krotko ponizej lub w helpie. W ka
 
 == Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
 
+[NOTE]
 ====
 Porada
 ====
