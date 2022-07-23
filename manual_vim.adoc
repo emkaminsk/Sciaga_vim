@@ -213,13 +213,26 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 [cols="1,1"]
 |===
 
-	i	(insert) wstawienie znaku w biezacym miejscu
-	I	wstawianie znakow na poczatku biezacego wiersza
-	o	(open) rozpoczecie nastepnego wiersza
-	O	rozpoczecie nowego wiersza w biezacym wierszu
-	a	(add) dodanie znaku zaraz za kursorem
-	A	wejscie w edycje na koncu biezacego wiersza
-	~	zmiana rozmiaru znaku (z duzego na maly i odwrotnie)
+|_i_
+|(insert) wstawienie znaku w biezacym miejscu
+|_I_
+|wstawianie znakow na poczatku biezacego wiersza
+
+|_o_
+|(open) rozpoczecie nastepnego wiersza
+
+|_O_
+|rozpoczecie nowego wiersza w biezacym wierszu
+
+|_a_
+|(add) dodanie znaku zaraz za kursorem
+
+|_A_
+|wejscie w edycje na koncu biezacego wiersza
+
+|_~_
+|zmiana rozmiaru znaku (z duzego na maly i odwrotnie)
+
 |===
 
 === Usuwanie i wycinanie
@@ -227,13 +240,26 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 [cols="1,1"]
 |===
 
-	x	usuwanie znaku pod kursorem (zlozone)
-	d	(delete) wycinanie wiersza lub jego czesci - przeniesienie do schowka, polecenie zlozone
-	dG	- od biezacego wiersza do konca pliku
-	d20G	- od biezacego wiersza do wiersza 20
-	D	wycinanie wiersza od pozycji kursora do konca linii (to samo co d$)
-	J	(join) laczenie dwoch wierszy ze soba - biezacego i nastepnego
-	:move {x}	przeniesienie biezacego wiersza do wiersza po numerze {x}
+|_x_
+|usuwanie znaku pod kursorem (zlozone)
+
+|_d_
+|(delete) wycinanie wiersza lub jego czesci - przeniesienie do schowka, polecenie zlozone
+
+|_dG_
+|- od biezacego wiersza do konca pliku
+
+|_d20G_
+|- od biezacego wiersza do wiersza 20
+
+|_D_
+|wycinanie wiersza od pozycji kursora do konca linii (to samo co d$)
+
+|_J_
+|(join) laczenie dwoch wierszy ze soba - biezacego i nastepnego
+
+|_:move {x}_
+|przeniesienie biezacego wiersza do wiersza po numerze {x}
 |===
 
 === Kopiowanie
