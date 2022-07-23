@@ -20,7 +20,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 [cols="1,1"]
 |===
 |_:_
-|rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
+|rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu \| mozna wykonac wiecej niz dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
 
 |_:w 'plik'_
 |zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
@@ -93,7 +93,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |_:help usr_toc.txt_
 |wyswietl spis tresci
-
+|===
 
 == Opcje (czesto dodanie 'no' przed nazwa opcji wylacza ja)
 
@@ -116,7 +116,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |_:help 'hls'_
 |pomoc na temat opcji hls
-
+|===
 
 == Polecenia w trybie normalnym
 
@@ -132,6 +132,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |_zb_
 |(bottom) jw. ale jest na dole
+|===
 
 === Poruszanie kursorem; wiecej pomocy w :help motion.txt
 
@@ -205,6 +206,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |_CTRL-Y_
 |jedna linia w gore
+|===
 
 === Edytowanie (wchodzenie w edycje)
 
@@ -218,6 +220,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	a	(add) dodanie znaku zaraz za kursorem
 	A	wejscie w edycje na koncu biezacego wiersza
 	~	zmiana rozmiaru znaku (z duzego na maly i odwrotnie)
+|===
 
 === Usuwanie i wycinanie
 
@@ -231,6 +234,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	D	wycinanie wiersza od pozycji kursora do konca linii (to samo co d$)
 	J	(join) laczenie dwoch wierszy ze soba - biezacego i nastepnego
 	:move {x}	przeniesienie biezacego wiersza do wiersza po numerze {x}
+|===
 
 === Kopiowanie
 
@@ -241,6 +245,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	Y	kopiowanie calego biezacego wiersza
 	yy	to samo, dziala jak Y
 	y$	kopiowanie od biezacego znaku do konca linii
+|===
 
 === Wklejanie
 
@@ -249,6 +254,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 	p	(put) wklejanie zawartosci schowka za kursorem lub ponizej biezacego wiersza
 	P	wklejenie przed/powyzej biezacego wiersza
+|===
 
 === Korekta
 
@@ -263,6 +269,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	.	powtorzenie ostatniej operacji edycji/kasowania/korekty
 	xp	zamiana kolejnosci dwoch liter (poprawa szwedzkiego bledu)
 	@{a}	wykonywanie korekty za pomoca sekwencji klawiszy zapisanej w rejestrze. Patrz sekcja 'Rejestry'
+|===
 
 === Skladnia polecenia zlozonego
 
@@ -271,6 +278,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 	yxz	podstawowa skladnia: polecenie - liczba - modyfikator
 	xyz	x - liczba powtorzen, y - polecenie, z - modyfikator
+|===
 
 === Modyfikatory polecen zlozonych (glownie sluzacych do wycinania: d oraz kopiowania: y)
 
@@ -290,6 +298,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	d$	wycinanie od biezacego miejsca do konca wiersza
 	d^	wycinanie od pierwszego znaku nie bedacego bialym znakiem w biezacym wierszu do biezacego znaku
 	d0	od poczatku wiersza do biezacego znaku
+|===
 
 === Cofanie zmian
 
@@ -299,6 +308,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	u	(undo) cofa ostatnia zmiane w pliku
 	U	przywraca linie do oryginalnego stanu
 	CTRL-R	(redo) cofa zmiany wlacznie z undo (mozna wycofac sie z undo)
+|===
 
 === Szukanie
 
@@ -316,6 +326,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	CTRL-I	przejscie do przodu
 	/word/b+1	wyszukuje 'word' i umieszcza kursor na drugiej pozycji od poczatku. Oprocz b mozna uzywac tez innych polecen: 'e', cyfra oznacza liczbe linii po znalezionym slowie
 	:help pattern.txt	wiecej pomocy na temat wyszukiwania za pomoca wyrazen regularnych (Perl). Mozna tez uzych :help usr_27.txt
+|===
 
 === Zastepowanie
 
@@ -334,6 +345,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:g/^/m 0	przyklad polecenia global. ^ pasuje do kazdego wiersza w pliku a 'm' przesuwa wiersz na poczatek pliku
 
 == Wizualna selekcja. W tym trybie wiele polecen zyskuje nowe znaczenie.
+|===
 
 === Wejscie w tryb wizualnej selekcji
 
@@ -343,6 +355,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	v	wchodzi w tryb selekcji, po zaznaczeniu tekstu mozna na nim wykonac polecenie zwykle lub polecenie ex (np :w nazwa zapisze fragment w pliku nazwa)
 	V	tryb selekcji, mozna zaznaczac cale linie
 	CTRL-V	tryb blokowy, w ktorym zaznacza sie prostokatny obszar
+|===
 
 === Edycja w trybie wizualnej selekcji
 
@@ -373,6 +386,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:CTRL-O{polecenie}	pozwala na wykonanie w trybie edycji jednego polecenia z trybu normalnego (bez wychodzenia z trybu edycji).
 
 == Inne polecenia w roznych trybach
+|===
 
 === Polecenia rozpoczynajace sie od 'g'. Polecenia te najczesciej modyfikuja znaczenie komendy wymienionej po g. Szczegolowa lista jest w pliku index.txt
 
@@ -384,6 +398,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	gm	przeskoczenie kursorem na srodek ekranu 
 	gM	przeskoczenie kursorem na srodek biezacej linii 
 	{N}{"x}gp	(put) wstawienie N razy tekstu ze schowka (lub rejestru {x}, jesli podany)	
+|===
 
 === Formatowanie tekstu
 
@@ -397,6 +412,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:{zakres}right {szerokosc}	jw. ale dosuniecie tekstu do prawej
 	:{zakres}left {margines}	jw ale dosuniecie do lewej. Margines okresla liczbe spacji po lewej stronie tekstu.
 	:8,15le4	przyklad jak wciac tekst z 4 spacjami na poczatku kazdego wiersza od nr 8 do 15
+|===
 
 === Znaki (marks). Oznaczenia pozwalajace definiowac zakres pliku lub miejsca do ktorych mozna przeskoczyc. Znaki nie sa widzialne, sa tylko pozycjami w pliku. Znaki i rejestry nie sa przechowywane w tym samym miejscu, mozna miec jednoczesnie znak a i rejestr 'a' - sa czyms innym
 
@@ -409,6 +425,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	'0	przejscie do miejsca, gdzie ostatnio Vim zostal zamkniety
 	:delm {marks}	usuniecie znaku
 	'< '>	poczatek i koniec zakresu wizualnej selekcji
+|===
 
 === Rejestry. Pozwalaja zapisac fragment tekstu do przeklejenia lub wykonac ten tekst jako polecenie. Rejestry oznaczane sa malymi literami. Uzycie duzej litery pozwala na doklejenie kolejnego tekstu do istniejacego rejestru.
 
@@ -419,6 +436,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	"ayas	skopiowanie calego biezacego zdania do rejestru 'a'
 	"ap	wklejenie zawartosci rejestru 'a' w biezacym miesjcu
 	CTRL-R{x}	w trybie edycji wstawienie zawartosci rejestru {x}
+|===
 
 === Makra. Umozliwia zapisanie sekwencji polecen i wykonanie ich wielokrotnie, przez np. 10@a
 
@@ -428,6 +446,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	q{a}{sekw}q	zapisanie sekwencji klawiszy 'sekw' w rejestrze 'a'
 	@{a}	wykonanie sekwencji klawiszy zapisanej w rejestrze. Sekwencja bedzie wykonana w trybie polecen
 	@@	wykonanie poprzedniej sekwencji klawiszy
+|===
 
 === Skroty. Wiecej w pliku help usr_24.txt 
 
@@ -437,6 +456,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:iabbrev {skrot} {tekst}	pozwala zdefiniowac skrot. Wpisanie w tekscie (w trybie edycji) skrotu i potem spacji spowoduje zastapienie skrotu tekstem. Tekst moze miec jedno lub wiele slow. Jesli na poczatku lub na koncu tekstu ma byc spacja nalezy zdefiniowac ja jako <Space>.
 	:iab {skrot} {tekst}	krotsza forma polecenia do definiwania skrotu.
 	:abbreviate	wyswietla liste zdefiniowanych skrotow
+|===
 
 === Okna
 
@@ -453,6 +473,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:close	zamkniecie biezacego okna
 	:only	zamkniecie wszystkich okien z wyjatkiem biezacego
 	:qall	calkowite wyjscie z Vim; dziala tez :qall i :wqall
+|===
 
 === Bufory. Praca z plikami
 
@@ -465,6 +486,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:bdel {x}	usuniecie z pamieci bufora o numerze {x}
 	:bn	(buffer next) edycja nastepnego otwartego pliku (w petli)
 	:bp	(buffer previous) edycja poprzedniego otwartego pliku
+|===
 
 === Sesje
 
@@ -475,6 +497,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	uzyc skrotu 'mk' zamiast 'mksession'
 	:mksession! 'nazwa'	nadpisanie sesji o nazwie 'nazwa'
 	:source 'nazwa'	wczytanie sesji o nazwie 'nazwa'
+|===
 
 === Zakladki (tabs)
 
@@ -489,6 +512,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:tab split	otwiera nowa zakladke z tym samym plikiem co biezacy
 	{x]gt	przejscie do kolejnej zakladki; opcjonalnie x to numer zakladki
 	gT	przejscie do poprzedniej zakladki
+|===
 
 === Mapowania klawiszy. Vim daje mozliwosc definiowania mapowan w wielu trybach pracy. Wiecej w pliku :help map.txt
 
@@ -497,6 +521,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 	:map	Polecenie bez argumentu wyswietla wszystkie mapowania w trybach: normalnym, wizualnym i operatora. Z jednym argumetem wyswietla mapowanie dla tego klawisza. Z dwoma tworzy nowe mapowanie.
 	:unmap	usuwa dane mapowanie
+|===
 
 === Przegladarka plikow
 
