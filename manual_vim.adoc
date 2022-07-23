@@ -16,71 +16,130 @@ Dlatego nalezy rozroznic kilka podstawowych trybow dzialania Vim:
 Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazdym z trybow mozna poruszac sie po tekstcie za pomoca strzalek. Do wychodzenia z roznych trybow do trybu normalnego sluzy klawisz <Esc>.
 
 == Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
-	:	rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
-	:w 'plik'	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
-	:q	wyjscie z programu
-	:saveas 'plik'	zapis biezacego pliku pod nowa nazwa 'plik'
-	:file 'plik'	zmiana nazwy obecnie edytowanego pliku
-	<polecenie>!	modyfikator polecenia wymuszajacy jego wykonanie bez zapisania zmian, np. :q! - wyjscie z programu z porzuceniem zmian
-	!<zakres><polecenie>	wykonanie polecenia w zewnetrznym programie, a dokladnie filtrowanie okreslonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od biezacej do 5
-	:!command	wykonanie polecenia zewnetrznego, np z powloki, :!ls -al
-	:!python %	wykonanie otwartego obecnie skryptu w programie python. Symbol % symbolizuje nazwe aktywnego pliku.
-	!!date	wstawia date w biezacym wierszu
-	CTRL-G	wyswietlenie informacji o numerze wiersza w ktorym jest kursor
-	:e 'nazwa'	(edit) otwarcie nastepnego pliku 'nazwa' do edycji
-	:r 'nazwa'	(read) odczytanie pliku 'nazwa' i wstawienie go w biezacym pliku w pozycji kursora
-	:read !ls	wczytuje wynik polecenia ls do biezacego pliku
-	:history	wyswietlenie historii komend w trybie cmd-line
-	q:	otwiera w nowym oknie historie polecen, gdzie dane polecenie mozna edytowac jak w Vim i uruchamiac <Enter>
-	:history /	wyswietlenie historii wyszukiwan 
-	:browse oldfiles	wyswietla liste uprzednio edytowanych plikow, mozna podac numer i otworzyc wybrany plik do edycji
-	ZZ	zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
-	CTRL-Z	zawiesza Vim (zachowujac wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powloki shell. Do Vim mozna wrocic poleceniem 'fg' w powloce
-	:help	otwarcie pomocy
-	:help 'word'	pomoc z danym slowem lub poleceniem; <Tab> lub CTRL-D wyswietla mozliwe opcje
-	:help index	spis wszystkich polecen wraz z tagami i ich opisem
-	:help usr_01.txt	otwarcie pierwszego rozdzialu podrecznika
-	:help usr_toc.txt	spis tresci
+
+_:_	rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
+
+_:w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+
+_:q_	wyjscie z programu
+
+_:saveas 'plik'_	zapis biezacego pliku pod nowa nazwa 'plik'
+
+_:file 'plik'_	zmiana nazwy obecnie edytowanego pliku
+
+_<polecenie>!_	modyfikator polecenia wymuszajacy jego wykonanie bez zapisania zmian, np. :q! - wyjscie z programu z porzuceniem zmian
+
+_!<zakres><polecenie>_	wykonanie polecenia w zewnetrznym programie, a dokladnie filtrowanie okreslonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od biezacej do 5
+
+_!command_	wykonanie polecenia zewnetrznego, np z powloki, :!ls -al
+
+_:!python %_	wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwe aktywnego pliku.
+
+_!!date_	wstawia date w biezacym wierszu
+
+_CTRL-G_	wyswietlenie informacji o numerze wiersza w ktorym jest kursor
+
+_:e 'nazwa'_	(edit) otwarcie nastepnego pliku 'nazwa' do edycji
+
+_:r 'nazwa'_	(read) odczytanie pliku 'nazwa' i wstawienie go w biezacym pliku w pozycji kursora
+
+_:read !ls_	wczytuje wynik polecenia ls do biezacego pliku
+
+_:history_	wyswietlenie historii komend w trybie cmd-line
+
+_q:_	otwiera w nowym oknie historie polecen, gdzie dane polecenie mozna edytowac jak w Vim i uruchamiac <Enter>
+
+_:history /_	wyswietlenie historii wyszukiwan 
+
+_:browse oldfiles_	wyswietla liste uprzednio edytowanych plikow, mozna podac numer i otworzyc wybrany plik do edycji
+
+_ZZ_	zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
+
+_CTRL-Z_	zawiesza Vim (zachowujac wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powloki shell. Do Vim mozna wrocic poleceniem 'fg' w powloce
+
+_:help_	otwarcie pomocy
+
+_:help 'word'_	pomoc z danym slowem lub poleceniem; <Tab> lub CTRL-D wyswietla mozliwe opcje
+
+_:help index_	spis wszystkich polecen wraz z tagami i ich opisem
+
+_:help usr_01.txt_	otwarcie pierwszego rozdzialu podrecznika
+
+_:help usr_toc.txt_	spis tresci
+
 
 == Opcje (czesto dodanie 'no' przed nazwa opcji wylacza ja)
-	:set hls	wlaczenie podswietlania wyszukiwan
-	:nohlsearch	wylaczenie podswietlania
-	:set ic		wlaczenie trybu ignorecase wyszukiwania
-	:set number	wlaczenie numerow wierszy
-	:help options.txt	pomoc na temat wszystkich opcji
-	:help 'hls'	pomoc na temat opcji hls
+
+:set hls	wlaczenie podswietlania wyszukiwan
+
+:nohlsearch	wylaczenie podswietlania
+
+:set ic		wlaczenie trybu ignorecase wyszukiwania
+
+:set number	wlaczenie numerow wierszy
+
+:help options.txt	pomoc na temat wszystkich opcji
+
+:help 'hls'	pomoc na temat opcji hls
+
 
 == Polecenia w trybie normalnym
 
 === Zmiana widoku
-	zz	wycentrowanie ekranu na wierszu, w ktorym jest kursor
-	zt	(top) ustawienie ekranu tak, ze linia z kursorem jest na gorze ekranu
-	zb	(bottom) jw. ale jest na dole
+
+zz	wycentrowanie ekranu na wierszu, w ktorym jest kursor
+
+zt	(top) ustawienie ekranu tak, ze linia z kursorem jest na gorze ekranu
+
+zb	(bottom) jw. ale jest na dole
 
 === Poruszanie kursorem; wiecej pomocy w :help motion.txt
-	hjkl	poruszanie  w czterech kierunkach (lewo, dol, gora, prawo)
-	0	poczatek biezacego wiersza
-	$	koniec biezacego wiersza
-	w	(word) poczatek nastepnego slowa, polecenie zlozone
-	b	(before, beginning) poczatek poprzedniego slowa
-	e	(end) przejscie na koniec slowa
-	2G	(go) przeskok do drugiej linii, polecenie zlozone
-	G	przeskok do ostatniej linii
-	gg	przeskok na poczatek pliku (to samo co 1G)
-	``	powrot po przeskoku (cofniecie do poprzedniej pozycji).
-	CTRL-O	(older) powrot do poprzedniego miejsca po przeskoku (np po przeskoku do innej linii lub po wejsciu w link). Mozna wykonywac wiele razy.
-	CTRL-I	przejscie do nowszej pozycji w odwrotnej kolejnosci jak CTRL-O
-	:jumps	wyswietlenie listy przeskokow
-	CTRL-]	wejscie w link
-	H	(Home) przeniesienie kursora na gore strony
-	M	(Middle) przeniesienie kursora na srodek strony
-	L	(Last) przeniesienie kursora na dol strony
-	CTRL-U	(up) przewiniecie o pol strony w gore
-	CTRL-D	(down) przewiniecie o pol strony w dol
-	CTRL-F	(forward) przewiniecie tekstu w przod o strone
-	CTRL-B	(backward) przewiniecie tekstu w tyl o strone
-	CTRL-E	(extra) wyswietlenie dodatkowej linii (jedna linia w dol)
-	CTRL-Y	jedna linia w gore
+
+hjkl	poruszanie  w czterech kierunkach (lewo, dol, gora, prawo)
+
+0	poczatek biezacego wiersza
+
+$	koniec biezacego wiersza
+
+w	(word) poczatek nastepnego slowa, polecenie zlozone
+
+b	(before, beginning) poczatek poprzedniego slowa
+
+e	(end) przejscie na koniec slowa
+
+2G	(go) przeskok do drugiej linii, polecenie zlozone
+
+G	przeskok do ostatniej linii
+
+gg	przeskok na poczatek pliku (to samo co 1G)
+
+``	powrot po przeskoku (cofniecie do poprzedniej pozycji).
+
+CTRL-O	(older) powrot do poprzedniego miejsca po przeskoku (np po przeskoku do innej linii lub po wejsciu w link). Mozna wykonywac wiele razy.
+
+CTRL-I	przejscie do nowszej pozycji w odwrotnej kolejnosci jak CTRL-O
+
+:jumps	wyswietlenie listy przeskokow
+
+CTRL-]	wejscie w link
+
+H	(Home) przeniesienie kursora na gore strony
+
+M	(Middle) przeniesienie kursora na srodek strony
+
+L	(Last) przeniesienie kursora na dol strony
+
+CTRL-U	(up) przewiniecie o pol strony w gore
+
+CTRL-D	(down) przewiniecie o pol strony w dol
+
+CTRL-F	(forward) przewiniecie tekstu w przod o strone
+
+CTRL-B	(backward) przewiniecie tekstu w tyl o strone
+
+CTRL-E	(extra) wyswietlenie dodatkowej linii (jedna linia w dol)
+
+CTRL-Y	jedna linia w gore
 
 === Edytowanie (wchodzenie w edycje)
 	i	(insert) wstawienie znaku w biezacym miejscu
@@ -231,6 +290,8 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	"ayas	skopiowanie calego biezacego zdania do rejestru 'a'
 	"ap	wklejenie zawartosci rejestru 'a' w biezacym miesjcu
 	CTRL-R{x}	w trybie edycji wstawienie zawartosci rejestru {x}
+
+=== Makra. Umozliwia zapisanie sekwencji polecen i wykonanie ich wielokrotnie, przez np. 10@a
 	q{a}{sekw}q	zapisanie sekwencji klawiszy 'sekw' w rejestrze 'a'
 	@{a}	wykonanie sekwencji klawiszy zapisanej w rejestrze. Sekwencja bedzie wykonana w trybie polecen
 	@@	wykonanie poprzedniej sekwencji klawiszy
@@ -261,7 +322,8 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 	:bp	(buffer previous) edycja poprzedniego otwartego pliku
 
 === Sesje
-	:mksession 'nazwa'	utworzenie sesji o nazwie 'nazwa'
+	:mksession 'nazwa'	utworzenie sesji o nazwie 'nazwa'; opcjonalnie mozna
+	uzyc skrotu 'mk' zamiast 'mksession'
 	:mksession! 'nazwa'	nadpisanie sesji o nazwie 'nazwa'
 	:source 'nazwa'	wczytanie sesji o nazwie 'nazwa'
 
