@@ -23,6 +23,7 @@ _w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
 
 _:w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
 
+== Tabela
 [cols="1,1"]
 |===
 |Cell in column 1, row 1 
