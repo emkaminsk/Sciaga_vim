@@ -22,3 +22,15 @@ rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz s
 _w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
 
 _:w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+
+[cols="1,1"]
+|===
+|Cell in column 1, row 1 
+|Cell in column 2, row 1 
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+
+|Cell in column 1, row 3
+|Cell in column 2, row 3 
+|=== 
