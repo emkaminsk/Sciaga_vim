@@ -16,56 +16,82 @@ Dlatego nalezy rozroznic kilka podstawowych trybow dzialania Vim:
 Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazdym z trybow mozna poruszac sie po tekstcie za pomoca strzalek. Do wychodzenia z roznych trybow do trybu normalnego sluzy klawisz <Esc>.
 
 == Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
+[cols="1,1"]
+|==
+|_:_
+|rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
 
-_:_	rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
+|_:w 'plik'_
+|zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
 
-_:w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+|_:q_
+|wyjscie z programu
 
-_:q_	wyjscie z programu
+|_:saveas 'plik'_
+|zapis biezacego pliku pod nowa nazwa 'plik'
 
-_:saveas 'plik'_	zapis biezacego pliku pod nowa nazwa 'plik'
+|_:file 'plik'_
+|zmiana nazwy obecnie edytowanego pliku
 
-_:file 'plik'_	zmiana nazwy obecnie edytowanego pliku
+|_<polecenie>!_
+|modyfikator polecenia wymuszajacy jego wykonanie bez zapisania zmian, np. :q! - wyjscie z programu z porzuceniem zmian
 
-_<polecenie>!_	modyfikator polecenia wymuszajacy jego wykonanie bez zapisania zmian, np. :q! - wyjscie z programu z porzuceniem zmian
+|_!<zakres><polecenie>_
+|wykonanie polecenia w zewnetrznym programie, a dokladnie filtrowanie okreslonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od biezacej do 5
 
-_!<zakres><polecenie>_	wykonanie polecenia w zewnetrznym programie, a dokladnie filtrowanie okreslonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od biezacej do 5
+|_!command_
+|wykonanie polecenia zewnetrznego, np z powloki, :!ls -al
 
-_!command_	wykonanie polecenia zewnetrznego, np z powloki, :!ls -al
+|_:!python %_
+|wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwe aktywnego pliku.
 
-_:!python %_	wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwe aktywnego pliku.
+|_!!date_
+|wstawia date w biezacym wierszu
 
-_!!date_	wstawia date w biezacym wierszu
+|_CTRL-G_
+|wyswietlenie informacji o numerze wiersza w ktorym jest kursor
 
-_CTRL-G_	wyswietlenie informacji o numerze wiersza w ktorym jest kursor
+|_:e 'nazwa'_
+|(edit) otwarcie nastepnego pliku 'nazwa' do edycji
 
-_:e 'nazwa'_	(edit) otwarcie nastepnego pliku 'nazwa' do edycji
+|_:r 'nazwa'_
+|(read) odczytanie pliku 'nazwa' i wstawienie go w biezacym pliku w pozycji kursora
 
-_:r 'nazwa'_	(read) odczytanie pliku 'nazwa' i wstawienie go w biezacym pliku w pozycji kursora
+|_:read !ls_
+|wczytuje wynik polecenia ls do biezacego pliku
 
-_:read !ls_	wczytuje wynik polecenia ls do biezacego pliku
+|_:history_
+|wyswietlenie historii komend w trybie cmd-line
 
-_:history_	wyswietlenie historii komend w trybie cmd-line
+|_q:_
+|otwiera w nowym oknie historie polecen, gdzie dane polecenie mozna edytowac jak w Vim i uruchamiac <Enter>
 
-_q:_	otwiera w nowym oknie historie polecen, gdzie dane polecenie mozna edytowac jak w Vim i uruchamiac <Enter>
+|_:history /_
+|wyswietlenie historii wyszukiwan 
 
-_:history /_	wyswietlenie historii wyszukiwan 
+|_:browse oldfiles_
+|wyswietla liste uprzednio edytowanych plikow, mozna podac numer i otworzyc wybrany plik do edycji
 
-_:browse oldfiles_	wyswietla liste uprzednio edytowanych plikow, mozna podac numer i otworzyc wybrany plik do edycji
+|_ZZ_
+|zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
 
-_ZZ_	zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
+|_CTRL-Z_
+|zawiesza Vim (zachowujac wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powloki shell. Do Vim mozna wrocic poleceniem 'fg' w powloce
 
-_CTRL-Z_	zawiesza Vim (zachowujac wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powloki shell. Do Vim mozna wrocic poleceniem 'fg' w powloce
+|_:help_
+|otwarcie pomocy
 
-_:help_	otwarcie pomocy
+|_:help 'word'_
+|pomoc z danym slowem lub poleceniem; <Tab> lub CTRL-D wyswietla mozliwe opcje
 
-_:help 'word'_	pomoc z danym slowem lub poleceniem; <Tab> lub CTRL-D wyswietla mozliwe opcje
+|_:help index_
+|spis wszystkich polecen wraz z tagami i ich opisem
 
-_:help index_	spis wszystkich polecen wraz z tagami i ich opisem
+|_:help usr_01.txt_
+|otwarcie pierwszego rozdzialu podrecznika
 
-_:help usr_01.txt_	otwarcie pierwszego rozdzialu podrecznika
-
-_:help usr_toc.txt_	spis tresci
+|_:help usr_toc.txt_
+|wyswietl spis tresci
 
 
 == Opcje (czesto dodanie 'no' przed nazwa opcji wylacza ja)
