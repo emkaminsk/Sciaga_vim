@@ -60,7 +60,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |_:r 'nazwa'_
 |(read) odczytanie pliku 'nazwa' i wstawienie go w biezacym pliku w pozycji kursora
 
-|_:read !ls_
+|_:read !ls_ lub _r! {polecenie}_
 |wczytuje wynik polecenia ls do biezacego pliku
 
 |_:history_
@@ -124,7 +124,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |pomoc na temat opcji hls
 |===
 
-=== Jezyk VIM. Jezyk sklada sie z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (slowo). Dlatego dw - usuniecie slowa.
+=== Jezyk VIM. Jezyk sklada sie z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (slowo). Dlatego dw - usuniecie slowa. Inny przyklad: ctw - change to 'w' - zmiana calego tekstu do nastepnego wystapienia 'w'
 
 [cols="1,1"]
 |===
@@ -144,9 +144,6 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |_y_
 |Yank - kopiowanie
 
-|_p_
-|Put - wstawianie
-
 |_w_
 |Word - slowo
 
@@ -162,12 +159,17 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |_i"_
 |Inner quote - wewnatrz tekstu otoczonego cudzyslowiem
 
+|_ib_
+|Inner brackets - wewnatrz nawiasow ()
+
 |_ip_
 |Inner paragraph - wewnatrz calego akapitu
 
 |_as_
 |A sentence - cale zdanie
 
+|_f, F, t, T_
+|Find - do wystapienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzglednienia tego znaku.
 
 |===
 
