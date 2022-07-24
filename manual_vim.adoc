@@ -15,7 +15,9 @@ Dlatego nalezy rozroznic kilka podstawowych trybow dzialania Vim:
 
 Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazdym z trybow mozna poruszac sie po tekstcie za pomoca strzalek. Do wychodzenia z roznych trybow do trybu normalnego sluzy klawisz <Esc>.
 
-== Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
+== Wstep
+
+=== Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
 
 [cols="1,1"]
 |===
@@ -93,9 +95,13 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |_:help usr_toc.txt_
 |wyswietl spis tresci
+
+|_._
+|powtorzenie wykonania poprzedniego polecenia
+
 |===
 
-== Opcje (czesto dodanie 'no' przed nazwa opcji wylacza ja)
+=== Opcje (czesto dodanie 'no' przed nazwa opcji wylacza ja)
 
 [cols="1,1"]
 |===
@@ -116,6 +122,53 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |_:help 'hls'_
 |pomoc na temat opcji hls
+|===
+
+=== Jezyk VIM. Jezyk sklada sie z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (slowo). Dlatego dw - usuniecie slowa.
+
+[cols="1,1"]
+|===
+
+|_d_
+|Delete - usuwanie
+
+|_c_
+|Change - zmiana
+
+|_>_
+|Indent - wciecie
+
+|_v_
+|Visually select - zmiana w trybie wizualnym
+
+|_y_
+|Yank - kopiowanie
+
+|_p_
+|Put - wstawianie
+
+|_w_
+|Word - slowo
+
+|_b_
+|Back - wstecz (poprzednie slowo)
+
+|_iw_
+|Inner word - wewnatrz slowa
+
+|_it_
+|Inner tag - wewnatrz np tagu HTML
+
+|_i"_
+|Inner quote - wewnatrz tekstu otoczonego cudzyslowiem
+
+|_ip_
+|Inner paragraph - wewnatrz calego akapitu
+
+|_as_
+|A sentence - cale zdanie
+
+
 |===
 
 == Polecenia w trybie normalnym
@@ -315,7 +368,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |(substitute) zamien znak pod kursorem (tozsame z cl)
 
 |_._
-|powtorzenie ostatniej operacji edycji/kasowania/korekty
+|powtorzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcja do szybkiego ponowienia tej samej komendy skrotem.
 
 |_xp_
 |zamiana kolejnosci dwoch liter (poprawa szwedzkiego bledu)
