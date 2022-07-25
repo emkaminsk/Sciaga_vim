@@ -133,23 +133,6 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. _d_ - delete (usuwanie), rzeczownikiem obiekt np. _w_ - word (słowo) albo ruch (ang. motion), np. _j_ (przejście linię w dół). Dlatego _dw_ - usunięcie słowa. Inny przykład: _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'. Polecenie _y2j_ kopiuje do schowka bieżącą linię oraz dwie poniżej.
 
-==== Działania na pojedynczych znakach
-
-[cols="1,1"]
-|===
-
-|_s_
-|Substitute - zastępuje znak pod kursorem, po wykonaniu pozostaje w trybie wstawiania
-
-|_r_
-|Replace - zastępuje jeden znak pod kursorem, po wykonaniu pozostaje w trybie normalnym
-
-|_x_
-|Cross out - usuwa pojedynczy znak pod kursorem, po wykonaniu pozostaje w trybie normalnym
-
-
-|===
-
 ==== Działania na obiektach większych niż jeden znak
 [cols="1,1"]
 |===
@@ -159,14 +142,18 @@ Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akc
 |_c_
 |Change - zmiana i przejście do trybu edycji
 
-|_>_
-|Indent - wcięcie
+|_>, <_
+|Indent - wcięcie, unindent - zlikwidowanie wcięcia
 
 |_v_
 |Visually select - zmiana w trybie wizualnym
 
 |_y_
 |Yank - kopiowanie
+
+|_gu_
+|Zmiana dużych liter na małe
+
 |===
 
 ==== Ruchy (motion). 
@@ -188,13 +175,12 @@ Definiują ruch do wykonania dla powyższych poleceń (np. 'd' czy 'y')
 |_f, F, t, T_
 |Find - do wystąpienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzględnienia tego znaku.
 
-|_15j_
-|Przykład ruchu - kolejne 15 linii
-
-|_10l_
-|Przykład ruchu - kolejne 10 znaków
+|_h, j, k, l_
+|Ruch w lewo, dół, górę i w prawo. _15j_ Przykład ruchu - kolejne 15 linii. _10l_ to kolejny przykład ruchu - 10 znaków w prawo.
 
 |===
+
+Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruchy) można składać w dowolne kombinacje, np. 9 czynności * 10 krotności * 10 ruchów daje w sumie 900 unikalnych poleceń, a to ułamek możliwości Vim.
 
 ==== Obiekty tekstowe. 
 
@@ -238,6 +224,26 @@ Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie
 |x - liczba powtórzeń, y - polecenie, z - modyfikator
 
 |===
+
+==== Działania na pojedynczych znakach
+
+Mimo, że poniższe polecenia definiują czynności, nie przyjmują rzeczownika/obiektu do działania. Dlatego np. _'2x'_ jest skończonym poleceniem (kasuje dwa znaki poczynając od znaku pod kursorem).
+
+[cols="1,1"]
+|===
+
+|_s_
+|Substitute - zastępuje znak pod kursorem, po wykonaniu pozostaje w trybie wstawiania
+
+|_r_
+|Replace - zastępuje jeden znak pod kursorem, po wykonaniu pozostaje w trybie normalnym
+
+|_x_
+|Cross out - usuwa pojedynczy znak pod kursorem, po wykonaniu pozostaje w trybie normalnym
+
+
+|===
+
 
 == Polecenia w trybie normalnym
 
@@ -562,7 +568,7 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |===
 
 |_:[rangę]substitute/from/to/[flags]_
-|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'
+|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'. Tę ogólną zasadę można jeszcze bardziej uogólnić - patrz kolejna sekcja o składni poleceń _'ex'_.
 
 |_:s/b/A_
 |(substitute) zamiana b na A w bieżącym wierszu (jeden raz)
@@ -585,11 +591,24 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |_5:s/a/A/g_
 |zamiana w pięciu wierszach licząc od bieżącego
 
+|===
+
+== Składnia poleceń  w trybie ex
+
+[cols="1,1"]
+|===
+
 |_:[rangę]global/{pattern}/{command}_
-|(global) wyszukanie wzorca pattern i wykonanie w tym wierszu polecenia command. Tylko polecenia w trybie cmd-line są tu możliwe.
+|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. Tylko polecenia w trybie cmd-line są tu możliwe. Różne przykłady _range_ zostały omówione w sekcji dot. zastępowania (np. % - cały plik). _Pattern_ to wyrażenie regularne w odpowiednim dla wersji Vim standardzie (np. POSIX). Więcej: :help pattern.
 
 |_:g/^/m 0_
-|przykład polecenia global. ^ pasuje do każdego wiersza w pliku a 'm' przesuwa wiersz na początek pliku
+|przykład polecenia global. ^ pasuje do każdego wiersza w pliku a 'm' przesuwa wiersz na początek pliku. W efekcie następuje odwrócenie kolejności wierszy w całym pliku.
+
+
+|_m+1, m10_
+|Przykład command - przesunięcie wiersza do podanego miejsca, w tym przypadku o jedną linię w dół albo do wiersza o numerze 10.
+
+
 
 |===
 
