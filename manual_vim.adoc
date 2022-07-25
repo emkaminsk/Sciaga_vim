@@ -5,7 +5,7 @@ Autor emkaminsk@gmail.com
 
 '''
 
-Vi powstal jako 'visual interface' do innego edytora _ex_. _Ex_ byl edytorem tekstu na teleksie, narzedziu do przesylania tekstu. Stad tryb ex w vi i stad pochodza polecenia ':', '$','^', '%', oznaczanie zakresu przez 'a,b', 'g', 's', 'm' i inne.
+Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, narzędziu do przesyłania tekstu. Stąd tryb _ex_ w vi i stąd pochodzą polecenia ':', '$','^', '%', oznaczanie zakresu przez 'a,b', 'g', 's', 'm' i inne.
 
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść jedynie wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
@@ -16,7 +16,7 @@ Dlatego należy rozróżnić kilka podstawowych trybów działania Vim:
 * tryb edycji - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---
 * tryb wizualnej selekcji
 
-Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz .
+Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_ .
 
 == Wstęp
 
@@ -133,9 +133,26 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 === Język VIM. Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (słowo). Dlatego dw - usunięcie słowa. Inny przykład: ctw - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
 
+==== Działania na pojedynczych znakach
+
 [cols="1,1"]
 |===
 
+|_s_
+|Substitute - zastępuje znak pod kursorem, po wykonaniu pozostaje w trybie wstawiania
+
+|_r_
+|Replace - zastępuje jeden znak pod kursorem, po wykonaniu pozostaje w trybie normalnym
+
+|_x_
+|Cross out - usuwa pojedynczy znak pod kursorem, po wykonaniu pozostaje w trybie normalnym
+
+
+|===
+
+==== Działania na obiektach większych niż jeden znak
+[cols="1,1"]
+|===
 |_d_
 |Delete - usuwanie
 
@@ -150,6 +167,37 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |_y_
 |Yank - kopiowanie
+|===
+
+==== Ruchy (motion). Definiują ruch do wykonania dla powyższych poleceń (np. 'd' czy 'y')
+
+[cols="1,1"]
+|===
+
+|_$_
+|Do końca linii
+
+|_^_
+|Do początku linii
+
+|_G_
+|Go - do końca pliku
+
+|_f, F, t, T_
+|Find - do wystąpienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzględnienia tego znaku.
+
+|_15j_
+|Przykład ruchu - kolejne 15 linii
+
+|_10l_
+|Przykład ruchu - kolejne 10 znaków
+
+|===
+
+==== Obiekty tekstowe
+
+[cols="1,1"]
+|===
 
 |_w_
 |Word - słowo
@@ -174,10 +222,6 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |_as_
 |A sentence - całe zdanie
-
-|_f, F, t, T_
-|Find - do wystąpienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzględnienia tego znaku.
-
 |===
 
 == Polecenia w trybie normalnym
@@ -200,7 +244,7 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 [cols="1,1"]
 |===
-|_hjkl_
+|_h, j, k, l_
 |poruszanie w czterech kierunkach (lewo, dół, góra, prawo)
 
 |_0_
@@ -383,7 +427,7 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |zamiana kolejności dwóch liter (poprawa szwedzkiego błędu)
 
 |_@{a}_
-|wykonywanie korekty za pomocą sekwencji klawiszy zapisanej w rejestrze. Patrz sekcja 'Rejestry'
+|wykonywanie korekty za pomocą sekwencji klawiszy zapisanej w makrze. Patrz sekcja 'Makra'
 
 |===
 
@@ -712,6 +756,12 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 [cols="1,1"]
 |===
+
+|_"{x}_
+|Użyj rejestru 'x' do następnej czynności (takiej jak 'd', 'y' lub 'p')
+
+|_"{x}y{ruch}_
+|skopiuj do rejestru 'x' wynik następnego ruchu; np. _"ay$_ kopiuje do rejestru 'a' tekst do końca linii
 
 |_"{x}{tekst}_
 |pozwala na wycinanie i wklejanie fragmentów tekstów do rejestrów (w miejscu {x} można użyć dowolnej litery
