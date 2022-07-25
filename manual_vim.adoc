@@ -1,121 +1,121 @@
-= Moj manual - sciaga - do Vim
+= Mój manuał - ściąga - do Vim
 
-Dokument zawiera moj skrot polecen do Vim. Opisane sa podstawowe polecenia w trybie polecen (ex), normalnym, wizualnym i inne skroty klawiaturowe. Plik jest ekstraktem wiedzy z plikow pomocy. Spis tresci do pelnej pomocy dostepny jest po wykonaniu w Vim polecenia ':help usr_toc'. Tutorial mozna uruchomic w powloce poleceniem 'vimtutor' w shellu.
+Dokument zawiera mój skrót poleceń do Vim. Opisane są podstawowe polecenia w trybie poleceń (ex), normalnym, wizualnym i inne skróty klawiaturowe. Plik jest ekstraktem wiedzy z plików pomocy. Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toć'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
 Autor emkaminsk@gmail.com
 
 '''
 
-Vim dziala inaczej niz inne edytory tekstu. Podstawowa roznica polega na rozroznieniu pomiedzy trybami pracy edytora, w ktorych mozliwe jest wydawanie roznych polecen. Co wiecej, sama edycja tekstu jest mozliwa jedynie w trybie edycji, do ktorego mozna wejsc jedynie wydajac okreslone polecenia. To moze stanowic bariere wejscia dla poczatkujacego.
+Vim działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść jedynie wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
-Dlatego nalezy rozroznic kilka podstawowych trybow dzialania Vim:
+Dlatego należy rozróżnić kilka podstawowych trybów działania Vim:
 
-* tryb polecen, tzw cmd-line. Sa to polecenia glownie rozpoczynajace sie od :
-* tryb normalny - polecenia skladajace sie z jednego lub kilku znakow lub kombinacji klawiszy
-* tryb edycji - tryb w ktorym mozna edytowac tekst. Mozna go rozpoznac po tym, ze w dolnej linii ekranu wyswietla sie tekst --- INSERT ---
+* tryb poleceń, tzw cmd-linę. Są to polecenia głównie rozpoczynające się od :
+* tryb normalny - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy
+* tryb edycji - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---
 
-Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazdym z trybow mozna poruszac sie po tekstcie za pomoca strzalek. Do wychodzenia z roznych trybow do trybu normalnego sluzy klawisz <Esc>.
+Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz .
 
-== Wstep
+== Wstęp
 
-=== Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
+=== Podstawowe polecenia (głównie) w cmd-linę (tryb poleceń). Więcej o trybie poleceń w pliku :help cmdline.
 
 [cols="1,1"]
 |===
 |_:_
-|rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu \| mozna wykonac wiecej niz dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
+|rozpoczyna polecenia w trybie cmd-linę (w ten tryb wprowadza też / i ? - patrz sekcja 'Szukanie' poniżej). Można użyć CTRL-D lub aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie lub CTRL-P pozwala przewijać pomiędzy opcjami. i scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu
 
 |_:w 'plik'_
-|zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+|zapis pliku, opcjonalnie można podać nazwę nowego pliku
 
 |_:q_
-|wyjscie z programu
+|wyjście z programu
 
 |_:saveas 'plik'_
-|zapis biezacego pliku pod nowa nazwa 'plik'
+|zapis bieżącego pliku pod nową nazwa 'plik'
 
 |_:file 'plik'_
 |zmiana nazwy obecnie edytowanego pliku
 
-|_<polecenie>!_
-|modyfikator polecenia wymuszajacy jego wykonanie bez zapisania zmian, np. :q! - wyjscie z programu z porzuceniem zmian
+|_!_
+|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. :q! - wyjście z programu z porzuceniem zmian
 
-|_!<zakres><polecenie>_
-|wykonanie polecenia w zewnetrznym programie, a dokladnie filtrowanie okreslonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od biezacej do 5
+|_!_
+|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od bieżącej do 5
 
 |_!command_
-|wykonanie polecenia zewnetrznego, np z powloki, :!ls -al
+|wykonanie polecenia zewnętrznego, np z powłoki, :!ls -al
 
 |_:!python %_
-|wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwe aktywnego pliku.
+|wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwę aktywnego pliku.
 
-|_!!date_
-|wstawia date w biezacym wierszu
+|_!!datę_
+|wstawia datę w bieżącym wierszu
 
 |_CTRL-G_
-|wyswietlenie informacji o numerze wiersza w ktorym jest kursor
+|wyświetlenie informacji o numerze wiersza w którym jest kursor
 
 |_:e 'nazwa'_
-|(edit) otwarcie nastepnego pliku 'nazwa' do edycji
+|(edit) otwarcie następnego pliku 'nazwa' do edycji
 
 |_:r 'nazwa'_
-|(read) odczytanie pliku 'nazwa' i wstawienie go w biezacym pliku w pozycji kursora
+|(read) odczytanie pliku 'nazwa' i wstawienie go w bieżącym pliku w pozycji kursora
 
 |_:read !ls_ lub _r! {polecenie}_
-|wczytuje wynik polecenia ls do biezacego pliku
+|wczytuje wynik polecenia ls do bieżącego pliku
 
 |_:history_
-|wyswietlenie historii komend w trybie cmd-line
+|wyświetlenie historii komend w trybie cmd-linę
 
 |_q:_
-|otwiera w nowym oknie historie polecen, gdzie dane polecenie mozna edytowac jak w Vim i uruchamiac <Enter>
+|otwiera w nowym oknie historię poleceń, gdzie dane polecenie można edytować jak w Vim i uruchamiać
 
 |_:history /_
-|wyswietlenie historii wyszukiwan 
+|wyświetlenie historii wyszukiwań
 
 |_:browse oldfiles_
-|wyswietla liste uprzednio edytowanych plikow, mozna podac numer i otworzyc wybrany plik do edycji
+|wyświetla listę uprzednio edytowanych plików, można podać numer i otworzyć wybrany plik do edycji
 
 |_ZZ_
 |zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
 
 |_CTRL-Z_
-|zawiesza Vim (zachowujac wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powloki shell. Do Vim mozna wrocic poleceniem 'fg' w powloce
+|zawiesza Vim (zachowując wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powłoki shell. Do Vim można wrócić poleceniem 'fg' w powłoce
 
 |_:help_
 |otwarcie pomocy
 
 |_:help 'word'_
-|pomoc z danym slowem lub poleceniem; <Tab> lub CTRL-D wyswietla mozliwe opcje
+|pomoc z danym słowem lub poleceniem; lub CTRL-D wyświetla możliwe opcje
 
 |_:help index_
-|spis wszystkich polecen wraz z tagami i ich opisem
+|spis wszystkich poleceń wraz z tagami i ich opisem
 
 |_:help usr_01.txt_
-|otwarcie pierwszego rozdzialu podrecznika
+|otwarcie pierwszego rozdziału podręcznika
 
-|_:help usr_toc.txt_
-|wyswietl spis tresci
+|_:help usr_toć.txt_
+|wyświetl spis treści
 
 |_._
-|powtorzenie wykonania poprzedniego polecenia
+|powtórzenie wykonania poprzedniego polecenia
 
 |===
 
-=== Opcje (czesto dodanie 'no' przed nazwa opcji wylacza ja)
+=== Opcje (często dodanie 'no' przed nazwa opcji wyłącza ją)
 
 [cols="1,1"]
 |===
 |_:set hls_
-|wlaczenie podswietlania wyszukiwan
+|włączenie podświetlania wyszukiwań
 
 |_:nohlsearch_
-|wylaczenie podswietlania
+|wyłączenie podświetlania
 
 |_:set ic_
-|wlaczenie trybu ignorecase wyszukiwania
+|włączenie trybu ignorecase wyszukiwania
 
 |_:set number_
-|wlaczenie numerow wierszy
+|włączenie numerów wierszy
 
 |_:help options.txt_
 |pomoc na temat wszystkich opcji
@@ -124,7 +124,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |pomoc na temat opcji hls
 |===
 
-=== Jezyk VIM. Jezyk sklada sie z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (slowo). Dlatego dw - usuniecie slowa. Inny przyklad: ctw - change to 'w' - zmiana calego tekstu do nastepnego wystapienia 'w'
+=== Język VIM. Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (słowo). Dlatego dw - usunięcie słowa. Inny przykład: ctw - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
 
 [cols="1,1"]
 |===
@@ -136,7 +136,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |Change - zmiana
 
 |_>_
-|Indent - wciecie
+|Indent - wcięcie
 
 |_v_
 |Visually select - zmiana w trybie wizualnym
@@ -145,31 +145,31 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |Yank - kopiowanie
 
 |_w_
-|Word - slowo
+|Word - słowo
 
 |_b_
-|Back - wstecz (poprzednie slowo)
+|Back - wstecz (poprzednie słowo)
 
 |_iw_
-|Inner word - wewnatrz slowa
+|Inner word - wewnątrz słowa
 
 |_it_
-|Inner tag - wewnatrz np tagu HTML
+|Inner tag - wewnątrz np tagu HTML
 
 |_i"_
-|Inner quote - wewnatrz tekstu otoczonego cudzyslowiem
+|Inner quote - wewnątrz tekstu otoczonego cudzyslowiem
 
 |_ib_
-|Inner brackets - wewnatrz nawiasow ()
+|Inner brackets - wewnątrz nawiasów ()
 
 |_ip_
-|Inner paragraph - wewnatrz calego akapitu
+|Inner paragraph - wewnątrz całego akapitu
 
 |_as_
-|A sentence - cale zdanie
+|A sentence - całe zdanie
 
 |_f, F, t, T_
-|Find - do wystapienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzglednienia tego znaku.
+|Find - do wystąpienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzględnienia tego znaku.
 
 |===
 
@@ -180,113 +180,113 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 [cols="1,1"]
 |===
 |_zz_
-|wycentrowanie ekranu na wierszu, w ktorym jest kursor
+|wycentrowanie ekranu na wierszu, w którym jest kursor
 
 |_zt_
-|(top) ustawienie ekranu tak, ze linia z kursorem jest na gorze ekranu
+|(top) ustawienie ekranu tak, że linia z kursorem jest na górze ekranu
 
 |_zb_
 |(bottom) jw. ale jest na dole
 |===
 
-=== Poruszanie kursorem; wiecej pomocy w :help motion.txt
+=== Poruszanie kursorem; więcej pomocy w :help motion.txt
 
 [cols="1,1"]
 |===
 |_hjkl_
-|poruszanie  w czterech kierunkach (lewo, dol, gora, prawo)
+|poruszanie w czterech kierunkach (lewo, dół, góra, prawo)
 
 |_0_
-|poczatek biezacego wiersza
+|początek bieżącego wiersza
 
 |_$_
-|koniec biezacego wiersza
+|koniec bieżącego wiersza
 
 |_w_
-|(word) poczatek nastepnego slowa, polecenie zlozone
+|(word) początek następnego słowa, polecenie złożone
 
 |_b_
-|(before, beginning) poczatek poprzedniego slowa
+|(before, beginning) początek poprzedniego słowa
 
 |_e_
-|(end) przejscie na koniec slowa
+|(end) przejście na koniec słowa
 
 |_2G_
-|(go) przeskok do drugiej linii, polecenie zlozone
+|(go) przeskok do drugiej linii, polecenie złożone
 
 |_G_
 |przeskok do ostatniej linii
 
 |_gg_
-|przeskok na poczatek pliku (to samo co 1G)
+|przeskok na początek pliku (to samo co 1G)
 
 |_``_
-|powrot po przeskoku (cofniecie do poprzedniej pozycji).
+|powrót po przeskoku (cofnięcie do poprzedniej pozycji).
 
 |_CTRL-O_
-|(older) powrot do poprzedniego miejsca po przeskoku (np po przeskoku do innej linii lub po wejsciu w link). Mozna wykonywac wiele razy.
+|(older) powrót do poprzedniego miejsca po przeskoku (np po przeskoku do innej linii lub po wejściu w link). Można wykonywać wiele razy.
 
 |_CTRL-I_
-|przejscie do nowszej pozycji w odwrotnej kolejnosci jak CTRL-O
+|przejście do nowszej pozycji w odwrotnej kolejności jak CTRL-O
 
 |_:jumps_
-|wyswietlenie listy przeskokow
+|wyświetlenie listy przeskoków
 
 |_CTRL-]_
-|wejscie w link
+|wejście w link
 
 |_H_
-|(Home) przeniesienie kursora na gore strony
+|(Home) przeniesienie kursora na górę strony
 
 |_M_
-|(Middle) przeniesienie kursora na srodek strony
+|(Middle) przeniesienie kursora na środek strony
 
 |_L_
-|(Last) przeniesienie kursora na dol strony
+|(Last) przeniesienie kursora na dół strony
 
 |_CTRL-U_
-|(up) przewiniecie o pol strony w gore
+|(up) przewinięcie o pół strony w górę
 
 |_CTRL-D_
-|(down) przewiniecie o pol strony w dol
+|(down) przewinięcie o pół strony w dół
 
 |_CTRL-F_
-|(forward) przewiniecie tekstu w przod o strone
+|(forward) przewinięcie tekstu w przód o stronę
 
 |_CTRL-B_
-|(backward) przewiniecie tekstu w tyl o strone
+|(backward) przewinięcie tekstu w tył o stronę
 
 |_CTRL-E_
-|(extra) wyswietlenie dodatkowej linii (jedna linia w dol)
+|(extra) wyświetlenie dodatkowej linii (jedna linia w dół)
 
 |_CTRL-Y_
-|jedna linia w gore
+|jedna linia w górę
 |===
 
-=== Edytowanie (wchodzenie w edycje)
+=== Edytowanie (wchodzenie w edycję)
 
 [cols="1,1"]
 |===
 
 |_i_
-|(insert) wstawienie znaku w biezacym miejscu
+|(insert) wstawienie znaku w bieżącym miejscu
 |_I_
-|wstawianie znakow na poczatku biezacego wiersza
+|wstawianie znaków na początku bieżącego wiersza
 
 |_o_
-|(open) rozpoczecie nastepnego wiersza
+|(open) rozpoczęcie następnego wiersza
 
 |_O_
-|rozpoczecie nowego wiersza w biezacym wierszu
+|rozpoczęcie nowego wiersza w bieżącym wierszu
 
 |_a_
 |(add) dodanie znaku zaraz za kursorem
 
 |_A_
-|wejscie w edycje na koncu biezacego wiersza
+|wejście w edycję na końcu bieżącego wiersza
 
 |_~_
-|zmiana rozmiaru znaku (z duzego na maly i odwrotnie)
+|zmiana rozmiaru znaku (z dużego na mały i odwrotnie)
 
 |===
 
@@ -296,25 +296,25 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_x_
-|usuwanie znaku pod kursorem (zlozone)
+|usuwanie znaku pod kursorem (złożone)
 
 |_d_
-|(delete) wycinanie wiersza lub jego czesci - przeniesienie do schowka, polecenie zlozone
+|(delete) wycinanie wiersza lub jego części - przeniesienie do schowka, polecenie złożone
 
 |_dG_
-|- od biezacego wiersza do konca pliku
+|- od bieżącego wiersza do końca pliku
 
 |_d20G_
-|- od biezacego wiersza do wiersza 20
+|- od bieżącego wiersza do wiersza 20
 
 |_D_
-|wycinanie wiersza od pozycji kursora do konca linii (to samo co d$)
+|wycinanie wiersza od pozycji kursora do końca linii (to samo co d$)
 
 |_J_
-|(join) laczenie dwoch wierszy ze soba - biezacego i nastepnego
+|(join) łączenie dwóch wierszy że sobą - bieżącego i następnego
 
 |_:move {x}_
-|przeniesienie biezacego wiersza do wiersza po numerze {x}
+|przeniesienie bieżącego wiersza do wiersza po numerze {x}
 |===
 
 === Kopiowanie
@@ -323,16 +323,16 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_y_
-|(yank) kopiowanie do schowka, polecenie zlozone
+|(yank) kopiowanie do schowka, polecenie złożone
 
 |_Y_
-|kopiowanie calego biezacego wiersza
+|kopiowanie całego bieżącego wiersza
 
 |_yy_
-|to samo, dziala jak Y
+|to samo, działa jak Y
 
 |_y$_
-|kopiowanie od biezacego znaku do konca linii
+|kopiowanie od bieżącego znaku do końca linii
 
 |===
 
@@ -342,10 +342,10 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_p_
-|(put) wklejanie zawartosci schowka za kursorem lub ponizej biezacego wiersza
+|(put) wklejanie zawartości schowka za kursorem lub poniżej bieżącego wiersza
 
 |_P_
-|wklejenie przed/powyzej biezacego wiersza
+|wklejenie przed/powyżej bieżącego wiersza
 
 |===
 
@@ -355,87 +355,87 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_r_
-|(replace), np. ra zastepuje biezacy znak pod kursorem przez litere 'a' i wraca d trybu polecen
+|(replace), np. ra zastępuje bieżący znak pod kursorem przez literę 'a' i wraca d trybu poleceń
 
 |_c_
-|(change) korekta, polecenie zlozone (skladnia jak d czy y)
+|(change) korekta, polecenie złożone (składnia jak d czy y)
 
 |_ce_
-|(change to the end) pozwala skorygowac biezace slowo (usuwa je do konca i wchodzi w tryb edycji)
+|(change to the end) pozwala skorygować bieżące słowo (usuwa je do końca i wchodzi w tryb edycji)
 
 |_R_
-|korekta wielu znakow (kazdy napisany znak zastepuje znak pod kursorem). W tym trybie Backspace przywraca zmiany
+|korekta wielu znaków (każdy napisany znak zastępuje znak pod kursorem). W tym trybie Backspace przywraca zmiany
 
 |_s_
-|(substitute) zamien znak pod kursorem (tozsame z cl)
+|(substitute) zamień znak pod kursorem (tożsame z cl)
 
 |_._
-|powtorzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcja do szybkiego ponowienia tej samej komendy skrotem.
+|powtórzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcją do szybkiego ponowienia tej samej komendy skrótem.
 
 |_xp_
-|zamiana kolejnosci dwoch liter (poprawa szwedzkiego bledu)
+|zamiana kolejności dwóch liter (poprawa szwedzkiego błędu)
 
 |_@{a}_
-|wykonywanie korekty za pomoca sekwencji klawiszy zapisanej w rejestrze. Patrz sekcja 'Rejestry'
+|wykonywanie korekty za pomocą sekwencji klawiszy zapisanej w rejestrze. Patrz sekcja 'Rejestry'
 
 |===
 
-=== Skladnia polecenia zlozonego
+=== Składnia polecenia złożonego
 
 [cols="1,1"]
 |===
 
 |_yxz_
-|podstawowa skladnia: polecenie - liczba - modyfikator
+|podstawową składnia: polecenie - liczba - modyfikator
 
 |_xyz_
-|x - liczba powtorzen, y - polecenie, z - modyfikator
+|x - liczba powtórzeń, y - polecenie, z - modyfikator
 
 |===
 
-=== Modyfikatory polecen zlozonych (glownie sluzacych do wycinania: d oraz kopiowania: y)
+=== Modyfikatory poleceń złożonych (głównie służących do wycinania: d oraz kopiowania: y)
 
 [cols="1,1"]
 |===
 
 |_dd_
-|usuniecie (wyciecie) calego wiersza, 2dd - wycinanie dwoch calych linii (d2d dziala tak samo)
+|usunięcie (wycięcie) całego wiersza, 2dd - wycinanie dwóch całych linii (d2d działa tak samo)
 
 |_dl_
 |wycinanie jednego znaku pod kursorem
 
 |_dW_
-|wycinanie calego slowa, np. d2W - wycinanie dwoch slow
+|wycinanie całego słowa, np. d2W - wycinanie dwóch słów
 
 |_dw_
-|wycinanie calego slowa (od miejsca kursora) wlacznie z bialym znakiem (bez usuwania pierwszego znaku nastepnego slowa)
+|wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa)
 
 |_daw_
-|(A Word) wycinanie calego slowa (niezaleznie w ktorym miejscu jest kursor) wlacznie z bialym znakiem na koncu
+|(A Word) wycinanie całego słowa (niezależnie w którym miejscu jest kursor) włącznie z białym znakiem na końcu
 
 |_diw_
-|(Inner Word) wycinanie slowa bez usuwania bialych znakow
+|(Inner Word) wycinanie słowa bez usuwania białych znaków
 
-|_das_
-|(A Sentence) wycinanie calego zdania
+|_dąs_
+|(A Sentence) wycinanie całego zdania
 
 |_dis_
-|(Inner Sentence) wycinanie calego zdania
+|(Inner Sentence) wycinanie całego zdania
 
 |_dap_
-|(A paragraph) usuniecie calego akapitu
+|(A paragraph) usunięcie całego akapitu
 
 |_de_
-|wycinanie calego slowa (od kursora do ostatniego znaku) pozostawiajac biale znaki
+|wycinanie całego słowa (od kursora do ostatniego znaku) pozostawiając białe znaki
 
 |_d$_
-|wycinanie od biezacego miejsca do konca wiersza
+|wycinanie od bieżącego miejsca do końca wiersza
 
 |_d^_
-|wycinanie od pierwszego znaku nie bedacego bialym znakiem w biezacym wierszu do biezacego znaku
+|wycinanie od pierwszego znaku nie będącego białym znakiem w bieżącym wierszu do bieżącego znaku
 
 |_d0_
-|od poczatku wiersza do biezacego znaku
+|od początku wiersza do bieżącego znaku
 
 |===
 
@@ -445,13 +445,13 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_u_
-|(undo) cofa ostatnia zmiane w pliku
+|(undo) cofa ostatnią zmianę w pliku
 
 |_U_
 |przywraca linie do oryginalnego stanu
 
 |_CTRL-R_
-|(redo) cofa zmiany wlacznie z undo (mozna wycofac sie z undo)
+|(redo) cofa zmiany włącznie z undo (można wycofać się z undo)
 
 |===
 
@@ -461,92 +461,92 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_f_
-|(find) wyszukanie znaku w biezacym wierszu po biezacym miejscu
+|(find) wyszukanie znaku w bieżącym wierszu po bieżącym miejscu
 
 |_;_
-|nastepne wyszukanie w biezacym wierszu
+|następne wyszukanie w bieżącym wierszu
 
 |_/word_
-|wyszukanie w pliku kolejnego wzorca wyrazenia regularnego (wystapienia 'word')
+|wyszukanie w pliku kolejnego wzorca wyrażenia regularnego (wystąpienia 'word')
 
 |_?word_
 |wyszukanie w pliku poprzedniego wzorca
 
 |_*_
-|wyszukiwanie slowa, na ktorym wlasnie stoi kursor
+|wyszukiwanie słowa, na którym właśnie stoi kursor
 
 |_n_
-|(next) nastepne wyszukanie wzorca w pliku
+|(next) następne wyszukanie wzorca w pliku
 
 |_N_
 |poprzednie wyszukanie wzorca w pliku
 
 |_CTRL-O_
-|powrot do miejsca gdzie rozpoczete zostalo wyszukiwanie
+|powrót do miejsca gdzie rozpoczęte zostało wyszukiwanie
 
 |_CTRL-I_
-|przejscie do przodu
+|przejście do przodu
 
 |_/word/b+1_
-|wyszukuje 'word' i umieszcza kursor na drugiej pozycji od poczatku. Oprocz b mozna uzywac tez innych polecen: 'e', cyfra oznacza liczbe linii po znalezionym slowie
+|wyszukuje 'word' i umieszcza kursor na drugiej pozycji od początku. Oprócz b można używać też innych poleceń: 'e', cyfra oznacza liczbę linii po znalezionym słowie
 
 |_:help pattern.txt_
-|wiecej pomocy na temat wyszukiwania za pomoca wyrazen regularnych (Perl). Mozna tez uzych :help usr_27.txt
+|więcej pomocy na temat wyszukiwania za pomocą wyrażeń regularnych (Perl). Można też uzych :help usr_27.txt
 
 |===
 
-=== Zastepowanie
+=== Zastępowanie
 
 [cols="1,1"]
 |===
 
-|_:[range]substitute/from/to/[flags]_
-|Ogolna skladnia polecenia do zamiany tekstu 'from' na 'to'
+|_:[rangę]substitute/from/to/[flags]_
+|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'
 
 |_:s/b/A_
-|(substitute) zamiana b na A w biezacym wierszu (jeden raz)
+|(substitute) zamiana b na A w bieżącym wierszu (jeden raz)
 
 |_:s/a/A/g_
-|zamiana a na A w biezacym wierszu (wszystkie wystapienia)
+|zamiana a na A w bieżącym wierszu (wszystkie wystąpienia)
 
 |_:%s/a/A/g_
-|zamiana w calym pliku
+|zamiana w całym pliku
 
 |_:%s/a/A/gc_
-|zamiana w calym pliku z potwierdzeniem kazdej zamiany
+|zamiana w całym pliku z potwierdzeniem każdej zamiany
 
 |_:5,10s/a/A/g_
 |zamiana w wierszach od 5 do 10
 
 |_:.,$s/a/A/g_
-|zamiana w wierszach od biezacego do konca pliku
+|zamiana w wierszach od bieżącego do końca pliku
 
 |_5:s/a/A/g_
-|zamiana w pieciu wierszach liczac od biezacego
+|zamiana w pięciu wierszach licząc od bieżącego
 
-|_:[range]global/{pattern}/{command}_
-|(global) wyszukanie wzorca pattern i wykonanie w tym wierszu polecenia command. Tylko polecenia w trybie cmd-line sa tu mozliwe.
+|_:[rangę]global/{pattern}/{command}_
+|(global) wyszukanie wzorca pattern i wykonanie w tym wierszu polecenia command. Tylko polecenia w trybie cmd-linę są tu możliwe.
 
 |_:g/^/m 0_
-|przyklad polecenia global. ^ pasuje do kazdego wiersza w pliku a 'm' przesuwa wiersz na poczatek pliku
+|przykład polecenia global. ^ pasuje do każdego wiersza w pliku a 'm' przesuwa wiersz na początek pliku
 
 |===
 
-== Wizualna selekcja. W tym trybie wiele polecen zyskuje nowe znaczenie.
+== Wizualna selekcja. W tym trybie wiele poleceń zyskuje nowe znaczenie.
 
-=== Wejscie w tryb wizualnej selekcji
+=== Wejście w tryb wizualnej selekcji
 
 [cols="1,1"]
 |===
 
 |_v_
-|wchodzi w tryb selekcji, po zaznaczeniu tekstu mozna na nim wykonac polecenie zwykle lub polecenie ex (np :w nazwa zapisze fragment w pliku nazwa)
+|wchodzi w tryb selekcji, po zaznaczeniu tekstu można na nim wykonać polecenie zwykłe lub polecenie ex (np :w nazwa zapisze fragment w pliku nazwa)
 
 |_V_
-|tryb selekcji, mozna zaznaczac cale linie
+|tryb selekcji, można zaznaczać całe linie
 
 |_CTRL-V_
-|tryb blokowy, w ktorym zaznacza sie prostokatny obszar
+|tryb blokowy, w którym zaznacza się prostokątny obszar
 
 |===
 
@@ -556,95 +556,95 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_o/O_
-|(other) w trybie wizualnej selekcji powzwala na przejscie kursorem na drugi koniec zaznaczonego obszaru
+|(other) w trybie wizualnej selekcji powzwala na przejście kursorem na drugi koniec zaznaczonego obszaru
 
-|_I{tekst}<Esc>_
-|w trybie blokowym polecenie pozwala na wstawienie przed blokiem w kazdym wierszu tego samego tekstu
+|_I{tekst}_
+|w trybie blokowym polecenie pozwala na wstawienie przed blokiem w każdym wierszu tego samego tekstu
 
-|_c{tekst}<Esc>_
-|w trybie blokowym polecenie pozwala na wstawienie zamiast bloku w kazdym wierszu tego samego tekstu
+|_c{tekst}_
+|w trybie blokowym polecenie pozwala na wstawienie zamiast bloku w każdym wierszu tego samego tekstu
 
-|_A{tekst}<Esc>_
-|w trybie blokowym polecenie pozwala na wstawienie za blokiem w kazdym wierszu tego samego tekstu
+|_A{tekst}_
+|w trybie blokowym polecenie pozwala na wstawienie za blokiem w każdym wierszu tego samego tekstu
 
 |_~_
-|zamiana malych liter na duze i odwrotnie
+|zamiana małych liter na duże i odwrotnie
 
 |_r{a}_
-|zamiana kazdej litery na {a}
+|zamiana każdej litery na {a}
 
 |===
 
-== Polecenia w trybie edycji (tryb Insert). W tym trybie mozna wykonac wiele polecen za pomoca klawiszy funkcyjnych lub skrotow z CTRL.
+== Polecenia w trybie edycji (tryb Insert). W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub skrótów z CTRL.
 
 [cols="1,1"]
 |===
 
 |_CTRL-Left_
-|przeskok o cale slowo w lewo (tak samo dziala z Shift, w prawo z druga strzalka)
+|przeskok o całe słowo w lewo (tak samo działa z Shift, w prawo z drugą strzałką)
 
 |_CTRL-Home_
-|przeskok na poczatek pliku
+|przeskok na początek pliku
 
 |_CTRL-End_
 |przeskok na koniec pliku
 
 |_CTRL-P_
-|autouzupelnianie (Vim zgaduje reszte slowa na podstawie innych wpisanych w pliku slow oraz innych plikow)
+|autouzupelnianie (Vim zgaduje resztę słowa na podstawie innych wpisanych w pliku słów oraz innych plików)
 
 |_CTRL-N_
-|autouzupelnianie, ale Vim szuka slow z przodu Inne
+|autouzupelnianie, ale Vim szuka słów z przodu Inne
 
 |_CTRL-X CTRL-F_
-|autouzupelnienie nazwami plikow. Inne opcje autouzupelniania sa w helpie usr_24.txt
+|autouzupelnienie nazwami plików. Inne opcje autouzupelniania są w helpie usr_24.txt
 
 |_CTRL-X CTRL-L_
-|autouzupelnianie calymi liniami
+|autouzupelnianie całymi liniami
 
 |_CTRL-A_
-|powtorzenie ostatniej edycji w trybie Insert. Dobry skrot, aby wykonac te sama modyfikacje w wielu miejscach. CTRL-2 (lub CTRL-@) wykonuje to samo i jednoczesnie wychodzi z trybu edycji.
+|powtórzenie ostatniej edycji w trybie Insert. Dobry skrót, aby wykonać tę samą modyfikację w wielu miejscach. CTRL-2 (lub CTRL-@) wykonuje to samo i jednocześnie wychodzi z trybu edycji.
 
 |_CTRL-Y_
-|kopiuje znak powyzej kursora
+|kopiuje znak powyżej kursora
 
 |_CTRL-W_
-|usuniecie ostatniego napisanego slowa (slowa tuz przed kursorem)
+|usunięcie ostatniego napisanego słowa (słowa tuż przed kursorem)
 
 |_CTRL-U_
-|usuniecie calego wiersza od poczatku do miejsca kursora
+|usunięcie całego wiersza od początku do miejsca kursora
 
 |_CTRL-V{znaki}_
-|pozwala na wstawienie znakow specjalnych. Liczba trzycyfrowa (od 000 do 255) pozwala na wpisanie znakow ascii. Wpisujac 'x' mozemy podac liczbe w ukladzie szesnastkowym (np. CTRL-V xff - bez spacji w srodku) a 'o' - osemkowym. Podajac u lub U mozemy wstawic znak Unicode.
+|pozwala na wstawienie znaków specjalnych. Liczba trzycyfrową (od 000 do 255) pozwala na wpisanie znaków ascii. Wpisując 'x' możemy podać liczbę w układzie szesnastkowym (np. CTRL-V xff - bez spacji w środku) a 'o' - ósemkowym. Podając u lub U możemy wstawić znak Unicode.
 
 |_CTRL-K{znaki}_
-|wstawienie symboli. Lista symboli jest dostepna komenda :digraphs. Np. CTRL-K C* produkuje Ξ(ponownie - bez spacji w srodku). Inny przyklad to CTRL-K Co ©.
+|wstawienie symboli. Lista symboli jest dostępna komenda :digraphs. Np. CTRL-K C* produkuje Ξ(ponownie - bez spacji w środku). Inny przykład to CTRL-K Co ©.
 
 |_:CTRL-O{polecenie}_
 |pozwala na wykonanie w trybie edycji jednego polecenia z trybu normalnego (bez wychodzenia z trybu edycji).
 
 |===
 
-== Inne polecenia w roznych trybach
+== Inne polecenia w różnych trybach
 
-=== Polecenia rozpoczynajace sie od 'g'. Polecenia te najczesciej modyfikuja znaczenie komendy wymienionej po g. Szczegolowa lista jest w pliku index.txt
+=== Polecenia rozpoczynające się od 'g'. Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szczegółową lista jest w pliku index.txt
 
 [cols="1,1"]
 |===
 
 |_ga_
-|wyswietla wartosc ASCII znaku pod kursorem
+|wyświetla wartość ASCII znaku pod kursorem
 
 |_g8_
-|wyswietla wartosc hex znaku UTF-8 pod kursorem
+|wyświetla wartość hex znaku UTF-8 pod kursorem
 
 |_gm_
-|przeskoczenie kursorem na srodek ekranu 
+|przeskoczenie kursorem na środek ekranu
 
 |_gM_
-|przeskoczenie kursorem na srodek biezacej linii 
+|przeskoczenie kursorem na środek bieżącej linii
 
 |_{N}{"x}gp_
-|(put) wstawienie N razy tekstu ze schowka (lub rejestru {x}, jesli podany)	
+|(put) wstawienie N razy tekstu że schowka (lub rejestru {x}, jeśli podany)
 
 |===
 
@@ -654,73 +654,73 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_:set textwidth={x}_
-|ustawienie szerokosci linii. Jesli nowe slowo spowoduje ze linia bedzie dluzsza niz maksimum, zostanie wstawiony znak nowej linii
+|ustawienie szerokości linii. Jeśli nowe słowo spowoduje że linia będzie dłuższa niż maksimum, zostanie wstawiony znak nowej linii
 
 |_gqap_
-|uporzadkowanie akapitu tak aby w kazdej linii znalazlo sie maksimum slow wzgledem dostepnej szerokosci linii
+|uporządkowanie akapitu tak aby w każdej linii znalazło się maksimum słów względem dostępnej szerokości linii
 
 |_gq}_
 |jw.
 
-|_:{zakres}center {szerokosc}_
-|wysrodkowanie tekstu w liniach opisanych zakresem. {szerokosc} opisuje szerokosc linii uzyta do wysrodkowania
+|_:{zakres}center {szerokość}_
+|wyśrodkowanie tekstu w liniach opisanych zakresem. {szerokość} opisuje szerokość linii użyta do wyśrodkowania
 
-|_:{zakres}right {szerokosc}_
-|jw. ale dosuniecie tekstu do prawej
+|_:{zakres}right {szerokość}_
+|jw. ale dosunięcie tekstu do prawej
 
 |_:{zakres}left {margines}_
-|jw ale dosuniecie do lewej. Margines okresla liczbe spacji po lewej stronie tekstu.
+|jw ale dosunięcie do lewej. Margines określa liczbę spacji po lewej stronie tekstu.
 
 |_:8,15le4_
-|przyklad jak wciac tekst z 4 spacjami na poczatku kazdego wiersza od nr 8 do 15
+|przykład jak wciąć tekst z 4 spacjami na początku każdego wiersza od nr 8 do 15
 
 |===
 
-=== Znaki (marks). Oznaczenia pozwalajace definiowac zakres pliku lub miejsca do ktorych mozna przeskoczyc. Znaki nie sa widzialne, sa tylko pozycjami w pliku. Znaki i rejestry nie sa przechowywane w tym samym miejscu, mozna miec jednoczesnie znak a i rejestr 'a' - sa czyms innym
+=== Znaki (marks). Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można przeskoczyć. Znaki nie są widzialne, są tylko pozycjami w pliku. Znaki i rejestry nie są przechowywane w tym samym miejscu, można mieć jednocześnie znak a i rejestr 'a' - są czymś innym
 
 [cols="1,1"]
 |===
 
 |_m{t}_
-|wstawienie znacznika 't' w biezacej pozycji. Znaczniki mozna nazywac malymi lub duzymi literami
+|wstawienie znacznika 't' w bieżącej pozycji. Znaczniki można nazywać małymi lub dużymi literami
 
 |_'{t}_
-|przejscie do pozycji znacznika 't'
+|przejście do pozycji znacznika 't'
 
 |_:marks_
-|wyswietla liste aktywnych znakow, przede wszystkich znakow globalnych (o numerach 0-9), ktore sa tworzone przy kazdym wyjsciu z Vim
+|wyświetla listę aktywnych znaków, przede wszystkich znaków globalnych (o numerach 0-9), które są tworzone przy każdym wyjściu z Vim
 
 |_'0_
-|przejscie do miejsca, gdzie ostatnio Vim zostal zamkniety
+|przejście do miejsca, gdzie ostatnio Vim został zamknięty
 
 |_:delm {marks}_
-|usuniecie znaku
+|usunięcie znaku
 
 |_'< '>_
-|poczatek i koniec zakresu wizualnej selekcji
+|początek i koniec zakresu wizualnej selekcji
 
 |===
 
-=== Rejestry. Pozwalaja zapisac fragment tekstu do przeklejenia lub wykonac ten tekst jako polecenie. Rejestry oznaczane sa malymi literami. Uzycie duzej litery pozwala na doklejenie kolejnego tekstu do istniejacego rejestru.
+=== Rejestry. Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. Rejestry oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru.
 
 [cols="1,1"]
 |===
 
 |_"{x}{tekst}_
-|pozwala na wycinanie i wklejanie fragmentow tekstow do rejestrow (w miejscu {x} mozna uzyc dowolnej litery
+|pozwala na wycinanie i wklejanie fragmentów tekstów do rejestrów (w miejscu {x} można użyć dowolnej litery
 
 |_"ayas_
-|skopiowanie calego biezacego zdania do rejestru 'a'
+|skopiowanie całego bieżącego zdania do rejestru 'a'
 
 |_"ap_
-|wklejenie zawartosci rejestru 'a' w biezacym miesjcu
+|wklejenie zawartości rejestru 'a' w bieżącym miesjcu
 
 |_CTRL-R{x}_
-|w trybie edycji wstawienie zawartosci rejestru {x}
+|w trybie edycji wstawienie zawartości rejestru {x}
 
 |===
 
-=== Makra. Umozliwia zapisanie sekwencji polecen i wykonanie ich wielokrotnie, przez np. 10@a
+=== Makra. Umożliwia zapisanie sekwencji poleceń i wykonanie ich wielokrotnie, przez np. 10@a
 
 [cols="1,1"]
 |===
@@ -729,26 +729,26 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |zapisanie sekwencji klawiszy 'sekw' w rejestrze 'a'
 
 |_@{a}_
-|wykonanie sekwencji klawiszy zapisanej w rejestrze. Sekwencja bedzie wykonana w trybie polecen
+|wykonanie sekwencji klawiszy zapisanej w rejestrze. Sekwencja będzie wykonana w trybie poleceń
 
 |_@@_
 |wykonanie poprzedniej sekwencji klawiszy
 
 |===
 
-=== Skroty. Wiecej w pliku help usr_24.txt 
+=== Skróty. Więcej w pliku help usr_24.txt
 
 [cols="1,1"]
 |===
 
-|_:iabbrev {skrot} {tekst}_
-|pozwala zdefiniowac skrot. Wpisanie w tekscie (w trybie edycji) skrotu i potem spacji spowoduje zastapienie skrotu tekstem. Tekst moze miec jedno lub wiele slow. Jesli na poczatku lub na koncu tekstu ma byc spacja nalezy zdefiniowac ja jako <Space>.
+|_:iabbrev {skrót} {tekst}_
+|pozwala zdefiniować skrót. Wpisanie w tekście (w trybie edycji) skrótu i potem spacji spowoduje zastąpienie skrótu tekstem. Tekst może mieć jedno lub wiele słów. Jeśli na początku lub na końcu tekstu ma być spacja należy zdefiniować ją jako .
 
-|_:iab {skrot} {tekst}_
-|krotsza forma polecenia do definiwania skrotu.
+|_:iab {skrót} {tekst}_
+|krótsza forma polecenia do definiwania skrótu.
 
 |_:abbreviate_
-|wyswietla liste zdefiniowanych skrotow
+|wyświetla listę zdefiniowanych skrótów
 
 |===
 
@@ -758,34 +758,34 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_:[v]split 'plik'_
-|podzielenie biezacego okna na dwa; podajac opcjonalna nazwe pliku mozna otworzyc inny plik w drugim oknie; [v] pozwala na podzial pionowy
+|podzielenie bieżącego okna na dwa; podając opcjonalna nazwę pliku można otworzyć inny plik w drugim oknie; [v] pozwala na podział pionowy
 
 |_:[v]new_
 |otwarcie nowego pustego okna
 
 |_CTRL-W w_
-|przejscie do innego okna
+|przejście do innego okna
 
 |_CTRL-W hjkl_
-|przechodzenie miedzy oknami (lewo, dol, gora, prawo)
+|przechodzenie między oknami (lewo, dół, góra, prawo)
 
 |_CTRL-W J_
-|przemieszczenie obecnego okna w dol (tak samo pozostale klawisze - H, K i L)
+|przemieszczenie obecnego okna w dół (tak samo pozostałe klawisze - H, K i L)
 
 |_{x}CTRL-W +/-_
-|zwiekszenie/zmniejszenie wysokosci biezacego okna. Parametr {x} okresla o ile linii nastepuje zmiana
+|zwiększenie/zmniejszenie wysokości bieżącego okna. Parametr {x} określa o ile linii następuje zmiana
 
 |_:[vertical] resize {x}_
-|zmiana rozmiaru biezacego okna o wartosc {x}. Slowo vertical pozwala na pionowa zmiane
+|zmiana rozmiaru bieżącego okna o wartość {x}. Słowo vertical pozwala na pionową zmianę
 
 |_:close_
-|zamkniecie biezacego okna
+|zamknięcie bieżącego okna
 
 |_:only_
-|zamkniecie wszystkich okien z wyjatkiem biezacego
+|zamknięcie wszystkich okien z wyjątkiem bieżącego
 
 |_:qall_
-|calkowite wyjscie z Vim; dziala tez :qall i :wqall
+|całkowite wyjście z Vim; działa też :qall i :wqall
 
 |===
 
@@ -798,16 +798,16 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |otwarcie do nowego bufora pliku o nazwie 'plik'
 
 |_:buffers_
-|wyswietlenie listy otwartych plikow (tak samo dziala :ls)
+|wyświetlenie listy otwartych plików (tak samo działa :ls)
 
 |_:buffer {x}_
-|przelaczenie sie do pliku o numerze {x}; dziala tez skrot 'b' lub 'bu'
+|przełączenie się do pliku o numerze {x}; działa też skrót 'b' lub 'bu'
 
 |_:bdel {x}_
-|usuniecie z pamieci bufora o numerze {x}
+|usunięcie z pamięci bufora o numerze {x}
 
 |_:bn_
-|(buffer next) edycja nastepnego otwartego pliku (w petli)
+|(buffer next) edycja następnego otwartego pliku (w pętli)
 
 |_:bp_
 |(buffer previous) edycja poprzedniego otwartego pliku
@@ -820,7 +820,7 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 |===
 
 |_:mksession 'nazwa'_
-|utworzenie sesji o nazwie 'nazwa'; opcjonalnie mozna uzyc skrotu 'mk' zamiast 'mksession'
+|utworzenie sesji o nazwie 'nazwa'; opcjonalnie można użyć skrótu 'mk' zamiast 'mksession'
 
 |_:mksession! 'nazwa'_
 |nadpisanie sesji o nazwie 'nazwa'
@@ -830,88 +830,87 @@ Istnieja jeszcze inne tryby programu opisane krotko ponizej lub w helpie. W kazd
 
 |===
 
-=== Zakladki (tabs)
+=== Zakładki (tabs)
 
 [cols="1,1"]
 |===
 
 _
-|:help tabpage.txt	pomoc na temat zakladek
+|:help tabpage.txt pomoc na temat zakładek
 
 |_:tabe_
-|(edit) tworzenie nowej zakladki (inaczej tabnew)
+|(edit) tworzenie nowej zakładki (inaczej tabnew)
 
 |_:tabc_
-|(close) zamkniecie aktualnej zakladki
+|(close) zamknięcie aktualnej zakładki
 
 |_:tabn_
-|(next) przejscie do nastepnej zakladki
+|(next) przejście do następnej zakładki
 
 |_:tab {polecenie}_
-|wykonuje polecenie w nowej zakladce (np otwarcie pliku pomocy poleceniem help)
+|wykonuje polecenie w nowej zakładce (np otwarcie pliku pomocy poleceniem help)
 
 |_:tab split_
-|otwiera nowa zakladke z tym samym plikiem co biezacy
+|otwiera nową zakładkę z tym samym plikiem co bieżący
 
 |_{x]gt_
-|przejscie do kolejnej zakladki; opcjonalnie x to numer zakladki
+|przejście do kolejnej zakładki; opcjonalnie x to numer zakładki
 
 |_gT_
-|przejscie do poprzedniej zakladki
+|przejście do poprzedniej zakładki
 
 |===
 
-=== Mapowania klawiszy. Vim daje mozliwosc definiowania mapowan w wielu trybach pracy. Wiecej w pliku :help map.txt
+=== Mapowania klawiszy. Vim daje możliwość definiowania mapowań w wielu trybach pracy. Więcej w pliku :help map.txt
 
 [cols="1,1"]
 |===
 
 |_:map_
-|Polecenie bez argumentu wyswietla wszystkie mapowania w trybach: normalnym, wizualnym i operatora. Z jednym argumetem wyswietla mapowanie dla tego klawisza. Z dwoma tworzy nowe mapowanie.
+|Polecenie bez argumentu wyświetla wszystkie mapowania w trybach: normalnym, wizualnym i operatora. Z jednym argumetem wyświetla mapowanie dla tego klawisza. Z dwoma tworzy nowe mapowanie.
 
 |_:unmap_
 |usuwa dane mapowanie
 
 |===
 
-=== Przegladarka plikow
+=== Przeglądarka plików
 
 [cols="1,1"]
 |===
 
 |_:edit ._
-|otwiera zawatosc biezacego katalogu w oknie
+|otwiera zawatosc bieżącego katalogu w oknie
 
 |_:Explore 'folder'_
-|wlaczenie przegladarki okreslonego katalogu, w tym katalogow sieciowych (ftp)
+|włączenie przeglądarki określonego katalogu, w tym katalogów sieciowych (ftp)
 
 |_:split ~/_
-|dzieli okno na dwa: przegladarke plikow i puste okno
+|dzieli okno na dwa: przeglądarkę plików i puste okno
 
 |_P_
-|podglad wybranego pliku w drugim oknie
+|podgląd wybranego pliku w drugim oknie
 
 |_o_
-|horyzontalny podzial okien i otwarcie pliku
+|horyzontalny podział okien i otwarcie pliku
 
 |_v_
 |otwarcie pliku w nowym vertykalnym oknie
 
 |_t_
-|otwarcie pliku w nowej zakladce
+|otwarcie pliku w nowej zakładce
 
-|_<Enter> _
+|_ _
 |otwarcie pliku
 
 |_CTRL-O_
-|powrot do poprzedniej zawartosci okna
+|powrót do poprzedniej zawartości okna
 
 |_s_
 |zmiana sposobu sortowania
 
 |_i_
-|zmiana sposobu wyswietlania plikow
+|zmiana sposobu wyświetlania plików
 
 |_r_
-|odwrocenie kolejnosci sortowania
-
+|odwrócenie kolejności sortowania
