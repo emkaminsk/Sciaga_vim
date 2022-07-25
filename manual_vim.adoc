@@ -1,31 +1,32 @@
 = Manual/ściąga do Vim
 
-Dokument zawiera skrót poleceń do Vim. Opisane są podstawowe polecenia w trybie poleceń (ex), normalnym, wizualnym i inne skróty klawiaturowe. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toć'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
-Autor emkaminsk@gmail.com
+Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń (ex), normalnym, wizualnym i inne skróty klawiaturowe. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toc'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
+
+Autor: emkaminsk@gmail.com.
 
 '''
 
 Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb _ex_ w vi i stąd pochodzą polecenia ':', '$','^', '%', oznaczanie zakresu przez 'a,b', 'g', 's', 'm' i inne.
 
-Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść jedynie wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
+Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
 Dlatego należy rozróżnić kilka podstawowych trybów działania Vim:
 
-* tryb ex, poleceń, tzw cmd-linę. Są to polecenia głównie rozpoczynające się od :
-* tryb normalny - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy
-* tryb edycji - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---
-* tryb wizualnej selekcji
+* tryb ex, poleceń, tzw cmd-line. Są to polecenia głównie rozpoczynające się od :,
+* tryb normalny - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy,
+* tryb edycji - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---,
+* tryb wizualnej selekcji.
 
-Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_ .
+Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_.
 
 == Wstęp
 
-=== Podstawowe polecenia (głównie) w cmd-linę (tryb poleceń). Więcej o trybie poleceń w pliku :help cmdline.
+=== Podstawowe polecenia (głównie) w cmd-line (tryb poleceń). Więcej o trybie poleceń w pliku :help cmdline.
 
 [cols="1,1"]
 |===
 |_:_
-|rozpoczyna polecenia w trybie cmd-linę (w ten tryb wprowadza też / i ? - patrz sekcja 'Szukanie' poniżej). Można użyć CTRL-D lub aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie lub CTRL-P pozwala przewijać pomiędzy opcjami. i scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu
+|rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza też / i ? - patrz sekcja 'Szukanie' poniżej). Można użyć CTRL-D lub aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie lub CTRL-P pozwala przewijać pomiędzy opcjami. i scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu
 
 |_:w 'plik'_
 |zapis pliku, opcjonalnie można podać nazwę nowego pliku
@@ -39,19 +40,16 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |_:file 'plik'_
 |zmiana nazwy obecnie edytowanego pliku
 
-|_!_
+|_{polecenie w trybie ex}!_
 |modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. :q! - wyjście z programu z porzuceniem zmian
 
-|_!_
-|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. !5Gsort sortuje linie od bieżącej do 5
-
 |_!command_
-|wykonanie polecenia zewnętrznego, np z powłoki, :!ls -al
+|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu !5G polecenie to jest konwertowane do trybu ex: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
 
 |_:!python %_
 |wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwę aktywnego pliku.
 
-|_!!datę_
+|_!!date_
 |wstawia datę w bieżącym wierszu
 
 |_CTRL-G_
@@ -67,7 +65,7 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |wczytuje wynik polecenia ls do bieżącego pliku
 
 |_:history_
-|wyświetlenie historii komend w trybie cmd-linę
+|wyświetlenie historii komend w trybie cmd-line
 
 |_q:_
 |otwiera w nowym oknie historię poleceń, gdzie dane polecenie można edytować jak w Vim i uruchamiać
@@ -127,11 +125,13 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |pomoc na temat opcji hls
 
 |_:set relativenumber_
-|Wlaczenie trybu wzglednej numeracji. Numery linii wyswietlaja sie wzglednie do pozycji kursora.
+|Włączenie trybu względnej numeracji. Numery linii wyswietlaja się względnie do pozycji kursora.
 
 |===
 
-=== Język VIM. Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (słowo). Dlatego dw - usunięcie słowa. Inny przykład: ctw - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
+=== Język VIM. 
+
+Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. _d_ - delete (usuwanie), rzeczownikiem obiekt np. _w_ - word (słowo) albo ruch (ang. motion), np. _j_ (przejście linię w dół). Dlatego _dw_ - usunięcie słowa. Inny przykład: _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'. Polecenie _y2j_ kopiuje do schowka bieżącą linię oraz dwie poniżej.
 
 ==== Działania na pojedynczych znakach
 
@@ -169,7 +169,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |Yank - kopiowanie
 |===
 
-==== Ruchy (motion). Definiują ruch do wykonania dla powyższych poleceń (np. 'd' czy 'y')
+==== Ruchy (motion). 
+
+Definiują ruch do wykonania dla powyższych poleceń (np. 'd' czy 'y')
 
 [cols="1,1"]
 |===
@@ -194,7 +196,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-==== Obiekty tekstowe. Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
+==== Obiekty tekstowe. 
+
+Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
 
 [cols="1,1"]
 |===
@@ -251,7 +255,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |(bottom) jw. ale jest na dole
 |===
 
-=== Poruszanie kursorem; więcej pomocy w :help motion.txt
+=== Poruszanie kursorem 
+
+Więcej pomocy w :help motion.txt
 
 [cols="1,1"]
 |===
@@ -328,7 +334,7 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |jedna linia w górę
 |===
 
-=== Edytowanie (wchodzenie w edycję)
+=== Wchodzenie w tryb edycji
 
 [cols="1,1"]
 |===
@@ -446,7 +452,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |===
 
 
-=== Modyfikatory poleceń złożonych (głównie służących do wycinania: d oraz kopiowania: y)
+=== Modyfikatory poleceń złożonych
+
+Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wycinania: _d_ oraz kopiowania: _y_)
 
 [cols="1,1"]
 |===
@@ -578,14 +586,16 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |zamiana w pięciu wierszach licząc od bieżącego
 
 |_:[rangę]global/{pattern}/{command}_
-|(global) wyszukanie wzorca pattern i wykonanie w tym wierszu polecenia command. Tylko polecenia w trybie cmd-linę są tu możliwe.
+|(global) wyszukanie wzorca pattern i wykonanie w tym wierszu polecenia command. Tylko polecenia w trybie cmd-line są tu możliwe.
 
 |_:g/^/m 0_
 |przykład polecenia global. ^ pasuje do każdego wiersza w pliku a 'm' przesuwa wiersz na początek pliku
 
 |===
 
-== Wizualna selekcja. W tym trybie wiele poleceń zyskuje nowe znaczenie.
+== Wizualna selekcja. 
+
+W tym trybie wiele poleceń zyskuje nowe znaczenie.
 
 === Wejście w tryb wizualnej selekcji
 
@@ -628,7 +638,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-== Polecenia w trybie edycji (tryb Insert). W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub skrótów z CTRL.
+== Polecenia w trybie edycji (tryb Insert). 
+
+W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub skrótów z CTRL.
 
 [cols="1,1"]
 |===
@@ -679,7 +691,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 == Inne polecenia w różnych trybach
 
-=== Polecenia rozpoczynające się od 'g'. Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szczegółową lista jest w pliku index.txt
+=== Polecenia rozpoczynające się od 'g'. 
+
+Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szczegółową lista jest w pliku index.txt
 
 [cols="1,1"]
 |===
@@ -729,7 +743,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-=== Znaki (marks). Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można przeskoczyć. Znaki nie są widzialne, są tylko pozycjami w pliku. Znaki i rejestry nie są przechowywane w tym samym miejscu, można mieć jednocześnie znak a i rejestr 'a' - są czymś innym
+=== Znaki (marks)
+
+Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można przeskoczyć. Znaki nie są widzialne, są tylko pozycjami w pliku. Znaki i rejestry nie są przechowywane w tym samym miejscu, można mieć jednocześnie znak a i rejestr 'a' - są czymś innym
 
 [cols="1,1"]
 |===
@@ -754,7 +770,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-=== Rejestry. Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. Rejestry oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru.
+=== Rejestry
+
+Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. Rejestry oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru.
 
 [cols="1,1"]
 |===
@@ -779,7 +797,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-=== Makra. Umożliwia zapisanie sekwencji poleceń i wykonanie ich wielokrotnie, przez np. 10@a
+=== Makra
+
+Umożliwia zapisanie sekwencji poleceń i wykonanie ich wielokrotnie, przez np. 10@a
 
 [cols="1,1"]
 |===
@@ -795,7 +815,9 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-=== Skróty. Więcej w pliku help usr_24.txt
+=== Skróty 
+
+Więcej w pliku *help usr_24.txt*
 
 [cols="1,1"]
 |===
@@ -920,7 +942,9 @@ _
 
 |===
 
-=== Mapowania klawiszy. Vim daje możliwość definiowania mapowań w wielu trybach pracy. Więcej w pliku :help map.txt
+=== Mapowania klawiszy
+
+Vim daje możliwość definiowania mapowań w wielu trybach pracy. Więcej w pliku *:help map.txt*
 
 [cols="1,1"]
 |===
@@ -974,7 +998,12 @@ _
 |_r_
 |odwrócenie kolejności sortowania
 
+|===
+
 == Inne zasoby o Vim
+
+[cols="1,1"]
+|===
 
 |_Vim as language_
 |https://www.youtube.com/watch?v=wlR5gYd6um0
@@ -984,3 +1013,5 @@ _
 
 |_Definitive guide to text objects_
 |https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/
+
+|===
