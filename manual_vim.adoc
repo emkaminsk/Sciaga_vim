@@ -5,13 +5,16 @@ Autor emkaminsk@gmail.com
 
 '''
 
-Vim działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść jedynie wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
+Vi powstal jako 'visual interface' do innego edytora _ex_. _Ex_ byl edytorem tekstu na teleksie, narzedziu do przesylania tekstu. Stad tryb ex w vi i stad pochodza polecenia ':', '$','^', '%', oznaczanie zakresu przez 'a,b', 'g', 's', 'm' i inne.
+
+Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść jedynie wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
 Dlatego należy rozróżnić kilka podstawowych trybów działania Vim:
 
-* tryb poleceń, tzw cmd-linę. Są to polecenia głównie rozpoczynające się od :
+* tryb ex, poleceń, tzw cmd-linę. Są to polecenia głównie rozpoczynające się od :
 * tryb normalny - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy
 * tryb edycji - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---
+* tryb wizualnej selekcji
 
 Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz .
 
@@ -122,6 +125,10 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |_:help 'hls'_
 |pomoc na temat opcji hls
+
+|_:set relativenumber_
+|Wlaczenie trybu wzglednej numeracji. Numery linii wyswietlaja sie wzglednie do pozycji kursora.
+
 |===
 
 === Język VIM. Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. d - delete (usuwanie), rzeczownikiem obiekt np w - word (słowo). Dlatego dw - usunięcie słowa. Inny przykład: ctw - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
@@ -914,3 +921,14 @@ _
 
 |_r_
 |odwrócenie kolejności sortowania
+
+== Inne zasoby o Vim
+
+|_Vim as language_
+|https://www.youtube.com/watch?v=wlR5gYd6um0
+
+|_You need to grok vi_
+|https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118
+
+
+
