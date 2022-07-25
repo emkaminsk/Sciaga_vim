@@ -1,11 +1,11 @@
-= Mój manuał - ściąga - do Vim
+= Manual/ściąga do Vim
 
-Dokument zawiera mój skrót poleceń do Vim. Opisane są podstawowe polecenia w trybie poleceń (ex), normalnym, wizualnym i inne skróty klawiaturowe. Plik jest ekstraktem wiedzy z plików pomocy. Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toć'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
+Dokument zawiera skrót poleceń do Vim. Opisane są podstawowe polecenia w trybie poleceń (ex), normalnym, wizualnym i inne skróty klawiaturowe. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toć'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
 Autor emkaminsk@gmail.com
 
 '''
 
-Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, narzędziu do przesyłania tekstu. Stąd tryb _ex_ w vi i stąd pochodzą polecenia ':', '$','^', '%', oznaczanie zakresu przez 'a,b', 'g', 's', 'm' i inne.
+Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb _ex_ w vi i stąd pochodzą polecenia ':', '$','^', '%', oznaczanie zakresu przez 'a,b', 'g', 's', 'm' i inne.
 
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść jedynie wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
@@ -154,10 +154,10 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 [cols="1,1"]
 |===
 |_d_
-|Delete - usuwanie
+|Delete - usuwanie i pozostanie w trybie normalnym
 
 |_c_
-|Change - zmiana
+|Change - zmiana i przejście do trybu edycji
 
 |_>_
 |Indent - wcięcie
@@ -177,7 +177,7 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |_$_
 |Do końca linii
 
-|_^_
+|_^, 0_
 |Do początku linii
 
 |_G_
@@ -194,34 +194,45 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-==== Obiekty tekstowe
+==== Obiekty tekstowe. Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
 
 [cols="1,1"]
 |===
 
-|_w_
-|Word - słowo
-
-|_b_
-|Back - wstecz (poprzednie słowo)
-
 |_iw_
-|Inner word - wewnątrz słowa
+|Inner word - wewnątrz słowa; ogólnie 'a' w 'aw' oznacza obiekt razem ze spacjami dookoła niego, natomiast 'i' w 'iw' oznacza pominięcie spacji
 
-|_it_
-|Inner tag - wewnątrz np tagu HTML
-
-|_i"_
-|Inner quote - wewnątrz tekstu otoczonego cudzyslowiem
-
-|_ib_
-|Inner brackets - wewnątrz nawiasów ()
+|_aw_
+|Word - słowo (razem ze spacjami)
 
 |_ip_
 |Inner paragraph - wewnątrz całego akapitu
 
 |_as_
 |A sentence - całe zdanie
+
+|_it_
+|Inner tag - wewnątrz np tagu HTML
+
+|_i", i', i`_
+|Inner quote - wewnątrz tekstu otoczonego cudzyslowiem danego typu. Polecenie działa nawet, gdy kursor nie jest w środku cudzysłowiów - Vim szuka kolejnego wystąpienia
+
+|_i), i], i}, ib_
+|Inner brackets - wewnątrz nawiasów (_tekst_)
+
+|===
+
+=== Składnia polecenia złożonego
+
+[cols="1,1"]
+|===
+
+|_yxz_
+|podstawową składnia: polecenie - liczba - modyfikator
+
+|_xyz_
+|x - liczba powtórzeń, y - polecenie, z - modyfikator
+
 |===
 
 == Polecenia w trybie normalnym
@@ -247,7 +258,7 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |_h, j, k, l_
 |poruszanie w czterech kierunkach (lewo, dół, góra, prawo)
 
-|_0_
+|_^, 0_
 |początek bieżącego wiersza
 
 |_$_
@@ -266,7 +277,10 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |(go) przeskok do drugiej linii, polecenie złożone
 
 |_G_
-|przeskok do ostatniej linii
+|przeskok do ostatniej linii pliku
+
+|_%_
+|(gdy kursor wskazuje otwierający nawias) przeskok do zamykającego nawiasu
 
 |_gg_
 |przeskok na początek pliku (to samo co 1G)
@@ -431,18 +445,6 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 |===
 
-=== Składnia polecenia złożonego
-
-[cols="1,1"]
-|===
-
-|_yxz_
-|podstawową składnia: polecenie - liczba - modyfikator
-
-|_xyz_
-|x - liczba powtórzeń, y - polecenie, z - modyfikator
-
-|===
 
 === Modyfikatory poleceń złożonych (głównie służących do wycinania: d oraz kopiowania: y)
 
@@ -980,5 +982,5 @@ _
 |_You need to grok vi_
 |https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118
 
-
-
+|_Definitive guide to text objects_
+|https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/
