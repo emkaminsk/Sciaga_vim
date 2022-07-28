@@ -10,14 +10,16 @@ Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem t
 
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawową różnica polega na rozróżnieniu pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
-Dlatego należy rozróżnić kilka podstawowych trybów działania Vim:
+Dlatego należy rozróżnić kilka trybów działania Vim:
 
-* tryb ex, poleceń, tzw cmd-line. Są to polecenia głównie rozpoczynające się od :,
 * tryb normalny - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy,
 * tryb edycji - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---,
-* tryb wizualnej selekcji.
+* tryb ex, poleceń, tzw cmd-line. Są to polecenia głównie rozpoczynające się od :, / lub ?,
+* tryb wizualnej selekcji (ang. visual mode),
+* tryb wizualny, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),
+* tryb zawieszenia w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej).
 
-Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_.
+W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_.
 
 == Wstęp
 
@@ -104,6 +106,8 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 
 === Opcje (często dodanie 'no' przed nazwa opcji wyłącza ją)
 
+Pełna lista opcji jest w pliku _options.txt_
+
 [cols="1,1"]
 |===
 |_:set hls_
@@ -127,13 +131,30 @@ Istnieją jeszcze inne tryby programu opisane krótko poniżej lub w helpie. W k
 |_:set relativenumber_
 |Włączenie trybu względnej numeracji. Numery linii wyswietlaja się względnie do pozycji kursora.
 
+|_:set ve=all_
+|Ustawia tryb virtualedit, w którym kursor może poruszać się gdziekolwiek (bez ograniczeń końcem linii itp.)
+
 |===
 
 === Język VIM. 
 
-Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akcja, np. _d_ - delete (usuwanie), rzeczownikiem obiekt np. _w_ - word (słowo) albo ruch (ang. motion), np. _j_ (przejście linię w dół). Dlatego _dw_ - usunięcie słowa. Inny przykład: _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'. Polecenie _y2j_ kopiuje do schowka bieżącą linię oraz dwie poniżej.
+Język składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. _d_ - delete (usuwanie), Przedmiotem może być: 
+* obiekt np. _w_ - word (słowo) albo 
+* ruch (ang. motion), np. _j_ (przejście linię w dół)
+* funkcja. 
+Obiekt i ruch można poprzedzić liczbą. *Siłę Vim* stanowi fakt, że dowolna kombinacja działania, liczebnika i przedmiotu  stanowi unikalne polecenie.
 
-==== Działania na obiektach większych niż jeden znak
+Przykłady: 
+* _dw_ - usunięcie słowa. 
+* _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
+* _y2j_ - kopiuje do schowka bieżącą linię oraz dwie poniżej
+* d:call search("Następny") - kasuje wszystko pomiędzy kursorem i następnym wystąpieniem słowa "Następny"
+
+Więcej informacji (w tym np. bardziej kompletną listę operatorów i obiektów/ruchów) można znaleźć w pliku _motion.txt_ (_:help motion_). Więcej informacji o funkcjach jest w _:help usr_41.txt_.
+
+==== Akcje na obiektach większych niż jeden znak
+Zazwyczaj służą do usuwania i zmiany tekstu. Więcej - _:help operator_
+
 [cols="1,1"]
 |===
 |_d_
@@ -145,16 +166,15 @@ Język składa się z kombinacji czasownika i rzeczownika. Czasownikiem jest akc
 |_>, <_
 |Indent - wcięcie, unindent - zlikwidowanie wcięcia
 
-|_v_
-|Visually select - zmiana w trybie wizualnym
-
 |_y_
 |Yank - kopiowanie
 
-|_gu_
-|Zmiana dużych liter na małe
+|_g~_, _gu_, _gU_
+|Zmiana dużych liter na małe (~ wykonuje zamianę, gu - zmienia wszystkie litery na małe, gU - na  duże).
 
 |===
+
+Polecenia _d_ i _y_ można poprzedzić oznaczeniem rejestru (np. _"x_), dzięki czemu wynik polecenia zostanie skopiowany do tego rejestru.
 
 ==== Ruchy (motion). 
 
@@ -212,20 +232,36 @@ Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie
 
 |===
 
-=== Składnia polecenia złożonego
+Podobnie jak z ruchami, akcje i obiekty można dowolnie kombinować produkując kolejne setki (jeśli nie tysiące) możliwych unikalnych poleceń.
+
+==== Tryb wizualny
+Alternatywą dla składni operator - obiekt/ruch jest użycie trybu wizualnego. W tym trybie wpierw zaznacza się fragment tekstu, który zostaje podświetlony na ekranie, a potem wykonuje się akcję (operator).
+
+[cols="1,1"]
+|===
+|_v_
+|Visually select - zaznaczenie tekstu do zmiany 
+
+Więcej opcji wejścia w ten tryb opisanych jest poniżej.
+|===
+
+==== Składnia polecenia złożonego
 
 [cols="1,1"]
 |===
 
-|_yxz_
-|podstawową składnia: polecenie - liczba - modyfikator
+|_xay_
+|składnia: operator - liczba - obiekt/ruch
 
-|_xyz_
-|x - liczba powtórzeń, y - polecenie, z - modyfikator
+|_axy_
+|a - liczba powtórzeń, x - operator, y - obiekt/ruch
+
+|_axby_
+|Gdy podane są dwie liczby (_a_ i _b_), polecenie wykonane zostanie _a*b_ liczbę razy.
 
 |===
 
-==== Działania na pojedynczych znakach
+=== Działania na pojedynczych znakach
 
 Mimo, że poniższe polecenia definiują czynności, nie przyjmują rzeczownika/obiektu do działania. Dlatego np. _'2x'_ jest skończonym poleceniem (kasuje dwa znaki poczynając od znaku pod kursorem).
 
@@ -368,6 +404,8 @@ Więcej pomocy w :help motion.txt
 |===
 
 === Usuwanie i wycinanie
+
+Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania, przesuwania, formatowania, sortowania) jest opisanych w pliku pomocy _:help change.txt_.
 
 [cols="1,1"]
 |===
@@ -876,7 +914,7 @@ Więcej w pliku *help usr_24.txt*
 |zwiększenie/zmniejszenie wysokości bieżącego okna. Parametr {x} określa o ile linii następuje zmiana
 
 |_:[vertical] resize {x}_
-|zmiana rozmiaru bieżącego okna o wartość {x}. Słowo vertical pozwala na pionową zmianę
+|zmiana rozmiaru bieżącego okna o wartość {x} (w pikselach). Słowo vertical pozwala na pionową zmianę
 
 |_:close_
 |zamknięcie bieżącego okna
@@ -885,7 +923,7 @@ Więcej w pliku *help usr_24.txt*
 |zamknięcie wszystkich okien z wyjątkiem bieżącego
 
 |_:qall_
-|całkowite wyjście z Vim; działa też :qall i :wqall
+|całkowite wyjście z Vim; analogicznie :wqall
 
 |===
 
