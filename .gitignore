@@ -1,0 +1,4 @@
+.gitignore
+czythelp.vim
+.manual_vim.adoc.swp
+test.adoc

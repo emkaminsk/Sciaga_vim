@@ -17,18 +17,21 @@ Dlatego należy rozróżnić kilka trybów działania Vim:
 * tryb ex, poleceń, tzw cmd-line. Są to polecenia głównie rozpoczynające się od :, / lub ?,
 * tryb wizualnej selekcji (ang. visual mode),
 * tryb wizualny, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),
-* tryb zawieszenia w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej).
+* tryb zawieszenia w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej),
+* tryb zastępowania - tryb ten jest bardzo podobny do trybu edycji, ale każdy wpisany znak zastępuje znak na pozycji kursora.
 
 W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_.
 
 == Wstęp
 
-=== Podstawowe polecenia (głównie) w cmd-line (tryb poleceń). Więcej o trybie poleceń w pliku :help cmdline.
+=== Podstawowe polecenia
+
+Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięcia pliku i korzystania z wbudowanej pomocy. Więcej o trybie poleceń w pliku :help cmdline.
 
 [cols="1,1"]
 |===
 |_:_
-|rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza też / i ? - patrz sekcja 'Szukanie' poniżej). Można użyć CTRL-D lub aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie lub CTRL-P pozwala przewijać pomiędzy opcjami. i scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu
+|rozpoczyna polecenia w trybie poleceń. 
 
 |_:w 'plik'_
 |zapis pliku, opcjonalnie można podać nazwę nowego pliku
@@ -42,41 +45,8 @@ W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do w
 |_:file 'plik'_
 |zmiana nazwy obecnie edytowanego pliku
 
-|_{polecenie w trybie ex}!_
-|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. :q! - wyjście z programu z porzuceniem zmian
-
-|_!command_
-|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu !5G polecenie to jest konwertowane do trybu ex: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
-
-|_:!python %_
-|wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwę aktywnego pliku.
-
-|_!!date_
-|wstawia datę w bieżącym wierszu
-
-|_CTRL-G_
-|wyświetlenie informacji o numerze wiersza w którym jest kursor
-
 |_:e 'nazwa'_
 |(edit) otwarcie następnego pliku 'nazwa' do edycji
-
-|_:r 'nazwa'_
-|(read) odczytanie pliku 'nazwa' i wstawienie go w bieżącym pliku w pozycji kursora
-
-|_:read !ls_ lub _r! {polecenie}_
-|wczytuje wynik polecenia ls do bieżącego pliku
-
-|_:history_
-|wyświetlenie historii komend w trybie cmd-line
-
-|_q:_
-|otwiera w nowym oknie historię poleceń, gdzie dane polecenie można edytować jak w Vim i uruchamiać
-
-|_:history /_
-|wyświetlenie historii wyszukiwań
-
-|_:browse oldfiles_
-|wyświetla listę uprzednio edytowanych plików, można podać numer i otworzyć wybrany plik do edycji
 
 |_ZZ_
 |zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
@@ -96,11 +66,11 @@ W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do w
 |_:help usr_01.txt_
 |otwarcie pierwszego rozdziału podręcznika
 
-|_:help usr_toć.txt_
-|wyświetl spis treści
+|_:help usr_toc.txt_
+|wyświetla spis treści podręcznika Vim
 
 |_._
-|powtórzenie wykonania poprzedniego polecenia
+|powtórzenie wykonania poprzedniego polecenia wydanego w trybie normalnym.
 
 |===
 
@@ -121,9 +91,6 @@ Pełna lista opcji jest w pliku _options.txt_
 
 |_:set number_
 |włączenie numerów wierszy
-
-|_:help options.txt_
-|pomoc na temat wszystkich opcji
 
 |_:help 'hls'_
 |pomoc na temat opcji hls
@@ -170,15 +137,15 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej - _:help operator_
 |Yank - kopiowanie
 
 |_g~_, _gu_, _gU_
-|Zmiana dużych liter na małe (~ wykonuje zamianę, gu - zmienia wszystkie litery na małe, gU - na  duże).
+|Zmiana dużych liter na małe (g~ wykonuje zamianę, gu - zmienia wszystkie litery na małe, gU - na  duże).
 
 |===
 
-Polecenia _d_ i _y_ można poprzedzić oznaczeniem rejestru (np. _"x_), dzięki czemu wynik polecenia zostanie skopiowany do tego rejestru.
+Polecenia takie, jak np. _d_, _c_ i _y_ można poprzedzić oznaczeniem rejestru (np. _"x_), dzięki czemu wynik polecenia zostanie skopiowany do tego rejestru. Więcej - patrz Rejestry poniżej.
 
 ==== Ruchy (motion). 
 
-Definiują ruch do wykonania dla powyższych poleceń (np. 'd' czy 'y')
+Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 
 [cols="1,1"]
 |===
@@ -204,7 +171,12 @@ Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruc
 
 ==== Obiekty tekstowe. 
 
-Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
+Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
+* 'i' - czy obiekt jest 'exclusive', tj. bez spacji przed i po,
+* 'a' - 'inclusive" - włącznie ze spacjami przed i po.
+Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
+* brak pierwszej litery oznacza, że działanie zostanie wykonane od miejsca kursora do końca obiektu.
+Druga litera definiuje sam obiekt, np. _w_ - słowo.
 
 [cols="1,1"]
 |===
@@ -225,7 +197,7 @@ Polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie
 |Inner tag - wewnątrz np tagu HTML
 
 |_i", i', i`_
-|Inner quote - wewnątrz tekstu otoczonego cudzyslowiem danego typu. Polecenie działa nawet, gdy kursor nie jest w środku cudzysłowiów - Vim szuka kolejnego wystąpienia
+|Inner quote - wewnątrz tekstu otoczonego cudzyslowiem danego typu.
 
 |_i), i], i}, ib_
 |Inner brackets - wewnątrz nawiasów (_tekst_)
@@ -453,6 +425,8 @@ Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania
 
 === Wklejanie
 
+Więcej w pomocy - _:help insert.txt_
+
 [cols="1,1"]
 |===
 
@@ -483,9 +457,6 @@ Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania
 
 |_s_
 |(substitute) zamień znak pod kursorem (tożsame z cl)
-
-|_._
-|powtórzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcją do szybkiego ponowienia tej samej komendy skrótem.
 
 |_xp_
 |zamiana kolejności dwóch liter (poprawa szwedzkiego błędu)
@@ -566,7 +537,7 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |===
 
 |_f_
-|(find) wyszukanie znaku w bieżącym wierszu po bieżącym miejscu
+|(find) wyszukanie pojedynczego znaku w bieżącym wierszu po bieżącym miejscu. Odmiany tego polecenia opisane wyżej to _F_, _t_ i _T_.
 
 |_;_
 |następne wyszukanie w bieżącym wierszu
@@ -602,6 +573,7 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 
 === Zastępowanie
 
+Dokładny opis w _:help substitute_
 [cols="1,1"]
 |===
 
@@ -631,13 +603,63 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 
 |===
 
-== Składnia poleceń  w trybie ex
+== Więcej o poleceniach w trybie ex
+
+Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. <Up> i <Down> scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
+
+[cols="1,1"]
+|===
+|_{polecenie w trybie ex}!_
+|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. :q! - wyjście z programu z porzuceniem zmian
+
+|_!command_
+|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu !5G polecenie to jest konwertowane do trybu ex: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
+
+|_:!python %_
+|wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwę aktywnego pliku.
+
+|_!!date_
+|wstawia datę w bieżącym wierszu
+
+|_CTRL-G_
+|wyświetlenie informacji o numerze wiersza w którym jest kursor
+
+|_:r 'nazwa'_
+|(read) odczytanie pliku 'nazwa' i wstawienie go w bieżącym pliku w pozycji kursora
+
+|_:read !ls_ lub _r! {polecenie}_
+|wczytuje wynik polecenia ls do bieżącego pliku
+
+|_:history_
+|wyświetlenie historii komend w trybie cmd-line
+
+|_q:_
+|otwiera w nowym oknie historię poleceń, gdzie dane polecenie można edytować jak w Vim i uruchamiać
+
+|_:history /_
+|wyświetlenie historii wyszukiwań
+
+|_:browse oldfiles_
+|wyświetla listę uprzednio edytowanych plików, można podać numer i otworzyć wybrany plik do edycji
+
+
+|=== 
+
+=== Wielokrotne wykonywanie poleceń
+
+Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 
 [cols="1,1"]
 |===
 
-|_:[rangę]global/{pattern}/{command}_
-|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. Tylko polecenia w trybie cmd-line są tu możliwe. Różne przykłady _range_ zostały omówione w sekcji dot. zastępowania (np. % - cały plik). _Pattern_ to wyrażenie regularne w odpowiednim dla wersji Vim standardzie (np. POSIX). Więcej: :help pattern.
+|_._
+|powtórzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcją do szybkiego ponowienia tej samej komendy skrótem.
+
+|_:[rangę]g[lobal]/{pattern}/{command}_
+|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. _Command_ to polecenie w trybie cmd-line. Wydając polecenie normal można zdefiniować polecenie w trybie normalnym. Różne przykłady _range_ zostały omówione w sekcji dot. zastępowania (np. % - cały plik). _Pattern_ to wyrażenie regularne w odpowiednim dla wersji Vim standardzie (np. POSIX). Więcej: :help pattern.
+
+|_:2,20g/txt/normal 0i*_
+|Przykład multi-polecenia. W wierszach od 2 do 20 wyszukiwany jest tekst 'txt'. W wierszach, gdzie został on znaleziony wykonywane jest polecenie 0i* - co powoduje wstawienie na początku wiersza znaku '*'.
 
 |_:g/^/m 0_
 |przykład polecenia global. ^ pasuje do każdego wiersza w pliku a 'm' przesuwa wiersz na początek pliku. W efekcie następuje odwrócenie kolejności wierszy w całym pliku.
@@ -829,8 +851,9 @@ Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można 
 
 === Rejestry
 
-Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. Rejestry oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru.
+Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. Rejestry użytkownika oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru. Oprócz tych rejestrów istnieją też rejestry wbudowane.
 
+Więcej w pliku pomocy change.txt - _:help registers_
 [cols="1,1"]
 |===
 
