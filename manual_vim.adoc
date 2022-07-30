@@ -60,7 +60,11 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 |zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)
 
 |_CTRL-Z_
-|zawiesza Vim (zachowując wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powłoki shell. Do Vim można wrócić poleceniem 'fg' w powłoce
+|zawiesza Vim (zachowując wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powłoki shell. Do Vim można wrócić poleceniem 
+
+ $ fg 
+
+w powłoce
 
 |_:help_
 |otwarcie pomocy
@@ -473,17 +477,23 @@ Więcej w pomocy - _:help insert.txt_
 |_r_
 |(replace), np. ra zastępuje bieżący znak pod kursorem przez literę 'a' i wraca d trybu poleceń
 
+|_R_
+|korekta wielu znaków (każdy napisany znak zastępuje znak pod kursorem). W tym trybie Backspace przywraca zmiany
+
 |_c_
-|(change) korekta, polecenie złożone (składnia jak d czy y)
+|(change) wycięcie tekstu i wejście w tryb edycji, polecenie złożone (składnia jak d czy y)
+
+|_C_
+|analogicznie do _D_, to polecenie działa jak _c$_ - wycinanie do końca linii z jednoczesnym wejściem w tryb edycji
 
 |_ce_
 |(change to the end) pozwala skorygować bieżące słowo (usuwa je do końca i wchodzi w tryb edycji)
 
-|_R_
-|korekta wielu znaków (każdy napisany znak zastępuje znak pod kursorem). W tym trybie Backspace przywraca zmiany
-
 |_s_
-|(substitute) zamień znak pod kursorem (tożsame z cl)
+|(substitute) zamień znak pod kursorem (tożsame z _cl_)
+
+|_S_
+|kasuje całą bieżącą linię i wchodzi w tryb edycji (tożsame z _cc_)
 
 |_xp_
 |zamiana kolejności dwóch liter (poprawa szwedzkiego błędu)
