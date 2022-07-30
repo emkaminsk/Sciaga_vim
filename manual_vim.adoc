@@ -9,6 +9,7 @@ Autor: emkaminsk@gmail.com.
 Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb _ex_ w vi i stąd pochodzą polecenia _':'_, _'$'_, _'^',_ _'%'_, oznaczanie zakresu przez _'a,b'_, _'g'_, _'s'_, _'m'_ i inne.
 
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawowe różnice to: 
+
 * ogromna konfigurowalność programu. Dostępne polecenia można łączyć w rozliczone kombinacje oraz tworzyć nowe polecenia dla przyspieszenia swojej pracy z tekstem,
 * koncentracja na pracy z klawiaturą przy minimalizacji roli myszki do wybierania poleceń,
 * rozróżnienie pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
@@ -17,7 +18,7 @@ Dlatego należy rozróżnić kilka trybów działania Vim:
 
 * *normalny* - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy,
 * *edycji* - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---,
-* *poleceń*, tzw cmd-line, w którym wprowadza i wykonuje się tzw. polecenia ex. Są to polecenia głównie rozpoczynające się od _:_, _/_, _?_ lub _!_,
+* *poleceń*, tzw cmd-line, w którym wprowadza i wykonuje się tzw. polecenia ex. Są to polecenia rozpoczynające się od _:_, _/_, _?_ lub _!_,
 * *wizualnej selekcji* (ang. visual mode),
 * *wizualny*, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),
 * *zastępowania* - tryb ten jest bardzo podobny do trybu edycji, ale każdy wpisany znak zastępuje znak na pozycji kursora.
@@ -27,7 +28,7 @@ Istnieje jeszcze jeden dość nietypowy tryb pracy programu:
 
 * *zawieszenia* w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej).
 
-W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb Ex, do wyjścia z niego należy wykonać komendę _:vi_.
+W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę _:vi_.
 
 == Wstęp
 
@@ -185,6 +186,7 @@ Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruc
 ==== Obiekty tekstowe 
 
 Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
+
 * 'i' - czy obiekt jest 'exclusive', tj. bez spacji przed i po,
 * 'a' - 'inclusive" - włącznie ze spacjami przed i po.
 Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
@@ -575,7 +577,7 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |przejście do przodu
 
 |_/word/b+1_
-|wyszukuje 'word' i umieszcza kursor na drugiej pozycji od początku. Oprócz b można używać też innych poleceń: 'e', cyfra oznacza liczbę linii po znalezionym słowie
+|wyszukuje _'word'_ i umieszcza kursor na drugiej pozycji od początku. Oprócz _'b'_ można używać też innych poleceń: _'e'_(pozycja od końca), cyfra oznacza liczbę linii po znalezionym słowie
 
 |_:help pattern.txt_
 |więcej pomocy na temat wyszukiwania za pomocą wyrażeń regularnych (Perl). Można też uzych :help usr_27.txt
@@ -636,7 +638,7 @@ Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ poda
 
 Po wpisaniu _:_:
 
-* klawisze <Up> i <Down> scrolluja historię komend.
+* klawisze <Up> i <Down> scrollują historię komend.
 * Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
 * Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
 
