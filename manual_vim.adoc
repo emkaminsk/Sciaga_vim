@@ -188,13 +188,15 @@ Przykłady:
 * _y$_ - skopiowanie tekstu od bieżącego miejsca kursora do końca linii
 * _y2j_ - kopiuje do schowka bieżącą linię oraz dwie poniżej
 * _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
+* _dG_ - usuwa znaki od bieżącego wiersza do końca pliku
+* _d20G_ - usuwa od bieżącego wiersza do wiersza 20
 
 ==== Obiekty tekstowe 
 
 Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
 
-* 'i' - czy obiekt jest 'exclusive', tj. bez spacji przed i po,
-* 'a' - 'inclusive" - włącznie ze spacjami przed i po.
+* _i_ - czy obiekt jest _exclusive_, tj. bez spacji przed i po,
+* _a_ - _inclusive" - włącznie ze spacjami przed i po.
 Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
 * brak pierwszej litery oznacza, że działanie zostanie wykonane od miejsca kursora do końca obiektu.
 
@@ -207,7 +209,7 @@ Druga litera definiuje sam obiekt, np. _w_ - słowo.
 |słowo (od kursora do końca)
 
 |_iw_
-|Inner word - wewnątrz słowa; ogólnie 'a' w 'aw' oznacza obiekt razem ze spacjami dookoła niego, natomiast 'i' w 'iw' oznacza pominięcie spacji
+|Inner word - wewnątrz słowa; ogólnie _a_ w _aw_ oznacza obiekt razem ze spacjami dookoła niego, natomiast _i_ w _iw_ oznacza pominięcie spacji
 
 |_aw_
 |Word - słowo (razem ze spacjami)
@@ -219,7 +221,7 @@ Druga litera definiuje sam obiekt, np. _w_ - słowo.
 |sentence - zdanie
 
 |_"_, _', _`_, _)_, _], _}, _b_
-|wewnątrz tagu, cudzysłowiu, nawiasu, np. tagu HTML
+|wewnątrz cudzysłowiu, nawiasu, np. tagu HTML
 
 |_i", _i', _i`_
 |Inner quote - tekst otoczony cudzyslowiem danego typu bez cudzysłowi.
@@ -240,7 +242,7 @@ Przykłady:
 
 Inny przykład połączenia działania z funkcją:
 
-* d:call search("Następny") - kasuje wszystko pomiędzy kursorem i następnym wystąpieniem słowa "Następny"
+* _d:call search("Następny")_ - kasuje wszystko pomiędzy kursorem i następnym wystąpieniem słowa "Następny"
 
 ==== Tryb wizualny
 Alternatywą dla składni operator - obiekt/ruch jest użycie trybu wizualnego. W tym trybie wpierw zaznacza się fragment tekstu, który zostaje podświetlony na ekranie, a potem wykonuje się akcję (operator).
@@ -336,7 +338,7 @@ Więcej pomocy w :help motion.txt
 |(gdy kursor wskazuje otwierający nawias) przeskok do zamykającego nawiasu
 
 |_gg_
-|przeskok na początek pliku (to samo co 1G)
+|przeskok na początek pliku (to samo co _1G_)
 
 |_``_
 |powrót po przeskoku (cofnięcie do poprzedniej pozycji).
@@ -345,13 +347,13 @@ Więcej pomocy w :help motion.txt
 |(older) powrót do poprzedniego miejsca po przeskoku (np po przeskoku do innej linii lub po wejściu w link). Można wykonywać wiele razy.
 
 |_CTRL-I_
-|przejście do nowszej pozycji w odwrotnej kolejności jak CTRL-O
+|przejście do nowszej pozycji w odwrotnej kolejności jak _CTRL-O_
 
 |_:jumps_
 |wyświetlenie listy przeskoków
 
 |_CTRL-]_
-|wejście w link
+|wejście w link (wspomaga nawigację po plikach pomocy Vim)
 
 |_H_
 |(Home) przeniesienie kursora na górę strony
@@ -410,7 +412,7 @@ Więcej pomocy w :help motion.txt
 
 === Usuwanie i wycinanie
 
-Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania, przesuwania, formatowania, sortowania) jest opisanych w pliku pomocy _:help change.txt_.
+Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania, przesuwania, formatowania, sortowania) jest opisanych w pliku pomocy _:help change_.
 
 [cols="1,1"]
 |===
@@ -421,14 +423,8 @@ Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania
 |_d_
 |(delete) wycinanie wiersza lub jego części - przeniesienie do schowka, polecenie złożone
 
-|_dG_
-|- od bieżącego wiersza do końca pliku
-
-|_d20G_
-|- od bieżącego wiersza do wiersza 20
-
 |_D_
-|wycinanie wiersza od pozycji kursora do końca linii (to samo co d$)
+|wycinanie wiersza od pozycji kursora do końca linii (to samo co _d$_)
 
 |_J_
 |(join) łączenie dwóch wierszy że sobą - bieżącego i następnego
@@ -506,7 +502,7 @@ Więcej w pomocy - _:help insert.txt_
 
 === Modyfikatory poleceń złożonych
 
-Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wycinania: _d_ oraz kopiowania: _y_)
+Patrz też sekcja 'Język VIM' powyżej. Poniżej zamieszczone są inne przykłady poleceń służących do wycinania: _d_ oraz kopiowania: _y_)
 
 [cols="1,1"]
 |===
@@ -517,11 +513,8 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |_dl_
 |wycinanie jednego znaku pod kursorem
 
-|_dW_
-|wycinanie całego słowa, np. d2W - wycinanie dwóch słów
-
 |_dw_
-|wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa)
+|wycinanie całego słowa. Tak samo działa _W_, np. _d2W_ - wycinanie dwóch słów. Powoduje wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa)
 
 |_daw_
 |(A Word) wycinanie całego słowa (niezależnie w którym miejscu jest kursor) włącznie z białym znakiem na końcu
@@ -529,7 +522,7 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |_diw_
 |(Inner Word) wycinanie słowa bez usuwania białych znaków
 
-|_dąs_
+|_das_
 |(A Sentence) wycinanie całego zdania
 
 |_dis_
@@ -646,10 +639,10 @@ Dokładny opis w _:help substitute_
 |===
 
 |_{polecenie}!_
-|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. :q! - wyjście z programu z porzuceniem zmian
+|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. _:q!_ - wyjście z programu z porzuceniem zmian
 
 |_!command_
-|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu !5G polecenie to jest konwertowane do trybu cmd-line: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
+|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu _!5G_ polecenie to jest konwertowane do trybu cmd-line: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
 
 |_!!date_
 |wstawia datę w bieżącym wierszu
@@ -658,12 +651,12 @@ Dokładny opis w _:help substitute_
 
 == Polecenia ex 
 
-Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. 
+Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć _CTRL-D_ lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub _CTRL-P_ pozwala przewijać pomiędzy opcjami. 
 
 Po wpisaniu _:_:
 
 * klawisze <Up> i <Down> scrollują historię komend.
-* Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
+* Za pomocą symbolu _\|_ można wykonać więcej niż dwie komendy na raz, np. `:w \| !ls` zapisuje plik i wyświetla zawartość bieżącego katalogu.
 * Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
 
 Szczegółowa pomoc o poleceniach ex, tj. o trybie poleceń, edytowaniu, zakresach działania, flagach, znakach specjalnych znajduje się w pliku _:help cmdline.txt_.
