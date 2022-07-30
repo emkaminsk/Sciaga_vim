@@ -206,13 +206,16 @@ Druga litera definiuje sam obiekt, np. _w_ - słowo.
 |===
 
 |_w_
-|słowo (od kursora do końca)
+|słowo (od kursora do końca słowa)
 
 |_iw_
 |Inner word - wewnątrz słowa; ogólnie _a_ w _aw_ oznacza obiekt razem ze spacjami dookoła niego, natomiast _i_ w _iw_ oznacza pominięcie spacji
 
 |_aw_
 |Word - słowo (razem ze spacjami)
+
+|_e_
+|do końca słowa (pozostawiając spację po słowie)
 
 |_p_
 |paragraph - akapit
@@ -514,8 +517,13 @@ Patrz też sekcja 'Język VIM' powyżej. Poniżej zamieszczone są inne przykła
 |wycinanie jednego znaku pod kursorem
 
 |_dw_
-|wycinanie całego słowa. Tak samo działa _W_, np. _d2W_ - wycinanie dwóch słów. Powoduje wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa)
+|wycinanie całego słowa. Tak samo działa _W_, np. _d2W_ - wycinanie dwóch słów. Powoduje wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa). 
+|===
 
+Niewielka różnica między w i W dotyczy znaków niealfanumerycznych w środku słowa. Różnicę można zauważyć ćwicząc _dw_ i _dW_ na słowie 'doesn't'.
+
+[cols="1,1"]
+|===
 |_daw_
 |(A Word) wycinanie całego słowa (niezależnie w którym miejscu jest kursor) włącznie z białym znakiem na końcu
 
@@ -579,7 +587,10 @@ Patrz też sekcja 'Język VIM' powyżej. Poniżej zamieszczone są inne przykła
 |wyszukanie w pliku poprzedniego wzorca
 
 |_*_
-|wyszukiwanie słowa, na którym właśnie stoi kursor
+|wyszukiwanie do przodu słowa, na którym właśnie stoi kursor
+
+|_#_
+|wyszukiwanie w tył słowa, na którym stoi kursor
 
 |_n_
 |(next) następne wyszukanie wzorca w pliku
@@ -911,9 +922,13 @@ Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można 
 
 === Rejestry
 
-Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. Rejestry użytkownika oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru. Oprócz tych rejestrów istnieją też rejestry wbudowane.
+Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie. 
 
 Więcej w pliku pomocy change.txt - _:help registers_
+
+==== Rejestry użytkownika
+Rejestry użytkownika oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru.
+
 [cols="1,1"]
 |===
 
@@ -934,6 +949,16 @@ Więcej w pliku pomocy change.txt - _:help registers_
 
 |_CTRL-R{x}_
 |w trybie edycji wstawienie zawartości rejestru {x}
+
+|===
+
+==== Rejestry wbudowane
+
+[cols="1,1"]
+|===
+
+|_"{cyfra}_
+|Rejestry oznaczone cyframi od 1 do 9 zawierają ostatnich dziewięć schowków. Np. _"3p"_ wstawia do linii poniżej kursora trzecią ostatnio skopiowaną linię tekstu.
 
 |===
 
