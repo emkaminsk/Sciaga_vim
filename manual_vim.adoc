@@ -24,6 +24,7 @@ Dlatego należy rozróżnić kilka trybów działania Vim:
 * *ex*, który jest w istocie rozszerzonym trybem poleceń. Jest to tryb służący do pisania skryptów z poleceń stosowanych w trybie poleceń składających się z wielu linii.
 
 Istnieje jeszcze jeden dość nietypowy tryb pracy programu:
+
 * *zawieszenia* w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej).
 
 W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb Ex, do wyjścia z niego należy wykonać komendę _:vi_.
@@ -83,9 +84,9 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 
 |===
 
-=== Opcje (często dodanie 'no' przed nazwa opcji wyłącza ją)
+=== Opcje 
 
-Pełna lista opcji jest w pliku _options.txt_
+W większości przypadków dodanie 'no' przed nazwą opcji wyłącza ją. Pełna lista opcji jest w pliku _options.txt_.
 
 [cols="1,1"]
 |===
@@ -112,7 +113,7 @@ Pełna lista opcji jest w pliku _options.txt_
 
 |===
 
-=== Język VIM. 
+=== Język VIM 
 
 Język składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. _d_ - delete (usuwanie), Przedmiotem może być: 
 * obiekt np. _w_ - word (słowo) albo 
@@ -152,7 +153,7 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej - _:help operator_
 
 Polecenia takie, jak np. _d_, _c_ i _y_ można poprzedzić oznaczeniem rejestru (np. _"x_), dzięki czemu wynik polecenia zostanie skopiowany do tego rejestru. Więcej - patrz Rejestry poniżej.
 
-==== Ruchy (motion). 
+==== Ruchy (motion) 
 
 Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 
@@ -178,7 +179,7 @@ Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 
 Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruchy) można składać w dowolne kombinacje, np. 9 czynności * 10 krotności * 10 ruchów daje w sumie 900 unikalnych poleceń, a to ułamek możliwości Vim.
 
-==== Obiekty tekstowe. 
+==== Obiekty tekstowe 
 
 Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
 * 'i' - czy obiekt jest 'exclusive', tj. bez spacji przed i po,
@@ -585,7 +586,7 @@ Dokładny opis w _:help substitute_
 |===
 
 |_:[rangę]s[ubstitute]/from/to/[flags]_
-|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'. Tę ogólną zasadę można jeszcze bardziej uogólnić - patrz kolejna sekcja o składni poleceń _'ex'_.
+|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'. 
 
 |_:s/b/A_
 |(substitute) zamiana b na A w bieżącym wierszu (jeden raz)
@@ -626,9 +627,9 @@ Dokładny opis w _:help substitute_
 
 |===
 
-== Więcej o poleceniach ex 
+== Polecenia ex 
 
-Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie} podając całą jego nazwę lub tylko początek. Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. 
+Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. 
 
 Po wpisaniu : klawisze <Up> i <Down> scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
 
@@ -681,6 +682,7 @@ Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 
 |_:[rangę][:]g[lobal]/{pattern}/{command}_
 |(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. W powyższym: 
+
 * znak _:_ pomiędzy zakresem i słowem global jest opcjonalny,
 * _Command_ to polecenie w trybie cmd-line. Wydając polecenie _normal_ można zdefiniować polecenie w trybie normalnym. 
 * różne przykłady _range_ zostały omówione w sekcji dot. zastępowania (np. % - cały plik),
@@ -699,7 +701,7 @@ Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 
 |===
 
-== Wizualna selekcja. 
+== Wizualna selekcja
 
 W tym trybie wiele poleceń zyskuje nowe znaczenie.
 
@@ -744,7 +746,7 @@ W tym trybie wiele poleceń zyskuje nowe znaczenie.
 
 |===
 
-== Polecenia w trybie edycji (tryb Insert). 
+== Polecenia w trybie edycji (tryb Insert)
 
 W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub skrótów z CTRL.
 
@@ -797,7 +799,7 @@ W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub 
 
 == Inne polecenia w różnych trybach
 
-=== Polecenia rozpoczynające się od 'g'. 
+=== Polecenia rozpoczynające się od 'g'
 
 Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szczegółową lista jest w pliku index.txt
 
