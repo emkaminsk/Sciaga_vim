@@ -2,7 +2,7 @@
 
 Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toc'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
 
-Autor: emkaminsk@gmail.com.
+#Autor:# emkaminsk@gmail.com.
 
 '''
 
@@ -62,15 +62,15 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 |_CTRL-Z_
 |zawiesza Vim (zachowując wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powłoki shell. Do Vim można wrócić poleceniem 
 
- $ fg 
+ `$ fg` 
 
-w powłoce
+w powłoce.
 
 |_:help_
 |otwarcie pomocy
 
 |_:help 'word'_
-|pomoc z danym słowem lub poleceniem; <Tab> lub CTRL-D wyświetla możliwe opcje
+|pomoc z danym słowem lub poleceniem; <Tab> lub _CTRL-D_ wyświetla możliwe opcje
 
 |_:help index_
 |*spis wszystkich poleceń* we wszystkich trybach wraz z tagami, krótkim opisem i odnośnikiem do pełnej definicji
