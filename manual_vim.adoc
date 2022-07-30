@@ -9,6 +9,7 @@ Autor: emkaminsk@gmail.com.
 Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb _ex_ w vi i stąd pochodzą polecenia _':'_, _'$'_, _'^',_ _'%'_, oznaczanie zakresu przez _'a,b'_, _'g'_, _'s'_, _'m'_ i inne.
 
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawowe różnice to: 
+
 * ogromna konfigurowalność programu. Dostępne polecenia można łączyć w rozliczone kombinacje oraz tworzyć nowe polecenia dla przyspieszenia swojej pracy z tekstem,
 * koncentracja na pracy z klawiaturą przy minimalizacji roli myszki do wybierania poleceń,
 * rozróżnienie pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
@@ -17,16 +18,17 @@ Dlatego należy rozróżnić kilka trybów działania Vim:
 
 * *normalny* - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy,
 * *edycji* - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---,
-* *poleceń*, tzw cmd-line, w którym wprowadza i wykonuje się tzw. polecenia ex. Są to polecenia głównie rozpoczynające się od _:_, _/_, _?_ lub _!_,
+* *poleceń*, tzw cmd-line, w którym wprowadza i wykonuje się tzw. polecenia ex. Są to polecenia rozpoczynające się od _:_, _/_, _?_ lub _!_,
 * *wizualnej selekcji* (ang. visual mode),
 * *wizualny*, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),
 * *zastępowania* - tryb ten jest bardzo podobny do trybu edycji, ale każdy wpisany znak zastępuje znak na pozycji kursora.
 * *ex*, który jest w istocie rozszerzonym trybem poleceń. Jest to tryb służący do pisania skryptów z poleceń stosowanych w trybie poleceń składających się z wielu linii.
 
 Istnieje jeszcze jeden dość nietypowy tryb pracy programu:
+
 * *zawieszenia* w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej).
 
-W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb Ex, do wyjścia z niego należy wykonać komendę _:vi_.
+W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę _:vi_.
 
 == Wstęp
 
@@ -67,13 +69,16 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 |pomoc z danym słowem lub poleceniem; <Tab> lub CTRL-D wyświetla możliwe opcje
 
 |_:help index_
-|spis wszystkich poleceń wraz z tagami i ich opisem
+|*spis wszystkich poleceń* we wszystkich trybach wraz z tagami, krótkim opisem i odnośnikiem do pełnej definicji
+
+|_:help usr_toc.txt_
+|wyświetla spis treści podręcznika Vim
 
 |_:help usr_01.txt_
 |otwarcie pierwszego rozdziału podręcznika
 
-|_:help usr_toc.txt_
-|wyświetla spis treści podręcznika Vim
+|_:help reference_toc_ 
+|spis wszystkich plików pomocy Vim
 
 |_._
 |powtórzenie wykonania poprzedniego polecenia wydanego w trybie normalnym.
@@ -83,9 +88,9 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 
 |===
 
-=== Opcje (często dodanie 'no' przed nazwa opcji wyłącza ją)
+=== Opcje 
 
-Pełna lista opcji jest w pliku _options.txt_
+W większości przypadków dodanie 'no' przed nazwą opcji wyłącza ją. Pełna lista opcji jest w pliku _options.txt_.
 
 [cols="1,1"]
 |===
@@ -112,7 +117,7 @@ Pełna lista opcji jest w pliku _options.txt_
 
 |===
 
-=== Język VIM. 
+=== Język VIM 
 
 Język składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. _d_ - delete (usuwanie), Przedmiotem może być: 
 * obiekt np. _w_ - word (słowo) albo 
@@ -152,7 +157,7 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej - _:help operator_
 
 Polecenia takie, jak np. _d_, _c_ i _y_ można poprzedzić oznaczeniem rejestru (np. _"x_), dzięki czemu wynik polecenia zostanie skopiowany do tego rejestru. Więcej - patrz Rejestry poniżej.
 
-==== Ruchy (motion). 
+==== Ruchy (motion) 
 
 Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 
@@ -178,9 +183,10 @@ Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 
 Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruchy) można składać w dowolne kombinacje, np. 9 czynności * 10 krotności * 10 ruchów daje w sumie 900 unikalnych poleceń, a to ułamek możliwości Vim.
 
-==== Obiekty tekstowe. 
+==== Obiekty tekstowe 
 
 Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
+
 * 'i' - czy obiekt jest 'exclusive', tj. bez spacji przed i po,
 * 'a' - 'inclusive" - włącznie ze spacjami przed i po.
 Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
@@ -571,7 +577,7 @@ Patrz też sekcja 'Język VIM' powyżej. Przykłady poleceń służących do wyc
 |przejście do przodu
 
 |_/word/b+1_
-|wyszukuje 'word' i umieszcza kursor na drugiej pozycji od początku. Oprócz b można używać też innych poleceń: 'e', cyfra oznacza liczbę linii po znalezionym słowie
+|wyszukuje _'word'_ i umieszcza kursor na drugiej pozycji od początku. Oprócz _'b'_ można używać też innych poleceń: _'e'_(pozycja od końca), cyfra oznacza liczbę linii po znalezionym słowie
 
 |_:help pattern.txt_
 |więcej pomocy na temat wyszukiwania za pomocą wyrażeń regularnych (Perl). Można też uzych :help usr_27.txt
@@ -585,7 +591,7 @@ Dokładny opis w _:help substitute_
 |===
 
 |_:[rangę]s[ubstitute]/from/to/[flags]_
-|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'. Tę ogólną zasadę można jeszcze bardziej uogólnić - patrz kolejna sekcja o składni poleceń _'ex'_.
+|Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'. 
 
 |_:s/b/A_
 |(substitute) zamiana b na A w bieżącym wierszu (jeden raz)
@@ -626,13 +632,19 @@ Dokładny opis w _:help substitute_
 
 |===
 
-== Więcej o poleceniach ex 
+== Polecenia ex 
 
-Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie} podając całą jego nazwę lub tylko początek. Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. 
+Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. 
 
-Po wpisaniu : klawisze <Up> i <Down> scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
+Po wpisaniu _:_:
 
-Szczegółowa pomoc o poleceniach ex znajduje się w pliku _:help cmdline.txt_.
+* klawisze <Up> i <Down> scrollują historię komend.
+* Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
+* Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
+
+Szczegółowa pomoc o poleceniach ex, tj. o trybie poleceń, edytowaniu, zakresach działania, flagach, znakach specjalnych znajduje się w pliku _:help cmdline.txt_.
+
+Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
 
 [cols="1,1"]
 |===
@@ -658,7 +670,7 @@ Szczegółowa pomoc o poleceniach ex znajduje się w pliku _:help cmdline.txt_.
 |wyświetlenie historii komend w trybie cmd-line
 
 |_q:_
-|otwiera w nowym oknie historię poleceń, gdzie dane polecenie można edytować jak w Vim i uruchamiać
+|otwiera okno poleceń
 
 |_:history /_
 |wyświetlenie historii wyszukiwań
@@ -680,12 +692,18 @@ Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 |powtórzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcją do szybkiego ponowienia tej samej komendy skrótem.
 
 |_:[rangę][:]g[lobal]/{pattern}/{command}_
-|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. W powyższym: 
+|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. 
+|===
+
+W powyższym: 
+
 * znak _:_ pomiędzy zakresem i słowem global jest opcjonalny,
 * _Command_ to polecenie w trybie cmd-line. Wydając polecenie _normal_ można zdefiniować polecenie w trybie normalnym. 
 * różne przykłady _range_ zostały omówione w sekcji dot. zastępowania (np. % - cały plik),
 * _Pattern_ to wyrażenie regularne w odpowiednim dla wersji Vim standardzie (np. POSIX). Więcej: _:help pattern_.
 
+[cols="1,1"]
+|===
 |_:2,20g/txt/normal 0i*_
 |Przykład multi-polecenia. W wierszach od 2 do 20 wyszukiwany jest tekst 'txt'. W wierszach, gdzie został on znaleziony wykonywane jest polecenie 0i* - co powoduje wstawienie na początku wiersza znaku '*'.
 
@@ -695,11 +713,9 @@ Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 
 |_:g/^$/d_
 |usunięcie wszystkich pustych linii z pliku
-
-
 |===
 
-== Wizualna selekcja. 
+== Wizualna selekcja
 
 W tym trybie wiele poleceń zyskuje nowe znaczenie.
 
@@ -744,7 +760,7 @@ W tym trybie wiele poleceń zyskuje nowe znaczenie.
 
 |===
 
-== Polecenia w trybie edycji (tryb Insert). 
+== Polecenia w trybie edycji (tryb Insert)
 
 W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub skrótów z CTRL.
 
@@ -797,7 +813,7 @@ W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub 
 
 == Inne polecenia w różnych trybach
 
-=== Polecenia rozpoczynające się od 'g'. 
+=== Polecenia rozpoczynające się od 'g'
 
 Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szczegółową lista jest w pliku index.txt
 
