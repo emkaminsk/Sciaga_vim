@@ -20,13 +20,13 @@ Dlatego należy rozróżnić kilka trybów działania Vim:
 * *edycji* - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---,
 * *poleceń*, tzw cmd-line, w którym wprowadza i wykonuje się tzw. polecenia ex. Są to polecenia rozpoczynające się od _:_, _/_, _?_ lub _!_,
 * *wizualnej selekcji* (ang. visual mode),
-* *wizualny*, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),
+* *wizualny* lub wizualnego zastępowania, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),
 * *zastępowania* - tryb ten jest bardzo podobny do trybu edycji, ale każdy wpisany znak zastępuje znak na pozycji kursora.
 * *ex*, który jest w istocie rozszerzonym trybem poleceń. Jest to tryb służący do pisania skryptów z poleceń stosowanych w trybie poleceń składających się z wielu linii.
 
-Istnieje jeszcze jeden dość nietypowy tryb pracy programu:
+Istnieje jeszcze jeden rzadko wspominany tryb pracy programu:
 
-* *zawieszenia* w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej).
+* *zawieszenia* w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej). Istnieje możliwość zdefioniowania mapowań klawiszy, które będą dedykowane do tego trybu. Więcej poniżej w sekcji 'Mapowania'.
 
 W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę _:vi_.
 
@@ -1174,22 +1174,33 @@ Vim daje możliwość definiowania mapowań w wielu trybach pracy. Więcej w pli
 |===
 
 |_:map_
-|Polecenie bez argumentu wyświetla wszystkie mapowania w trybach: normalnym, wizualnym i operatora. Z jednym argumetem wyświetla mapowanie dla tego klawisza. Z dwoma tworzy nowe mapowanie.
+|Polecenie bez argumentu wyświetla wszystkie mapowania w trybach: normalnym, wizualnym i zawieszenia. Z jednym argumetem wyświetla mapowanie dla tego klawisza. Z dwoma tworzy nowe mapowanie.
 
 |_:unmap_
 |usuwa dane mapowanie
 
 |===
 
-=== Tagi
+Inne polecenia służące do listowania i poprawiania istniejących mapowań są wymienione w pomocy.
 
-Pomoc na temat tagów jest dostępna za pomocą polecenia _:help tagsrch_.
+Poniżej polecenia służące do tworzenia nowych mapowań. Ogólna składnia to _:map {klawisz} {sekwencja}_ - to polecenie pozwala zmapować klawisz na sekwencję poleceń.
 
 [cols="1,1"]
 |===
+|_:nmap {k} {s}_
+|mapowanie w trybie normalnym
 
-|__
-|
+|_:vmap {k} {s}_
+|Mapowanie w trybie wizualnej selekcji i zastępowania. _smap {k} {s}_ i _xmap {k} {s}_ pozwalają zdefiniowaniać mapowania osobno w tych dwóch trybach.
+
+|_:omap {k} {s}_
+|mapowanie w trybie zawieszenia po wprowadzeniu operatora
+
+|_:imap {k} {s}_
+|mapowanie w trybie wstawiania
+
+|_:cmap {k} {s}_
+|mapowanie w trybie wiersza poleceń
 
 |===
 
