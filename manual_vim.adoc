@@ -681,13 +681,18 @@ Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 |powtórzenie ostatniej operacji edycji/kasowania/korekty. *Bardzo* przydatna funkcją do szybkiego ponowienia tej samej komendy skrótem.
 
 |_:[rangę][:]g[lobal]/{pattern}/{command}_
-|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. W powyższym: 
+|(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command. 
+|===
+
+W powyższym: 
 
 * znak _:_ pomiędzy zakresem i słowem global jest opcjonalny,
 * _Command_ to polecenie w trybie cmd-line. Wydając polecenie _normal_ można zdefiniować polecenie w trybie normalnym. 
 * różne przykłady _range_ zostały omówione w sekcji dot. zastępowania (np. % - cały plik),
 * _Pattern_ to wyrażenie regularne w odpowiednim dla wersji Vim standardzie (np. POSIX). Więcej: _:help pattern_.
 
+[cols="1,1"]
+|===
 |_:2,20g/txt/normal 0i*_
 |Przykład multi-polecenia. W wierszach od 2 do 20 wyszukiwany jest tekst 'txt'. W wierszach, gdzie został on znaleziony wykonywane jest polecenie 0i* - co powoduje wstawienie na początku wiersza znaku '*'.
 
@@ -697,8 +702,6 @@ Więcej pomocy w _:help usr_26.txt_ oraz _:help multi-repeat_
 
 |_:g/^$/d_
 |usunięcie wszystkich pustych linii z pliku
-
-
 |===
 
 == Wizualna selekcja
