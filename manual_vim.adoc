@@ -120,16 +120,11 @@ W większości przypadków dodanie 'no' przed nazwą opcji wyłącza ją. Pełna
 === Język VIM 
 
 Język składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. _d_ - delete (usuwanie), Przedmiotem może być: 
+
 * obiekt np. _w_ - word (słowo) albo 
 * ruch (ang. motion), np. _j_ (przejście linię w dół)
 * funkcja. 
 Obiekt i ruch można poprzedzić liczbą. *Siłę Vim* stanowi fakt, że dowolna kombinacja działania, liczebnika i przedmiotu  stanowi unikalne polecenie.
-
-Przykłady: 
-* _dw_ - usunięcie słowa. 
-* _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
-* _y2j_ - kopiuje do schowka bieżącą linię oraz dwie poniżej
-* d:call search("Następny") - kasuje wszystko pomiędzy kursorem i następnym wystąpieniem słowa "Następny"
 
 Więcej informacji (w tym np. bardziej kompletną listę operatorów i obiektów/ruchów) można znaleźć w pliku _motion.txt_ (_:help motion_). Więcej informacji o funkcjach jest w _:help usr_41.txt_.
 
@@ -183,6 +178,13 @@ Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 
 Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruchy) można składać w dowolne kombinacje, np. 9 czynności * 10 krotności * 10 ruchów daje w sumie 900 unikalnych poleceń, a to ułamek możliwości Vim.
 
+Przykłady: 
+
+* _d0_ - skasowanie całego tekstu od początku linii do kursora
+* _y$_ - skopiowanie tekstu od bieżącego miejsca kursora do końca linii
+* _y2j_ - kopiuje do schowka bieżącą linię oraz dwie poniżej
+* _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
+
 ==== Obiekty tekstowe 
 
 Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
@@ -191,10 +193,14 @@ Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna
 * 'a' - 'inclusive" - włącznie ze spacjami przed i po.
 Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
 * brak pierwszej litery oznacza, że działanie zostanie wykonane od miejsca kursora do końca obiektu.
+
 Druga litera definiuje sam obiekt, np. _w_ - słowo.
 
 [cols="1,1"]
 |===
+
+|_w_
+|słowo (od kursora do końca)
 
 |_iw_
 |Inner word - wewnątrz słowa; ogólnie 'a' w 'aw' oznacza obiekt razem ze spacjami dookoła niego, natomiast 'i' w 'iw' oznacza pominięcie spacji
@@ -202,24 +208,35 @@ Druga litera definiuje sam obiekt, np. _w_ - słowo.
 |_aw_
 |Word - słowo (razem ze spacjami)
 
-|_ip_
-|Inner paragraph - wewnątrz całego akapitu
+|_p_
+|paragraph - akapit
 
-|_as_
-|A sentence - całe zdanie
+|_s_
+|sentence - zdanie
 
-|_it_
-|Inner tag - wewnątrz np tagu HTML
+|_"_, _', _`_, _)_, _], _}, _b_
+|wewnątrz tagu, cudzysłowiu, nawiasu, np. tagu HTML
 
-|_i", i', i`_
-|Inner quote - wewnątrz tekstu otoczonego cudzyslowiem danego typu.
+|_i", _i', _i`_
+|Inner quote - tekst otoczony cudzyslowiem danego typu bez cudzysłowi.
 
-|_i), i], i}, ib_
-|Inner brackets - wewnątrz nawiasów (_tekst_)
+|_i)_, _i], _i}, _ib_
+|Inner brackets - wewnątrz nawiasów (_tekst_) - bez znaków cudzysłowiu
 
 |===
 
 Podobnie jak z ruchami, akcje i obiekty można dowolnie ze sobą łączyć produkując kolejne setki (jeśli nie tysiące) możliwych unikalnych poleceń.
+
+Przykłady:
+
+* _dw_ - usunięcie znaków od kursora do końca słowa, 
+* _dap_ - usunięcie całego akapitu od początku do końca razem z pustymi liniami,
+* _yis_ - skopiowanie całego zdania od początku do końca bez białych znaków z początku i końca zdania,
+* _ci"_ - zmiana całego tekstu pomiędzy znakami "
+
+Inny przykład połączenia działania z funkcją:
+
+* d:call search("Następny") - kasuje wszystko pomiędzy kursorem i następnym wystąpieniem słowa "Następny"
 
 ==== Tryb wizualny
 Alternatywą dla składni operator - obiekt/ruch jest użycie trybu wizualnego. W tym trybie wpierw zaznacza się fragment tekstu, który zostaje podświetlony na ekranie, a potem wykonuje się akcję (operator).
@@ -238,13 +255,10 @@ Więcej opcji wejścia w ten tryb opisanych jest poniżej.
 |===
 
 |_xay_
-|składnia: operator - liczba - obiekt/ruch
+|składnia: operator - liczba - obiekt/ruch; a - liczba powtórzeń, x - operator, y - obiekt/ruch
 
-|_axy_
-|a - liczba powtórzeń, x - operator, y - obiekt/ruch
-
-|_axby_
-|Gdy podane są dwie liczby (_a_ i _b_), polecenie wykonane zostanie _a*b_ liczbę razy.
+|_raxby_
+|na początku opcjonalnie można podać r - rejestr, do którego skopiowany zostanie wynik polecenia. Gdy podane są dwie liczby (_a_ i _b_), polecenie wykonane zostanie _a*b_ liczbę razy.
 
 |===
 
@@ -1139,6 +1153,9 @@ Pomoc na temat tagów jest dostępna za pomocą polecenia _:help tagsrch_.
 
 [cols="1,1"]
 |===
+
+|_Główna strona projektu Vim_
+|https://vim.org
 
 |_Vim as language_
 |https://www.youtube.com/watch?v=wlR5gYd6um0
