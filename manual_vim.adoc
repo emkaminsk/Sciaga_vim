@@ -68,13 +68,16 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 |pomoc z danym słowem lub poleceniem; <Tab> lub CTRL-D wyświetla możliwe opcje
 
 |_:help index_
-|spis wszystkich poleceń wraz z tagami i ich opisem
+|*spis wszystkich poleceń* we wszystkich trybach wraz z tagami, krótkim opisem i odnośnikiem do pełnej definicji
+
+|_:help usr_toc.txt_
+|wyświetla spis treści podręcznika Vim
 
 |_:help usr_01.txt_
 |otwarcie pierwszego rozdziału podręcznika
 
-|_:help usr_toc.txt_
-|wyświetla spis treści podręcznika Vim
+|_:help reference_toc_ 
+|spis wszystkich plików pomocy Vim
 
 |_._
 |powtórzenie wykonania poprzedniego polecenia wydanego w trybie normalnym.
@@ -631,9 +634,15 @@ Dokładny opis w _:help substitute_
 
 Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć CTRL-D lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub CTRL-P pozwala przewijać pomiędzy opcjami. 
 
-Po wpisaniu : klawisze <Up> i <Down> scrolluja historię komend. Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
+Po wpisaniu _:_:
 
-Szczegółowa pomoc o poleceniach ex znajduje się w pliku _:help cmdline.txt_.
+* klawisze <Up> i <Down> scrolluja historię komend.
+* Za pomocą symbolu \| można wykonać więcej niż dwie komendy na raz, np. ":w \| !ls" zapisuje plik i wyświetla zawartość bieżącego katalogu.
+* Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
+
+Szczegółowa pomoc o poleceniach ex, tj. o trybie poleceń, edytowaniu, zakresach działania, flagach, znakach specjalnych znajduje się w pliku _:help cmdline.txt_.
+
+Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
 
 [cols="1,1"]
 |===
@@ -659,7 +668,7 @@ Szczegółowa pomoc o poleceniach ex znajduje się w pliku _:help cmdline.txt_.
 |wyświetlenie historii komend w trybie cmd-line
 
 |_q:_
-|otwiera w nowym oknie historię poleceń, gdzie dane polecenie można edytować jak w Vim i uruchamiać
+|otwiera okno poleceń
 
 |_:history /_
 |wyświetlenie historii wyszukiwań
