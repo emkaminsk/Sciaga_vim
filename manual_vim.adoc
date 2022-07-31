@@ -11,6 +11,8 @@ Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem t
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawowe różnice to: 
 
 * ogromna konfigurowalność programu. Dostępne polecenia można łączyć w rozliczone kombinacje oraz tworzyć nowe polecenia dla przyspieszenia swojej pracy z tekstem,
+* Vim dostarcza własny język poleceń, który pozwala pisać funkcje, skrypty i pluginy
+* z poziomu Vim można wywoływać programy m. in. w Python do obróbki tekstu
 * koncentracja na pracy z klawiaturą przy minimalizacji roli myszki do wybierania poleceń,
 * rozróżnienie pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.
 
@@ -143,11 +145,11 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej - _:help operator_
 |_c_
 |Change - zmiana i przejście do trybu edycji
 
-|_>, <_
-|Indent - wcięcie, unindent - zlikwidowanie wcięcia
-
 |_y_
 |Yank - kopiowanie
+
+|_>, <_
+|Indent - wcięcie, unindent - zlikwidowanie wcięcia
 
 |_g~_, _gu_, _gU_
 |Zmiana dużych liter na małe (g~ wykonuje zamianę, gu - zmienia wszystkie litery na małe, gU - na  duże).
@@ -166,17 +168,23 @@ Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 |_$_
 |Do końca linii
 
-|_^, 0_
+|_^, _0_
 |Do początku linii
 
-|_G_
-|Go - do końca pliku
+|_+_, _-_
+|Dwie linie: bieżąca i następna lub poprzednia
 
-|_f, F, t, T_
+|_{a}G_
+|Go - od kursora do linii o podanym numerze _a_ lub (jeśli nie jest podana liczba) do końca pliku
+
+|_f_, _F_, _t_, _T_
 |Find - do wystąpienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzględnienia tego znaku.
 
-|_h, j, k, l_
+|_h_, _j_, _k_, _l_
 |Ruch w lewo, dół, górę i w prawo. _15j_ Przykład ruchu - kolejne 15 linii. _10l_ to kolejny przykład ruchu - 10 znaków w prawo.
+
+|_H_, _L_
+|Od pozycji kursora do góry ekranu lub do dołu ekranu
 
 |===
 
@@ -255,6 +263,10 @@ Działania (operatory) można też połączyć z wyszukiwaniem:
 * _d/tekst_ - usuwanie tekstu od pozycji kursora do kolejnego wystąpienia _tekst_
 * _y?słowo_ - kopiowanie tekstu od pozycji kursora wstecz do pierwszego wcześniejszego wystąpienia _słowo_
 
+oraz ze znacznikami (ang. marks) - więcej o znacznikach poniżej. Przykład:
+
+* _d'a_ -usuwanie tekstu od bieżącej pozycji kursora do znacznika _a_
+
 ==== Tryb wizualny
 Alternatywą dla składni operator - obiekt/ruch jest użycie trybu wizualnego. W tym trybie wpierw zaznacza się fragment tekstu, który zostaje podświetlony na ekranie, a potem wykonuje się akcję (operator).
 
@@ -327,11 +339,14 @@ Więcej pomocy w :help motion.txt
 
 |_%_
 |(gdy kursor wskazuje otwierający nawias) przeskok do zamykającego nawiasu
-|===
 
 |_(_, _)_
 |przeskok do początku lub końca zdania, w którym stoi kursor
 
+|_{n}|_
+|przeskok do n-tej kolumny w wierszu
+
+|===
 ==== Poruszanie się pomiędzy wierszami w pliku 
 
 [cols="1,1"]
@@ -952,18 +967,21 @@ Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szcze
 
 |===
 
-=== Znaki (marks)
+=== Znaczniki (ang. Marks)
 
-Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można przeskoczyć. Znaki nie są widzialne, są tylko pozycjami w pliku. Znaki i rejestry nie są przechowywane w tym samym miejscu, można mieć jednocześnie znak a i rejestr 'a' - są czymś innym
+Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można przeskoczyć. Znaczniki nie są widzialne, są tylko pozycjami w pliku. Znaczniki i rejestry nie są przechowywane w tym samym miejscu, można mieć jednocześnie znacznik _'a_ i rejestr _"a_ bowiem są czymś innym
 
 [cols="1,1"]
 |===
 
 |_m{t}_
-|wstawienie znacznika 't' w bieżącej pozycji. Znaczniki można nazywać małymi lub dużymi literami
+|wstawienie znacznika _t_ w bieżącej pozycji. Znaczniki można nazywać małymi lub dużymi literami
 
 |_'{t}_
-|przejście do pozycji znacznika 't'
+|przejście do pierwszego znaku linii, w której jest znacznik _t_
+
+|_`{t}_
+|przejście do właściwego znaku, na którym jest znacznik _t_
 
 |_:marks_
 |wyświetla listę aktywnych znaków, przede wszystkich znaków globalnych (o numerach 0-9), które są tworzone przy każdym wyjściu z Vim
@@ -972,9 +990,9 @@ Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można 
 |przejście do miejsca, gdzie ostatnio Vim został zamknięty
 
 |_:delm {marks}_
-|usunięcie znaku
+|usunięcie znacznika
 
-|_'< '>_
+|_'<_, _'>_
 |początek i koniec zakresu wizualnej selekcji
 
 |===
@@ -1191,7 +1209,7 @@ Poniżej polecenia służące do tworzenia nowych mapowań. Ogólna składnia to
 |mapowanie w trybie normalnym
 
 |_:vmap {k} {s}_
-|Mapowanie w trybie wizualnej selekcji i zastępowania. _smap {k} {s}_ i _xmap {k} {s}_ pozwalają zdefiniowaniać mapowania osobno w tych dwóch trybach.
+|mapowanie w trybie wizualnej selekcji i zastępowania. _:smap {k} {s}_ i _:xmap {k} {s}_ pozwalają zdefiniowaniać mapowania osobno w tych dwóch trybach.
 
 |_:omap {k} {s}_
 |mapowanie w trybie zawieszenia po wprowadzeniu operatora
