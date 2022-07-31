@@ -313,7 +313,7 @@ Mimo, że poniższe polecenia definiują czynności, nie przyjmują rzeczownika/
 
 === Poruszanie kursorem 
 
-Więcej pomocy w :help motion.txt
+Więcej pomocy w _:help motion.txt_
 
 ===== Poruszanie się w ramach wiersza lub pojedynczych znaków
 
@@ -1262,6 +1262,32 @@ Poniżej polecenia służące do tworzenia nowych mapowań. Ogólna składnia to
 
 |_r_
 |odwrócenie kolejności sortowania
+
+|===
+
+== Przydatne pluginy 
+Vim posiada wiele pluginów, które rozszerzają jego funkcjonalności.
+
+=== Surround
+
+Plugin Surround pozwala w łatwy sposób dodawać znaki okalające dany tekst, np. tagi html, pogrubienia w Markdown czy inne oznaczenia w podobnych formatach (np. AsciiDoc).
+
+Instalacja i krótkie wprowadzenie do Surround zawarte są na stronie GitHub: https://github.com/tpope/vim-surround
+
+[cols="1,1"]
+|===
+
+|_cs{aktualny}{nowy}_
+|polecenie wydane, gdy kursor stoi wewnątrz aktualnych znaczników zamieni znacznik na nowy. Np. dla tekstu "Lorem ipsum" polecenie _cs"'_ zamieni go na 'Lorem ipsum'
+
+|_ysaw{znacznik}_
+|wklejenie _znacznika_ w obiekt _aw_. Polecenie działa analogicznie dla innych obiektów/ruchów.
+
+|_ds{znacznik}_
+|usunięcie _znacznika_ okalającego pozycję kursora
+
+|_v{zaznaczenie}S<b>_
+|po zaznaczeniu tekstu w trybie wizualnej selekcji kombinacja _S{znacznik}_ wklei otwierający i zamykający znacznik przed i po zaznaczeniu
 
 |===
 
