@@ -6,7 +6,9 @@ Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym
 
 '''
 
-Vi powstał jako 'visual interface' do innego edytora _ex_. _Ex_ był edytorem tekstu na teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb _ex_ w vi i stąd pochodzą polecenia _':'_, _'$'_, _'^',_ _'%'_, oznaczanie zakresu przez _'a,b'_, _'g'_, _'s'_, _'m'_ i inne.
+== Wstęp
+
+Vi powstał jako 'visual interface', wizualny edytor, nakładka na inny edytor: _ex_. _Ex_ jest edytorem tekstu, który pierwotnie powstał dla obsługi teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb _ex_ w vi i stąd pochodzą polecenia _':'_, _'$'_, _'^',_ _'%'_, oznaczanie zakresu przez _'a,b'_, _'g'_, _'s'_, _'m'_ i inne.
 
 Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawowe różnice to: 
 
@@ -32,11 +34,32 @@ Istnieje jeszcze jeden rzadko wspominany tryb pracy programu:
 
 W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę _:vi_.
 
-== Wstęp
+== Instalacja i wersje Vim 
 
-=== Podstawowe polecenia
+Sekcja prezentuje różne opcje instalacji Vim w Windows oraz Linux.
 
-Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięcia pliku i korzystania z wbudowanej pomocy. Więcej o trybie poleceń w pliku :help cmdline.
+[cols="1,1"]
+|===
+
+|_TODO_
+|
+
+|===
+== Podstawowe polecenia
+
+=== Uruchamianie Vim
+
+[cols="1,1"]
+|===
+
+|_TODO_
+|
+
+|===
+
+=== Pierwsze kroki w Vim
+
+Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięcia pliku i korzystania z wbudowanej pomocy.
 
 [cols="1,1"]
 |===
@@ -645,6 +668,8 @@ Niewielka różnica między w i W dotyczy znaków niealfanumerycznych w środku 
 
 === Szukanie
 
+Sekcja prezentuje różne polecenia, zarówno w trybie normalnym jak i poleceń cmd-line.
+
 [cols="1,1"]
 |===
 
@@ -686,6 +711,67 @@ Niewielka różnica między w i W dotyczy znaków niealfanumerycznych w środku 
 
 |===
 
+=== Modyfikatory poleceń w trybie normalnym
+
+[cols="1,1"]
+|===
+
+|_{polecenie}!_
+|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. _:q!_ - wyjście z programu z porzuceniem zmian
+
+|_!command_
+|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu _!5G_ polecenie to jest konwertowane do trybu cmd-line: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
+
+|_!!date_
+|wstawia datę w bieżącym wierszu
+
+|===
+
+== Polecenia ex 
+
+Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć _CTRL-D_ lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub _CTRL-P_ pozwala przewijać pomiędzy opcjami. 
+
+Po wpisaniu _:_:
+
+* klawisze <Up> i <Down> scrollują historię komend.
+* Za pomocą symbolu _\|_ można wykonać więcej niż dwie komendy na raz, np. `:w \| !ls` zapisuje plik i wyświetla zawartość bieżącego katalogu.
+* Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
+
+Szczegółowa pomoc o poleceniach ex, tj. o trybie poleceń, edytowaniu, zakresach działania, flagach, znakach specjalnych znajduje się w pliku _:help cmdline.txt_.
+
+Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
+
+=== Podstawowe polecenia 
+
+[cols="1,1"]
+|===
+
+|_:m_
+|(move) przesunięcie wierszy
+
+|_:d_
+|(delete) usunięcie wierszy
+
+|_:co_, _:t_
+|(copy) skopiowanie wierszy
+
+|_:p_
+|(print) wydrukowanie u dołu ekranu wiersza
+
+|_:760,780m20_
+|przesunięcie wierszy od 760 do 780 do pozycji wiersza 20
+
+|_:m+1_
+|przesunięcie bieżącego wiersza o jedną linię w dół.
+
+|_:m10_
+|przesunięcie bieżącego wiersza do wiersza o numerze 10.
+
+|_:p5_
+|wypisanie bieżącego i czterech kolejnych wierszy na dole ekranu
+
+|===
+
 === Zastępowanie
 
 Dokładny opis w _:help substitute_
@@ -718,47 +804,10 @@ Dokładny opis w _:help substitute_
 
 |===
 
-=== Modyfikatory poleceń w trybie normalnym
+=== Różne polecenia w ex
 
 [cols="1,1"]
 |===
-
-|_{polecenie}!_
-|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. _:q!_ - wyjście z programu z porzuceniem zmian
-
-|_!command_
-|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu _!5G_ polecenie to jest konwertowane do trybu cmd-line: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
-
-|_!!date_
-|wstawia datę w bieżącym wierszu
-
-|===
-
-== Polecenia ex 
-
-Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć _CTRL-D_ lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub _CTRL-P_ pozwala przewijać pomiędzy opcjami. 
-
-Po wpisaniu _:_:
-
-* klawisze <Up> i <Down> scrollują historię komend.
-* Za pomocą symbolu _\|_ można wykonać więcej niż dwie komendy na raz, np. `:w \| !ls` zapisuje plik i wyświetla zawartość bieżącego katalogu.
-* Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
-
-Szczegółowa pomoc o poleceniach ex, tj. o trybie poleceń, edytowaniu, zakresach działania, flagach, znakach specjalnych znajduje się w pliku _:help cmdline.txt_.
-
-Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
-
-[cols="1,1"]
-|===
-|_:m+1_
-|przesunięcie bieżącego wiersza do podanego miejsca, w tym przypadku o jedną linię w dół.
-
-|_:m10_
-|przesunięcie bieżącego wiersza do wiersza o numerze 10.
-
-|_:p5_
-|wypisanie bieżącego i czterech kolejnych wierszy na dole ekranu
-
 |_:!python %_
 |wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwę aktywnego pliku.
 
@@ -779,8 +828,6 @@ Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
 
 |_:browse oldfiles_
 |wyświetla listę uprzednio edytowanych plików, można podać numer i otworzyć wybrany plik do edycji
-
-
 |=== 
 
 === Wielokrotne wykonywanie poleceń
