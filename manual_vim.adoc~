@@ -41,15 +41,8 @@ Sekcja prezentuje różne opcje instalacji Vim w Windows oraz Linux.
 [cols="1,1"]
 |===
 
-Linux
-
-|`$ sudo apt install vim`
-|W dystrybucjach opartych na Debian (jak Ubuntu) 
-
-Windows
-
-|_MobaXterm_
-|Oprogramowanie z wieloma funkcjami, zastępujące okno poleceń i dostarczające wiele funkcji terminala Linux, w tym Vim. Do pobrania free ze strony  https://mobaxterm.mobatek.net/download.html
+|_TODO_
+|
 
 |===
 == Podstawowe polecenia
@@ -62,20 +55,11 @@ Windows
 |`$ vim {nazwa_pliku}`
 |podstawowy sposób uruchamiania Vim - otwarcie do edycji pliku o podanej nazwie
 
-|`$ evim {nazwa_pliku}`
-|uruchamia vim w wersji easy (Easy VIM). W tej wersji Vim bardziej przypomina Notatnik w Windows z menu, ikonami i wyłączonymi trybami innymi, niż tryb edycji
-
-|`$ gvim {nazwa_pliku}`
-|uruchamia vim w wersji GUI. Jest to pełny Vim z wszystkimi trybami i funkcjonalnościami, ale dodatkowo zaopatrzony w menu, skróty poleceń pod ikonami paska narzędzi
-
 |`$ view {nazwa_pliku}`
 |otwiera plik tylko do edycji
 
 |`$ ex {nazwa_pliku}`
 |uruchamia Vim w trybie ex (bez wizualizacji treści pliku). Można przejść do Vim wykonując komendę _vi_.
-
-|`$ vimdiff {nazwa_pliku} {nazwa_pliku} {nazwa_pliku} {nazwa_pliku}`
-|uruchamia vim w wersji  diff, która wyszukuje różnice pomiędzy plikami (w liczbie od 2 do 4), otwiera pliki w podzielonym pionowo oknie i podświetla te różnice
 
 |`$ vim -S {nazwa_sesji}`
 |uruchamia sesję Vim zapisaną poleceniem _mksession_ (opis poniżej)
