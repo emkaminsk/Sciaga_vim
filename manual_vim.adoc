@@ -1,6 +1,7 @@
 = Manual/ściąga do Vim
 
-Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia ':help usr_toc'. Tutorial można uruchomić w powłoce poleceniem 'vimtutor' w shellu.
+Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. Tutorial można uruchomić w powłoce poleceniem:
+`$ vimtutor` 
 
 #Autor:# emkaminsk@gmail.com.
 
@@ -41,17 +42,24 @@ Sekcja prezentuje różne opcje instalacji Vim w Windows oraz Linux.
 [cols="1,1"]
 |===
 
-Linux
+==== Linux
 
+[cols="1,1"]
+|===
 |`$ sudo apt install vim`
 |W dystrybucjach opartych na Debian (jak Ubuntu) 
 
-Windows
+|===
 
+==== Windows
+
+[cols="1,1"]
+|===
 |_MobaXterm_
 |Oprogramowanie z wieloma funkcjami, zastępujące okno poleceń i dostarczające wiele funkcji terminala Linux, w tym Vim. Do pobrania free ze strony  https://mobaxterm.mobatek.net/download.html
 
 |===
+
 == Podstawowe polecenia
 
 === Uruchamianie Vim
@@ -177,17 +185,18 @@ W większości przypadków dodanie 'no' przed nazwą opcji wyłącza ją. Pełna
 
 === Język VIM 
 
-Język składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. _d_ - delete (usuwanie), Przedmiotem może być: 
+Język Vim to specyficzna składnia poleceń w trybie normalnym, której zrozumienie znacznie przyspieszy opanowanie edytora. Składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. _d_ - delete (usuwanie), Przedmiotem może być: 
 
 * obiekt np. _w_ - word (słowo) albo 
 * ruch (ang. motion), np. _j_ (przejście linię w dół)
 * funkcja. 
+
 Obiekt i ruch można poprzedzić liczbą. *Siłę Vim* stanowi fakt, że dowolna kombinacja działania, liczebnika i przedmiotu  stanowi unikalne polecenie.
 
 Więcej informacji (w tym np. bardziej kompletną listę operatorów i obiektów/ruchów) można znaleźć w pliku _motion.txt_ (_:help motion_). Więcej informacji o funkcjach jest w _:help usr_41.txt_.
 
 ==== Akcje na obiektach większych niż jeden znak
-Zazwyczaj służą do usuwania i zmiany tekstu. Więcej - _:help operator_
+Zazwyczaj służą do usuwania i zmiany tekstu. Więcej w _:help operator_
 
 [cols="1,1"]
 |===
@@ -1088,20 +1097,17 @@ Rejestry użytkownika oznaczane są małymi literami. Użycie dużej litery pozw
 |_"{x}_
 |Użyj rejestru 'x' do następnej czynności (takiej jak 'd', 'y' lub 'p')
 
-|_"{x}y{ruch}_
-|skopiuj do rejestru 'x' wynik następnego ruchu; np. _"ay$_ kopiuje do rejestru 'a' tekst do końca linii
-
-|_"{x}{tekst}_
-|pozwala na wycinanie i wklejanie fragmentów tekstów do rejestrów (w miejscu {x} można użyć dowolnej litery
+|_"{x}y{ruch/obiekt}_
+|skopiuj do rejestru _'x'_ wynik następnego ruchu; np. _"ay$_ kopiuje do rejestru _'a'_ tekst do końca linii; w przypadku podania obiektu czynność wykonana jest na tym obiekcie
 
 |_"ayas_
-|skopiowanie całego bieżącego zdania do rejestru 'a'
+|skopiowanie całego bieżącego zdania do rejestru _'a'_
 
 |_"ap_
-|wklejenie zawartości rejestru 'a' w bieżącym miesjcu
+|wklejenie zawartości rejestru _'a'_ w bieżącym miesjcu
 
 |_CTRL-R{x}_
-|w trybie edycji wstawienie zawartości rejestru {x}
+|w trybie edycji wstawienie zawartości rejestru _'x'_
 
 |===
 
