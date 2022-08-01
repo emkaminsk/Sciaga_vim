@@ -1,7 +1,6 @@
 = Manual/ściąga do Vim
 
-Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. Tutorial można uruchomić w powłoce poleceniem:
-`$ vimtutor` 
+Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. Tutorial można uruchomić w powłoce poleceniem: `$ vimtutor` 
 
 #Autor:# emkaminsk@gmail.com.
 
@@ -813,7 +812,7 @@ Dokładny opis w _:help substitute_
 [cols="1,1"]
 |===
 
-|_:[rangę]s[ubstitute]/from/to/[flags]_
+|_:[range]s[ubstitute]/from/to/[flags]_
 |Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'. 
 
 |_:s/b/A_
