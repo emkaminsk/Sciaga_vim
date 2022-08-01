@@ -1,4 +1,5 @@
 .gitignore
 czythelp.vim
 .manual_vim.adoc.swp
+manual_vim.adoc~
 test.adoc
