@@ -1,0 +1,46 @@
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+Istnieja #jeszcze inne# tryby programu opisane krotko ponizej lub w helpie. W kazdym z trybow mozna poruszac sie po tekstcie za pomoca strzalek. Do wychodzenia z roznych trybow do trybu normalnego sluzy klawisz <Esc>.
+Test (zdania pierwszego (i zagnieżdżaonego)). A to jest zdanie drugie. To jest trzecie.
+== Tabela
+[cols="1,1"]
+|===
+|Cell in column 1, row 1 
+|Cell in _column_ 2, row 1 
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+
+|Cell _in column 1_, row 3
+|Cell in column 2, row 3 
+|=== 
+
+== Podstawowe polecenia (glownie) w cmd-line (tryb polecen). Wiecej o trybie polecen w pliku :help cmdline.
+
+[NOTE]
+====
+Porada
+====
+
+Rozpoczyna polecenia w trybie cmd-line (w ten tryb wprowadza tez / i ? - patrz sekcja 'Szukanie' ponizej). Mozna uzyc CTRL-D lub <Tab> aby wyswietlic opcje autouzupelniania. Ponowne nacisniecie <Tab> lub CTRL-P pozwala przewijac pomiedzy opcjami. <Up> i <Down> scrolluja historie komend. Za pomoca symbolu | mozna wykonac wiecej niz dwie komendy na raz, np. ":w | !ls" zapisuje plik i wyswietla zawartosc biezacego katalogu
+
+*w 'plik'*	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+
+_w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+
+_:w 'plik'_	zapis pliku, opcjonalnie mozna podac nazwe nowego pliku
+&&&******-*-*-*-*-*-*-*-*-*-**
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+$$
+
+
+<br>tekst lorem ipsum</br>
+a, _b_, _'c'_
+
+linia 1
