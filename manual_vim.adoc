@@ -39,9 +39,6 @@ W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do w
 
 Sekcja prezentuje różne opcje instalacji Vim w Windows oraz Linux.
 
-[cols="1,1"]
-|===
-
 ==== Linux
 
 [cols="1,1"]
