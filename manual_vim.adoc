@@ -101,9 +101,6 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 
 [cols="1,1"]
 |===
-|_:_
-|rozpoczyna polecenia w trybie poleceń. 
-
 |_:w 'plik'_
 |zapis pliku, opcjonalnie można podać nazwę nowego pliku
 
