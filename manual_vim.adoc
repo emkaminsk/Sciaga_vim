@@ -402,8 +402,8 @@ Więcej pomocy w _:help motion.txt_
 |_(_, _)_
 |przeskok do początku lub końca zdania, w którym stoi kursor
 
-|_{n}|_
-|przeskok do n-tej kolumny w wierszu
+|_{n}\|_
+|przeskok do _n_-tej kolumny w wierszu
 
 |===
 ==== Poruszanie się pomiędzy wierszami w pliku 
@@ -653,7 +653,7 @@ Poniższe przykłady oparto na poleceniu usuwania _d_, ale działają analogiczn
 |wycinanie całego słowa. Tak samo działa _W_, np. _d2W_ - wycinanie dwóch słów. Powoduje wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa). 
 |===
 
-Niewielka różnica między w i W dotyczy znaków niealfanumerycznych w środku słowa. Różnicę można zauważyć ćwicząc _dw_ i _dW_ na słowie 'doesn't'.
+Niewielka różnica między _w_ i _W_ dotyczy znaków niealfanumerycznych w środku słowa. Różnicę można zauważyć ćwicząc _dw_ i _dW_ na słowie 'doesn't'.
 
 [cols="1,1"]
 |===
@@ -765,11 +765,11 @@ Sekcja prezentuje różne polecenia, zarówno w trybie normalnym jak i poleceń 
 
 == Polecenia ex 
 
-Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć _CTRL-D_ lub <Tab> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <Tab> lub _CTRL-P_ pozwala przewijać pomiędzy opcjami. 
+Aby znaleźć pomoc o danym poleceniu wystarczy wpisać _:help {polecenie}_ podając całą jego nazwę lub tylko początek. Można użyć _CTRL-D_ lub _<Tab>_ aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie _<Tab>_ lub _CTRL-P_ pozwala przewijać pomiędzy opcjami. 
 
 Po wpisaniu _:_:
 
-* klawisze <Up> i <Down> scrollują historię komend.
+* klawisze _<Up>_ i _<Down>_ scrollują historię komend.
 * Za pomocą symbolu _\|_ można wykonać więcej niż dwie komendy na raz, np. `:w \| !ls` zapisuje plik i wyświetla zawartość bieżącego katalogu.
 * Kombinacja _CTRL-F_ otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując _:quit_ lub wciskając _CTRL-C_.
 
@@ -857,7 +857,7 @@ Dokładny opis w _:help substitute_
 [cols="1,1"]
 |===
 |_:!python %_
-|wykonanie otwartego obecnie skryptu w python. Symbol % symbolizuje nazwę aktywnego pliku.
+|wykonanie otwartego obecnie skryptu w python. Symbol _%_ symbolizuje nazwę aktywnego pliku.
 
 |_:r 'nazwa'_
 |(read) odczytanie pliku 'nazwa' i wstawienie go w bieżącym pliku w pozycji kursora
@@ -922,7 +922,7 @@ W tym trybie wiele poleceń zyskuje nowe znaczenie.
 |===
 
 |_v_
-|wchodzi w tryb selekcji, po zaznaczeniu tekstu można na nim wykonać polecenie zwykłe lub polecenie ex (np :w nazwa zapisze fragment w pliku nazwa)
+|wchodzi w tryb selekcji, po zaznaczeniu tekstu można na nim wykonać polecenie zwykłe lub polecenie ex (np _:w_ nazwa zapisze fragment w pliku nazwa)
 
 |_V_
 |tryb selekcji, można zaznaczać całe linie
@@ -980,13 +980,13 @@ W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub 
 |autouzupelnianie, ale Vim szuka słów z przodu Inne
 
 |_CTRL-X CTRL-F_
-|autouzupelnienie nazwami plików. Inne opcje autouzupelniania są w helpie usr_24.txt
+|autouzupelnienie nazwami plików. Inne opcje autouzupelniania są w helpie _usr_24.txt_
 
 |_CTRL-X CTRL-L_
 |autouzupelnianie całymi liniami
 
 |_CTRL-A_
-|powtórzenie ostatniej edycji w trybie Insert. Dobry skrót, aby wykonać tę samą modyfikację w wielu miejscach. CTRL-2 (lub CTRL-@) wykonuje to samo i jednocześnie wychodzi z trybu edycji.
+|powtórzenie ostatniej edycji w trybie Insert. Dobry skrót, aby wykonać tę samą modyfikację w wielu miejscach. _CTRL-2_ (lub _CTRL-@_) wykonuje to samo i jednocześnie wychodzi z trybu edycji.
 
 |_CTRL-Y_
 |kopiuje znak powyżej kursora
@@ -998,10 +998,10 @@ W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub 
 |usunięcie całego wiersza od początku do miejsca kursora
 
 |_CTRL-V{znaki}_
-|pozwala na wstawienie znaków specjalnych. Liczba trzycyfrową (od 000 do 255) pozwala na wpisanie znaków ascii. Wpisując 'x' możemy podać liczbę w układzie szesnastkowym (np. CTRL-V xff - bez spacji w środku) a 'o' - ósemkowym. Podając u lub U możemy wstawić znak Unicode.
+|pozwala na wstawienie znaków specjalnych. Liczba trzycyfrową (od 000 do 255) pozwala na wpisanie znaków ascii. Wpisując _'x'_ możemy podać liczbę w układzie szesnastkowym (np. _CTRL-Vxff_ - bez spacji w środku) a _'o'_ - ósemkowym. Podając u lub U możemy wstawić znak Unicode.
 
 |_CTRL-K{znaki}_
-|wstawienie symboli. Lista symboli jest dostępna komenda :digraphs. Np. CTRL-K C* produkuje Ξ(ponownie - bez spacji w środku). Inny przykład to CTRL-K Co ©.
+|wstawienie symboli. Lista symboli jest dostępna komenda :digraphs. Np. _CTRL-KC*_ produkuje Ξ (ponownie - bez spacji w środku). Inny przykład to _CTRL-KCo_ ©.
 
 |_:CTRL-O{polecenie}_
 |pozwala na wykonanie w trybie edycji jednego polecenia z trybu normalnego (bez wychodzenia z trybu edycji).
@@ -1010,9 +1010,9 @@ W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub 
 
 == Inne polecenia w różnych trybach
 
-=== Polecenia rozpoczynające się od 'g'
+=== Wybrane polecenia rozpoczynające się od _'g'_
 
-Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szczegółową lista jest w pliku index.txt
+Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po _g_. Szczegółową lista jest w pliku _index.txt_.
 
 [cols="1,1"]
 |===
@@ -1030,7 +1030,7 @@ Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po g. Szcze
 |przeskoczenie kursorem na środek bieżącej linii
 
 |_{N}{"x}gp_
-|(put) wstawienie N razy tekstu że schowka (lub rejestru {x}, jeśli podany)
+|(put) wstawienie N razy tekstu że schowka (lub rejestru _{x}_, jeśli podany)
 
 |===
 
@@ -1105,7 +1105,7 @@ Rejestry użytkownika oznaczane są małymi literami. Użycie dużej litery pozw
 |===
 
 |_"{x}_
-|Użyj rejestru 'x' do następnej czynności (takiej jak 'd', 'y' lub 'p')
+|Użyj rejestru _'x'_ do następnej czynności (takiej jak _'d'_, _'y'_ lub _'p'_)
 
 |_"{x}y{ruch/obiekt}_
 |skopiuj do rejestru _'x'_ wynik następnego ruchu; np. _"ay$_ kopiuje do rejestru _'a'_ tekst do końca linii; w przypadku podania obiektu czynność wykonana jest na tym obiekcie
@@ -1139,7 +1139,7 @@ Umożliwia zapisanie sekwencji poleceń i wykonanie ich wielokrotnie, przez np. 
 |===
 
 |_q{a}{sekw}q_
-|zapisanie sekwencji klawiszy 'sekw' w rejestrze 'a'
+|zapisanie sekwencji klawiszy _'sekw'_ w rejestrze 'a'
 
 |_@{a}_
 |wykonanie sekwencji klawiszy zapisanej w rejestrze. Sekwencja będzie wykonana w trybie poleceń
@@ -1151,7 +1151,7 @@ Umożliwia zapisanie sekwencji poleceń i wykonanie ich wielokrotnie, przez np. 
 
 === Skróty 
 
-Więcej w pliku *help usr_24.txt*
+Więcej w pliku _help usr_24.txt_
 
 [cols="1,1"]
 |===
@@ -1173,7 +1173,7 @@ Więcej w pliku *help usr_24.txt*
 |===
 
 |_:[v]split 'plik'_
-|podzielenie bieżącego okna na dwa; podając opcjonalna nazwę pliku można otworzyć inny plik w drugim oknie; [v] pozwala na podział pionowy
+|podzielenie bieżącego okna na dwa; podając opcjonalna nazwę pliku można otworzyć inny plik w drugim oknie; _[v]_ pozwala na podział pionowy
 
 |_:[v]new_
 |otwarcie nowego pustego okna
@@ -1185,7 +1185,7 @@ Więcej w pliku *help usr_24.txt*
 |przechodzenie między oknami (lewo, dół, góra, prawo)
 
 |_CTRL-W J_
-|przemieszczenie obecnego okna w dół (tak samo pozostałe klawisze - H, K i L)
+|przemieszczenie obecnego okna w dół (tak samo pozostałe klawisze - _H_, _K_ i _L_)
 
 |_{x}CTRL-W +/-_
 |zwiększenie/zmniejszenie wysokości bieżącego okna. Parametr {x} określa o ile linii następuje zmiana
@@ -1200,7 +1200,7 @@ Więcej w pliku *help usr_24.txt*
 |zamknięcie wszystkich okien z wyjątkiem bieżącego
 
 |_:qall_
-|całkowite wyjście z Vim; analogicznie :wqall
+|całkowite wyjście z Vim; analogicznie _:wqall_
 
 |===
 
@@ -1210,16 +1210,16 @@ Więcej w pliku *help usr_24.txt*
 |===
 
 |_:open 'plik'_
-|otwarcie do nowego bufora pliku o nazwie 'plik'
+|otwarcie do nowego bufora pliku o nazwie _'plik'_
 
 |_:buffers_
-|wyświetlenie listy otwartych plików (tak samo działa :ls)
+|wyświetlenie listy otwartych plików (tak samo działa _:ls_)
 
 |_:buffer {x}_
-|przełączenie się do pliku o numerze {x}; działa też skrót 'b' lub 'bu'
+|przełączenie się do pliku o numerze _{x}_; działa też skrót _'b'_ lub _'bu'_
 
 |_:bdel {x}_
-|usunięcie z pamięci bufora o numerze {x}
+|usunięcie z pamięci bufora o numerze _{x}_
 
 |_:bn_
 |(buffer next) edycja następnego otwartego pliku (w pętli)
