@@ -36,7 +36,9 @@ W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do w
 
 == Instalacja i wersje Vim 
 
-Sekcja prezentuje różne opcje instalacji Vim w Windows oraz Linux.
+Oficjalne repozytorium kodu Vim znajduje się https://github.com/vim/vim[na GitHub.]
+Na stronie repozytorium można znaleźć więcej opcji pobrania i instalacji Vim na różnych systemach.
+Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 
 ==== Linux
 
@@ -225,7 +227,7 @@ Definiują ruch do wykonania dla powyższych poleceń (np. _d_ czy _y_)
 |_$_
 |Do końca linii
 
-|_^, _0_
+|_^_, _0_
 |Do początku linii
 
 |_+_, _-_
@@ -803,6 +805,18 @@ Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
 
 |_:p5_
 |wypisanie bieżącego i czterech kolejnych wierszy na dole ekranu
+
+|_:w_
+|zapisanie zmian w bieżącym buforze do bieżącego pliku
+
+|_:10,15w nowy_plik_
+|zapisanie linijek od 10 do 15 w nowym pliku
+
+|_:10,15w >> plik_
+|doklejenie linijek od 10 do 15 do pliku _plik_
+
+|_:r plik_
+|odczytanie zawartosci pliku _plik_ i wstawienie go począwszy od linii pod kursorem
 
 |===
 
