@@ -130,7 +130,7 @@ w powłoce.
 |otwarcie pomocy
 
 |_:help 'word'_
-|pomoc z danym słowem lub poleceniem; <Tab> lub _CTRL-D_ wyświetla możliwe opcje
+|pomoc z danym słowem lub poleceniem; _<Tab>_ lub _CTRL-D_ wyświetla możliwe opcje
 
 |_:help index_
 |*spis wszystkich poleceń* we wszystkich trybach wraz z tagami, krótkim opisem i odnośnikiem do pełnej definicji
