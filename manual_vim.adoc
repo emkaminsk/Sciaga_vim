@@ -199,10 +199,10 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej w _:help operator_
 [cols="1,1"]
 |===
 |_d_
-|Delete - usuwanie i pozostanie w trybie normalnym
+|Delete - usuwanie i pozostanie w trybie normalnym. *Ważne* - usunięty tekst pozostaje w schowku do czasu kolejnej operacji usunięcia/wycięcia/skopiowania tekstu
 
 |_c_
-|Change - zmiana i przejście do trybu edycji
+|Change - zmiana tekstu, czyli usunięcie go i przejście do trybu edycji
 
 |_y_
 |Yank - kopiowanie
