@@ -39,7 +39,7 @@ Istnieje jeszcze jeden rzadko wspominany tryb pracy programu:
 Oficjalne repozytorium kodu Vim znajduje się https://github.com/vim/vim[na GitHub.]
 Na stronie repozytorium można znaleźć więcej opcji pobrania i instalacji Vim na różnych systemach.
 
-Vim jest równiesz dostępny jako plugin do innych popularnych IDE, np. VSCode, IntelliJ czy Pycharm.
+Vim jest również dostępny jako plugin do innych popularnych IDE, np. VSCode, IntelliJ czy Pycharm.
 
 Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 
