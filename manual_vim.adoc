@@ -28,16 +28,19 @@ Dlatego należy rozróżnić kilka trybów działania Vim:
 * *zastępowania* - tryb ten jest bardzo podobny do trybu edycji, ale każdy wpisany znak zastępuje znak na pozycji kursora.
 * *ex*, który jest w istocie rozszerzonym trybem poleceń. Jest to tryb służący do pisania skryptów z poleceń stosowanych w trybie poleceń składających się z wielu linii.
 
+W większości z tych trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę _:vi_.
+
 Istnieje jeszcze jeden rzadko wspominany tryb pracy programu:
 
 * *zawieszenia* w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej). Istnieje możliwość zdefioniowania mapowań klawiszy, które będą dedykowane do tego trybu. Więcej poniżej w sekcji 'Mapowania'.
-
-W każdym z trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz _Esc_, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę _:vi_.
 
 == Instalacja i wersje Vim 
 
 Oficjalne repozytorium kodu Vim znajduje się https://github.com/vim/vim[na GitHub.]
 Na stronie repozytorium można znaleźć więcej opcji pobrania i instalacji Vim na różnych systemach.
+
+Vim jest również dostępny jako plugin do innych popularnych IDE, np. VSCode, IntelliJ czy Pycharm.
+
 Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 
 ==== Linux
@@ -69,7 +72,7 @@ Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 |podstawowy sposób uruchamiania Vim - otwarcie do edycji pliku o podanej nazwie
 
 |`$ evim {nazwa_pliku}`
-|uruchamia vim w wersji easy (Easy VIM). W tej wersji Vim bardziej przypomina Notatnik w Windows z menu, ikonami i wyłączonymi trybami innymi, niż tryb edycji
+|uruchamia vim w wersji easy (Easy VIM). W tej wersji Vim bardziej przypomina Notatnik w Windows z menu, ikonami i wyłączonymi trybami innymi niż tryb edycji
 
 |`$ gvim {nazwa_pliku}`
 |uruchamia vim w wersji GUI. Jest to pełny Vim z wszystkimi trybami i funkcjonalnościami, ale dodatkowo zaopatrzony w menu, skróty poleceń pod ikonami paska narzędzi
@@ -98,9 +101,6 @@ Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięci
 
 [cols="1,1"]
 |===
-|_:_
-|rozpoczyna polecenia w trybie poleceń. 
-
 |_:w 'plik'_
 |zapis pliku, opcjonalnie można podać nazwę nowego pliku
 
@@ -130,7 +130,7 @@ w powłoce.
 |otwarcie pomocy
 
 |_:help 'word'_
-|pomoc z danym słowem lub poleceniem; <Tab> lub _CTRL-D_ wyświetla możliwe opcje
+|pomoc z danym słowem lub poleceniem; _<Tab>_ lub _CTRL-D_ wyświetla możliwe opcje
 
 |_:help index_
 |*spis wszystkich poleceń* we wszystkich trybach wraz z tagami, krótkim opisem i odnośnikiem do pełnej definicji
@@ -199,10 +199,10 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej w _:help operator_
 [cols="1,1"]
 |===
 |_d_
-|Delete - usuwanie i pozostanie w trybie normalnym
+|Delete - usuwanie i pozostanie w trybie normalnym. *Ważne* - usunięty tekst pozostaje w schowku do czasu kolejnej operacji usunięcia/wycięcia/skopiowania tekstu
 
 |_c_
-|Change - zmiana i przejście do trybu edycji
+|Change - zmiana tekstu, czyli usunięcie go i przejście do trybu edycji
 
 |_y_
 |Yank - kopiowanie
