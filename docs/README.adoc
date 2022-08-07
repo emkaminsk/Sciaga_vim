@@ -43,7 +43,7 @@ Vim jest również dostępny jako plugin do innych popularnych IDE, np. VSCode, 
 
 Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 
-==== Linux
+=== Linux
 
 [cols="1,1"]
 |===
@@ -52,7 +52,7 @@ Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 
 |===
 
-==== Windows
+=== Windows
 
 [cols="1,1"]
 |===
@@ -374,7 +374,7 @@ Mimo, że poniższe polecenia definiują czynności, nie przyjmują rzeczownika/
 
 Więcej pomocy w _:help motion.txt_
 
-===== Poruszanie się w ramach wiersza lub pojedynczych znaków
+==== Poruszanie się w ramach wiersza lub pojedynczych znaków
 
 [cols="1,1"]
 |===
@@ -1247,12 +1247,11 @@ Więcej w pliku _help usr_24.txt_
 
 === Zakładki (tabs)
 
+Pomoc na temat zakładek - _:help tabpage.txt_ 
+
 [cols="1,1"]
+
 |===
-
-_
-|:help tabpage.txt pomoc na temat zakładek
-
 |_:tabe_
 |(edit) tworzenie nowej zakładki (inaczej tabnew)
 
