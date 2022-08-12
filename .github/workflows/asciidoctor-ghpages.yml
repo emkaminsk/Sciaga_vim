@@ -24,10 +24,10 @@ jobs:
     - name: asciidoctor-ghpages
       uses: manoelcampos/asciidoctor-ghpages-action@v2.2.4
       with:
-        pdf_build: false
+        pdf_build: true
         # asciidoctor_params: --attribute=nofooter
         # adoc_file_ext: .ascii # default is .adoc
-        source_dir: docs/ # default is .
+        # source_dir: docs/ # default is .
         # slides_build: true
         # pre_build:
         # post_build:

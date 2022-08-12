@@ -1,3 +1,6 @@
+:layout: page
+:title: Main page / Strona domowa manuala VIM
+
 # Sciaga_vim
 Short manual in polish for VIM editor
 
