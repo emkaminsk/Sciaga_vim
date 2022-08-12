@@ -1,6 +1,7 @@
-:layout: page
+:icons: font
+:numbered:
 :title: Main page / Strona domowa manuala VIM
-:permalink: /
+ifdef::env-github[:outfilesuffix: .adoc]
 
 # Sciaga_vim
 Short manual in polish for VIM editor
