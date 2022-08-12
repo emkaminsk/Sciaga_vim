@@ -6,4 +6,4 @@ ifdef::env-github[:outfilesuffix: .adoc]
 # Sciaga_vim
 Short manual in polish for VIM editor
 
-Manual jest dostępny https://emkaminsk.github.io/Sciaga_vim/manual_vim.html [na dedykowanej stronie].
+Manual jest dostępny https://emkaminsk.github.io/Sciaga_vim/manual_vim.html[na dedykowanej stronie].
