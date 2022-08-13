@@ -30,5 +30,7 @@ jobs:
         # adoc_file_ext: .ascii # default is .adoc
         # source_dir: docs/ # default is .
         slides_build: true
+        slides_main_adoc_file: manual_vim
+        slides_skip_asciidoctor_build: false
         # pre_build:
         # post_build:
