@@ -3,8 +3,10 @@
 :title: Main page / Strona domowa manuala VIM
 ifdef::env-github[:outfilesuffix: .adoc]
 
-# Sciaga_vim
-Short manual in polish for VIM editor
+# README
 
-Manual jest dostępny https://emkaminsk.github.io/Sciaga_vim/manual_vim.html[na dedykowanej stronie].
-Do pobrania dostępny jest https://emkaminsk.github.io/Sciaga_vim/ebook.pdf[ebook z manualem w formacie pdf].
+Short manual in polish for VIM editor.
+
+- Manual jest dostępny https://emkaminsk.github.io/Sciaga_vim/manual_vim.html[na dedykowanej stronie].
+- Do pobrania dostępny jest https://emkaminsk.github.io/Sciaga_vim/ebook.pdf[ebook z manualem w formacie pdf].
+- Stronę można przeglądać również w https://emkaminsk.github.io/Sciaga_vim/slides.html[formie slajdów].
