@@ -25,9 +25,10 @@ jobs:
       uses: manoelcampos/asciidoctor-ghpages-action@v2.2.4
       with:
         pdf_build: true
+        ebook_main_adoc_file: manual_vim.adoc
         # asciidoctor_params: --attribute=nofooter
         # adoc_file_ext: .ascii # default is .adoc
         # source_dir: docs/ # default is .
-        # slides_build: true
+        slides_build: true
         # pre_build:
         # post_build:
