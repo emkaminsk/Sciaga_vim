@@ -9,6 +9,9 @@ Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym
 #Autor:# emkaminsk@gmail.com.
 
 '''
+:toc: preamble 
+:toc-title: Spis treści
+:toclevels: 3
 
 == Wstęp
 
@@ -826,7 +829,8 @@ Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
 
 === Zastępowanie
 
-Dokładny opis w _:help substitute_
+Dokładny opis w _:help substitute_. Opcje modyfikujące proces zamiany takie jak _g_ czy _c_ opisane są w _:help s_flags_
+
 [cols="1,1"]
 |===
 
@@ -843,7 +847,7 @@ Dokładny opis w _:help substitute_
 |zamiana w całym pliku
 
 |_:%s/a/A/gc_
-|zamiana w całym pliku z potwierdzeniem każdej zamiany
+|zamiana w całym pliku z potwierdzeniem każdej zamiany. Wciskając _y_ lub _n_ można potwierdzić lub odrzucić daną zmianę, _a_ potwierdza wszystkie późniejsze zmiany, _q_ i _l_ kończy procees zamian.
 
 |_:5,10s/a/A/g_
 |zamiana w wierszach od 5 do 10
