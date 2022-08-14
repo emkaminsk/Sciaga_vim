@@ -1,6 +1,9 @@
 :layout: page
 :title: Manual vim
 :permalink: /manual/
+:toc:
+:toc-title: Spis treści
+:toclevels: 3
 
 = Manual/ściąga do Vim
 
@@ -9,9 +12,6 @@ Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym
 #Autor:# emkaminsk@gmail.com.
 
 '''
-:toc: preamble 
-:toc-title: Spis treści
-:toclevels: 3
 
 == Wstęp
 
