@@ -759,14 +759,11 @@ Sekcja prezentuje różne polecenia, zarówno w trybie normalnym jak i poleceń 
 [cols="1,1"]
 |===
 
-|_{polecenie}!_
-|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. _:q!_ - wyjście z programu z porzuceniem zmian
-
-|_!command_
-|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu _!5G_ polecenie to jest konwertowane do trybu cmd-line: _:.,/+3!_). Inny przykład wykonania polecenia z powłoki: _:!ls -al_
-
 |_!!date_
 |wstawia datę w bieżącym wierszu
+
+|_!command_
+|wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. _!5Gsort_ sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu _!5G_ polecenie to jest konwertowane do trybu cmd-line: _:.,/+3!_). 
 
 |===
 
@@ -825,6 +822,11 @@ Listę wszystkich poleceń ex można znaleźć w _:help ex-cmd-index_.
 |_:r plik_
 |odczytanie zawartosci pliku _plik_ i wstawienie go począwszy od linii pod kursorem
 
+|_:{polecenie}!_
+|modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. _:q!_ - wyjście z programu z porzuceniem zmian
+
+|_:!{polecenie}_
+|wykonuje polecenie z powłoki. Przykład: _:!ls -al_
 |===
 
 === Zastępowanie
