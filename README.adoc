@@ -3,7 +3,7 @@
 :title: Main page / Strona domowa manuala VIM
 ifdef::env-github[:outfilesuffix: .adoc]
 
-# Krótki podręcznik do edytora VIM / Short manual in polish for VIM editor.
+# Krótki podręcznik do edytora VIM / Short manual in polish for VIM editor
 
 image::Vimlogo_s.png[VIM logo]
 
