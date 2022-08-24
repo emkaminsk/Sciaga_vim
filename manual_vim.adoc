@@ -7,7 +7,7 @@
 
 = Manual/ściąga do Vim
 
-Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. Tutorial można uruchomić w powłoce poleceniem: `$ vimtutor` 
+Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. Tutorial można uruchomić w powłoce poleceniem: `$ vimtutor`. A dla niecierpliwych chcących jak najszybciej ten edytor opuścić - wystarczy wpisać _ZZ_.
 
 #Autor:# emkaminsk@gmail.com.
 
