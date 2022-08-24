@@ -11,7 +11,7 @@ Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym
 
 Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. 
 
-Wbudowany w VIM tutorial, który prowadzi za rękę przez podstawy VIM można uruchomić w powłoce poleceniem: `$ vimtutor`. 
+Wbudowany w VIM tutorial, który prowadzi za rękę przez podstawy VIM można uruchomić w powłoce poleceniem: `$ vimtutor`, który jest też https://github.com/vim/vim/blob/master/runtime/tutor/tutor.pl[dostępny w języku polskim].
 
 A dla niecierpliwych chcących jak najszybciej edytor VIM  opuścić - wystarczy wpisać _ZZ_ lub _:x_ i zatwierdzić przez <Enter>.
 
