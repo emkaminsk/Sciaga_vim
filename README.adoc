@@ -3,10 +3,20 @@
 :title: Main page / Strona domowa manuala VIM
 ifdef::env-github[:outfilesuffix: .adoc]
 
-# README
+# Krótki podręcznik do edytora VIM / Short manual in polish for VIM editor.
 
-Short manual in polish for VIM editor.
+image::Vimlogo_s.png[VIM logo]
 
-- Manual jest dostępny https://emkaminsk.github.io/Sciaga_vim/manual_vim.html[na dedykowanej stronie].
-- Do pobrania dostępny jest https://emkaminsk.github.io/Sciaga_vim/ebook.pdf[ebook z manualem w formacie pdf].
+Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". 
+
+Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. 
+
+Wbudowany w VIM tutorial, który prowadzi za rękę przez podstawy VIM można uruchomić w powłoce poleceniem: `$ vimtutor`. 
+
+A dla niecierpliwych chcących jak najszybciej edytor VIM  opuścić - wystarczy wpisać _ZZ_ lub _:x_ i zatwierdzić przez <Enter>.
+
+- Pełna treść manuala jest dostępna https://emkaminsk.github.io/Sciaga_vim/manual_vim.html[na dedykowanej stronie].
+- Można pobrać https://emkaminsk.github.io/Sciaga_vim/ebook.pdf[ebook z manualem w formacie pdf].
 - Repozytorium manuala https://github.com/emkaminsk/Sciaga_vim[na GitHub]. 
+
+Autor: emkaminsk@gmail.com.
