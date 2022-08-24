@@ -85,7 +85,7 @@ Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.
 |uruchamia vim w wersji GUI. Jest to pełny Vim z wszystkimi trybami i funkcjonalnościami, ale dodatkowo zaopatrzony w menu, skróty poleceń pod ikonami paska narzędzi
 
 |`$ view {nazwa_pliku}`
-|otwiera plik tylko do edycji
+|otwiera plik tylko do odczytu
 
 |`$ ex {nazwa_pliku}`
 |uruchamia Vim w trybie ex (bez wizualizacji treści pliku). Można przejść do Vim wykonując komendę _vi_.
