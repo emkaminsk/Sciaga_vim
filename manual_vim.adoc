@@ -212,7 +212,7 @@ Zazwyczaj służą do usuwania i zmiany tekstu. Więcej w _:help operator_
 [cols="1,1"]
 |===
 |_d_
-|Delete - usuwanie i pozostanie w trybie normalnym. *Ważne* - usunięty tekst pozostaje w schowku do czasu kolejnej operacji usunięcia/wycięcia/skopiowania tekstu
+|Delete - wycięcie tekstu i pozostanie w trybie normalnym. *Ważne* - usunięty tekst pozostaje w schowku do czasu kolejnej operacji usunięcia/wycięcia/skopiowania tekstu
 
 |_c_
 |Change - zmiana tekstu, czyli usunięcie go i przejście do trybu edycji
@@ -264,19 +264,19 @@ Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruc
 
 Przykłady: 
 
-* _d0_ - skasowanie całego tekstu od początku linii do kursora
+* _d0_ - wycięcie całego tekstu od początku linii do kursora
 * _y$_ - skopiowanie tekstu od bieżącego miejsca kursora do końca linii
 * _y2j_ - kopiuje do schowka bieżącą linię oraz dwie poniżej
 * _ctw_ - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'
-* _dG_ - usuwa znaki od bieżącego wiersza do końca pliku
-* _d20G_ - usuwa od bieżącego wiersza do wiersza 20
+* _dG_ - wycina znaki od bieżącego wiersza do końca pliku
+* _d20G_ - wycina od bieżącego wiersza do wiersza 20
 
 ==== Obiekty tekstowe 
 
 Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:
 
 * _i_ - czy obiekt jest _exclusive_, tj. bez spacji przed i po,
-* _a_ - _inclusive" - włącznie ze spacjami przed i po.
+* _a_ - _inclusive_ - włącznie ze spacjami przed i po.
 Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.
 * brak pierwszej litery oznacza, że działanie zostanie wykonane od miejsca kursora do końca obiektu.
 
