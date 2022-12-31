@@ -1,9 +1,12 @@
 :icons: font
+:keywords: VIM, vim, manual, polsku, ściąga, sciaga
 :numbered:
-:title: Main page / Strona domowa manuala VIM
+:title: Strona domowa manuala VIM
 ifdef::env-github[:outfilesuffix: .adoc]
 
-# Krótki podręcznik do edytora VIM / Short manual in polish for VIM editor
+= Krótki podręcznik do edytora VIM / Short manual in polish for VIM editor
+:description: Krótki podręcznik do edytora VIM, manual w języku polskim, ściąga do VIM
+:favicon: icon.gif
 
 image::Vimlogo_s.png[VIM logo]
 
@@ -14,6 +17,8 @@ Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:hel
 Wbudowany w VIM tutorial, który prowadzi za rękę przez podstawy VIM można uruchomić w powłoce poleceniem: `$ vimtutor`, który jest też https://github.com/vim/vim/blob/master/runtime/tutor/tutor.pl[dostępny w języku polskim]. Można go uruchomić poleceniem `$ vimtutor pl` i przećwiczyć podstawowe polecenia w programie.
 
 A dla niecierpliwych chcących jak najszybciej edytor VIM  opuścić - wystarczy wpisać _ZZ_ lub _:x_ i zatwierdzić przez <Enter>.
+
+Co zawiera ten dokument?
 
 - Pełna treść jest dostępna https://emkaminsk.github.io/Sciaga_vim/manual_vim.html[na stronie manuala].
 - Można pobrać https://emkaminsk.github.io/Sciaga_vim/ebook.pdf[ebook z manualem w formacie pdf].

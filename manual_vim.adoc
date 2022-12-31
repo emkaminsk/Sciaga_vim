@@ -1,4 +1,7 @@
 :layout: page
+:favicon: icon.gif
+:keywords: VIM, vim, manual, polsku, ściąga, sciaga
+:description: Krótki podręcznik do edytora VIM, manual w języku polskim, ściąga do VIM
 :title: Manual vim
 :permalink: /manual/
 :toc:
