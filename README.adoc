@@ -10,6 +10,8 @@ ifdef::env-github[:outfilesuffix: .adoc]
 
 image::Vimlogo_s.png[VIM logo]
 
+https://emkaminsk.github.io/Sciaga_vim/[Manual VIM - strona główna]
+
 Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM". 
 
 Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia _:help usr_toc_. 
