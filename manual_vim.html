@@ -1,0 +1,2688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="description" content="Krótki podręcznik do edytora VIM, manual w języku polskim, ściąga do VIM">
+<meta name="keywords" content="VIM, vim, manual, polsku, ściąga, sciaga">
+<link rel="icon" type="image/gif" href="icon.gif">
+<title>Manual vim</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Manual/ściąga do Vim</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Spis treści</div>
+<ul class="sectlevel1">
+<li><a href="#_wstęp">Wstęp</a></li>
+<li><a href="#_instalacja_i_wersje_vim">Instalacja i wersje Vim</a>
+<ul class="sectlevel2">
+<li><a href="#_linux">Linux</a></li>
+<li><a href="#_windows">Windows</a></li>
+</ul>
+</li>
+<li><a href="#_podstawowe_polecenia">Podstawowe polecenia</a>
+<ul class="sectlevel2">
+<li><a href="#_uruchamianie_vim">Uruchamianie Vim</a></li>
+<li><a href="#_pierwsze_kroki_w_vim">Pierwsze kroki w Vim</a></li>
+<li><a href="#_opcje">Opcje</a></li>
+<li><a href="#_język_vim">Język VIM</a>
+<ul class="sectlevel3">
+<li><a href="#_akcje_na_obiektach_większych_niż_jeden_znak">Akcje na obiektach większych niż jeden znak</a></li>
+<li><a href="#_ruchy_motion">Ruchy (motion)</a></li>
+<li><a href="#_obiekty_tekstowe">Obiekty tekstowe</a></li>
+<li><a href="#_tryb_wizualny">Tryb wizualny</a></li>
+<li><a href="#_składnia_polecenia_złożonego">Składnia polecenia złożonego</a></li>
+</ul>
+</li>
+<li><a href="#_działania_na_pojedynczych_znakach">Działania na pojedynczych znakach</a></li>
+</ul>
+</li>
+<li><a href="#_polecenia_w_trybie_normalnym">Polecenia w trybie normalnym</a>
+<ul class="sectlevel2">
+<li><a href="#_poruszanie_kursorem">Poruszanie kursorem</a>
+<ul class="sectlevel3">
+<li><a href="#_poruszanie_się_w_ramach_wiersza_lub_pojedynczych_znaków">Poruszanie się w ramach wiersza lub pojedynczych znaków</a></li>
+<li><a href="#_poruszanie_się_pomiędzy_wierszami_w_pliku">Poruszanie się pomiędzy wierszami w pliku</a></li>
+<li><a href="#_przeskoki">Przeskoki</a></li>
+<li><a href="#_przenoszenie_kursora_na_wyświetlanej_stronie">Przenoszenie kursora na wyświetlanej stronie</a></li>
+<li><a href="#_przeskok_o_stronę_lub_pół_strony">Przeskok o stronę lub pół strony</a></li>
+<li><a href="#_zmiana_widoku">Zmiana widoku</a></li>
+</ul>
+</li>
+<li><a href="#_zmiany_tekstu">Zmiany tekstu</a>
+<ul class="sectlevel3">
+<li><a href="#_wchodzenie_w_tryb_edycji">Wchodzenie w tryb edycji</a></li>
+<li><a href="#_usuwanie_i_wycinanie">Usuwanie i wycinanie</a></li>
+<li><a href="#_kopiowanie">Kopiowanie</a></li>
+<li><a href="#_wklejanie">Wklejanie</a></li>
+<li><a href="#_korekta">Korekta</a></li>
+</ul>
+</li>
+<li><a href="#_modyfikatory_poleceń_złożonych">Modyfikatory poleceń złożonych</a></li>
+<li><a href="#_cofanie_zmian">Cofanie zmian</a></li>
+<li><a href="#_szukanie">Szukanie</a></li>
+<li><a href="#_modyfikatory_poleceń_w_trybie_normalnym">Modyfikatory poleceń w trybie normalnym</a></li>
+</ul>
+</li>
+<li><a href="#_polecenia_ex">Polecenia ex</a>
+<ul class="sectlevel2">
+<li><a href="#_podstawowe_polecenia_2">Podstawowe polecenia</a></li>
+<li><a href="#_zastępowanie">Zastępowanie</a></li>
+<li><a href="#_różne_polecenia_w_ex">Różne polecenia w ex</a></li>
+<li><a href="#_wielokrotne_wykonywanie_poleceń">Wielokrotne wykonywanie poleceń</a></li>
+</ul>
+</li>
+<li><a href="#_wizualna_selekcja">Wizualna selekcja</a>
+<ul class="sectlevel2">
+<li><a href="#_wejście_w_tryb_wizualnej_selekcji">Wejście w tryb wizualnej selekcji</a></li>
+<li><a href="#_edycja_w_trybie_wizualnej_selekcji">Edycja w trybie wizualnej selekcji</a></li>
+</ul>
+</li>
+<li><a href="#_polecenia_w_trybie_edycji_tryb_insert">Polecenia w trybie edycji (tryb Insert)</a></li>
+<li><a href="#_inne_polecenia_w_różnych_trybach">Inne polecenia w różnych trybach</a>
+<ul class="sectlevel2">
+<li><a href="#_wybrane_polecenia_rozpoczynające_się_od_g">Wybrane polecenia rozpoczynające się od <em>'g'</em></a></li>
+<li><a href="#_formatowanie_tekstu">Formatowanie tekstu</a></li>
+<li><a href="#_znaczniki_ang_marks">Znaczniki (ang. Marks)</a></li>
+<li><a href="#_rejestry">Rejestry</a>
+<ul class="sectlevel3">
+<li><a href="#_rejestry_użytkownika">Rejestry użytkownika</a></li>
+<li><a href="#_rejestry_wbudowane">Rejestry wbudowane</a></li>
+</ul>
+</li>
+<li><a href="#_makra">Makra</a></li>
+<li><a href="#_skróty">Skróty</a></li>
+<li><a href="#_okna">Okna</a></li>
+<li><a href="#_bufory_praca_z_plikami">Bufory. Praca z plikami</a></li>
+<li><a href="#_sesje">Sesje</a></li>
+<li><a href="#_zakładki_tabs">Zakładki (tabs)</a></li>
+<li><a href="#_mapowania_klawiszy">Mapowania klawiszy</a></li>
+<li><a href="#_przeglądarka_plików">Przeglądarka plików</a></li>
+</ul>
+</li>
+<li><a href="#_przydatne_pluginy">Przydatne pluginy</a>
+<ul class="sectlevel2">
+<li><a href="#_surround">Surround</a></li>
+</ul>
+</li>
+<li><a href="#_inne_zasoby_o_vim">Inne zasoby o Vim</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dokument zawiera skrót poleceń do Vim i oczywiście powstał w całości w tym edytorze :). Opisane są podstawowe polecenia w trybie poleceń, normalnym, wizualnym i inne. Jest to ekstrakt wiedzy z plików pomocy uzupełniony o wskazówki dotyczące "języka VIM".</p>
+</div>
+<div class="paragraph">
+<p>Spis treści do pełnej pomocy dostępny jest po wykonaniu w Vim polecenia <em>:help usr_toc</em>.</p>
+</div>
+<div class="paragraph">
+<p>Wbudowany w VIM tutorial, który prowadzi za rękę przez podstawy VIM można uruchomić w powłoce poleceniem: <code>$ vimtutor</code>, który jest też <a href="https://github.com/vim/vim/blob/master/runtime/tutor/tutor.pl">dostępny w języku polskim</a>. Można go uruchomić poleceniem <code>$ vimtutor pl</code> i przećwiczyć podstawowe polecenia w programie.</p>
+</div>
+<div class="paragraph">
+<p>A dla niecierpliwych chcących jak najszybciej edytor VIM  opuścić - wystarczy wpisać <em>ZZ</em> lub <em>:x</em> i zatwierdzić przez &lt;Enter&gt;.</p>
+</div>
+<div class="paragraph">
+<p>Autor: <a href="mailto:emkaminsk@gmail.com">emkaminsk@gmail.com</a>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wstęp">Wstęp</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vi powstał jako 'visual interface', wizualny edytor, nakładka na inny edytor: <em>ex</em>. <em>Ex</em> jest edytorem tekstu, który pierwotnie powstał dla obsługi teleksie, usłudze do przesyłania tekstu popularnej w latach 60-tych i 70-tych. Stąd tryb <em>ex</em> w vi i stąd pochodzą polecenia <em>':'</em>, <em>'$'</em>, <em>'^',</em> <em>'%'</em>, oznaczanie zakresu przez <em>'a,b'</em>, <em>'g'</em>, <em>'s'</em>, <em>'m'</em> i inne.</p>
+</div>
+<div class="paragraph">
+<p>Vim (VI iMproved) działa inaczej niż inne edytory tekstu. Podstawowe różnice to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ogromna konfigurowalność programu. Dostępne polecenia można łączyć w rozliczone kombinacje oraz tworzyć nowe polecenia dla przyspieszenia swojej pracy z tekstem,</p>
+</li>
+<li>
+<p>Vim dostarcza własny język poleceń, który pozwala pisać funkcje, skrypty i pluginy</p>
+</li>
+<li>
+<p>z poziomu Vim można wywoływać programy m. in. w Python do obróbki tekstu</p>
+</li>
+<li>
+<p>koncentracja na pracy z klawiaturą przy minimalizacji roli myszki do wybierania poleceń,</p>
+</li>
+<li>
+<p>rozróżnienie pomiędzy trybami pracy edytora, w których możliwe jest wydawanie różnych poleceń. Co więcej, sama edycja tekstu jest możliwa jedynie w trybie edycji, do którego można wejść wydając określone polecenia. To może stanowić barierę wejścia dla początkującego.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dlatego należy rozróżnić kilka trybów działania Vim:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>normalny</strong> - polecenia składające się z jednego lub kilku znaków lub kombinacji klawiszy,</p>
+</li>
+<li>
+<p><strong>edycji</strong> - tryb w którym można edytować tekst. Można go rozpoznać po tym, że w dolnej linii ekranu wyświetla się tekst --- INSERT ---,</p>
+</li>
+<li>
+<p><strong>poleceń</strong>, tzw cmd-line, w którym wprowadza i wykonuje się tzw. polecenia ex. Są to polecenia rozpoczynające się od <em>:</em>, <em>/</em>, <em>?</em> lub <em>!</em>,</p>
+</li>
+<li>
+<p><strong>wizualnej selekcji</strong> (ang. visual mode),</p>
+</li>
+<li>
+<p><strong>wizualny</strong> lub wizualnego zastępowania, w którym wpisywany tekst zastępuje tekst podświetlany (ang. select mode),</p>
+</li>
+<li>
+<p><strong>zastępowania</strong> - tryb ten jest bardzo podobny do trybu edycji, ale każdy wpisany znak zastępuje znak na pozycji kursora.</p>
+</li>
+<li>
+<p><strong>ex</strong>, który jest w istocie rozszerzonym trybem poleceń. Jest to tryb służący do pisania skryptów z poleceń stosowanych w trybie poleceń składających się z wielu linii.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>W większości z tych trybów można poruszać się po tekstcie za pomocą strzałek. Do wychodzenia z różnych trybów do trybu normalnego służy klawisz <em>Esc</em>, wyjątkiem jest tu tryb ex, do wyjścia z niego należy wykonać komendę <em>:vi</em>.</p>
+</div>
+<div class="paragraph">
+<p>Istnieje jeszcze jeden rzadko wspominany tryb pracy programu:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>zawieszenia</strong> w oczekiwaniu na polecenie; Vim wchodzi w ten tryb w trakcie wpisywania polecenia w trybie normalnym, pomiędzy operatorem a ruchem/obiektem (patrz Język Vim poniżej). Istnieje możliwość zdefioniowania mapowań klawiszy, które będą dedykowane do tego trybu. Więcej poniżej w sekcji 'Mapowania'.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_instalacja_i_wersje_vim">Instalacja i wersje Vim</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Oficjalne repozytorium kodu Vim znajduje się <a href="https://github.com/vim/vim">na GitHub.</a>
+Na stronie repozytorium można znaleźć więcej opcji pobrania i instalacji Vim na różnych systemach.</p>
+</div>
+<div class="paragraph">
+<p>Vim jest również dostępny jako plugin do innych popularnych IDE, np. VSCode, IntelliJ czy Pycharm.</p>
+</div>
+<div class="paragraph">
+<p>Sekcja poniżej prezentuje wybrane opcje instalacji Vim w Windows oraz Linux.</p>
+</div>
+<div class="sect2">
+<h3 id="_linux">Linux</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ sudo apt install vim</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">W dystrybucjach opartych na Debian (jak Ubuntu)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_windows">Windows</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>MobaXterm</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oprogramowanie z wieloma funkcjami, zastępujące okno poleceń i dostarczające wiele funkcji terminala Linux, w tym Vim. Do pobrania free ze strony  <a href="https://mobaxterm.mobatek.net/download.html" class="bare">https://mobaxterm.mobatek.net/download.html</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_podstawowe_polecenia">Podstawowe polecenia</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_uruchamianie_vim">Uruchamianie Vim</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ vim {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">podstawowy sposób uruchamiania Vim - otwarcie do edycji pliku o podanej nazwie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ evim {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uruchamia vim w wersji easy (Easy VIM). W tej wersji Vim bardziej przypomina Notatnik w Windows z menu, ikonami i wyłączonymi trybami innymi niż tryb edycji</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ gvim {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uruchamia vim w wersji GUI. Jest to pełny Vim z wszystkimi trybami i funkcjonalnościami, ale dodatkowo zaopatrzony w menu, skróty poleceń pod ikonami paska narzędzi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ view {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwiera plik tylko do odczytu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ ex {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uruchamia Vim w trybie ex (bez wizualizacji treści pliku). Można przejść do Vim wykonując komendę <em>vi</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ vimdiff {nazwa_pliku} {nazwa_pliku} {nazwa_pliku} {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uruchamia vim w wersji  diff, która wyszukuje różnice pomiędzy plikami (w liczbie od 2 do 4), otwiera pliki w podzielonym pionowo oknie i podświetla te różnice</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ vim -S {nazwa_sesji}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uruchamia sesję Vim zapisaną poleceniem <em>mksession</em> (opis poniżej)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ vim -c /pattern {nazwa_pliku}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwiera plik i ustawia kursor na pierwszym wystąpieniu wzorca <em>pattern</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_pierwsze_kroki_w_vim">Pierwsze kroki w Vim</h3>
+<div class="paragraph">
+<p>Sekcja prezentuje kilka podstawowych poleceń służących do zapisu, zamknięcia pliku i korzystania z wbudowanej pomocy.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:w 'plik'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zapis pliku, opcjonalnie można podać nazwę nowego pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:q</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyjście z programu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:saveas 'plik'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zapis bieżącego pliku pod nową nazwa 'plik'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:file 'plik'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmiana nazwy obecnie edytowanego pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:e 'nazwa'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(edit) otwarcie następnego pliku 'nazwa' do edycji</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ZZ</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zatrzymuje program (tworzy plik swp z niezachowanymi zmianami!)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-Z</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zawiesza Vim (zachowując wszystko - ustawienia, pliki itp., jak zminimalizowanie okna w Windows) i przenosi do powłoki shell. Do Vim można wrócić poleceniem</p>
+<p class="tableblock"> <code>$ fg</code></p>
+<p class="tableblock">w powłoce.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie pomocy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help 'word'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pomoc z danym słowem lub poleceniem; <em>&lt;Tab&gt;</em> lub <em>CTRL-D</em> wyświetla możliwe opcje</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help index</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spis wszystkich poleceń</strong> we wszystkich trybach wraz z tagami, krótkim opisem i odnośnikiem do pełnej definicji</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help usr_toc.txt</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetla spis treści podręcznika Vim</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help usr_01.txt</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie pierwszego rozdziału podręcznika</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help reference_toc</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spis wszystkich plików pomocy Vim</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powtórzenie wykonania poprzedniego polecenia wydanego w trybie normalnym.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-G</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetlenie podstawowych informacji: o nazwie pliku, numerze wiersza w którym jest kursor, procencie długości pliku od początku w którym stoi kursor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_opcje">Opcje</h3>
+<div class="paragraph">
+<p>W większości przypadków dodanie 'no' przed nazwą opcji wyłącza ją. Pełna lista opcji jest w pliku <em>options.txt</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:set hls</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">włączenie podświetlania wyszukiwań</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:nohlsearch</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyłączenie podświetlania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:set ic</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">włączenie trybu ignorecase wyszukiwania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:set number</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">włączenie numerów wierszy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help 'hls'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pomoc na temat opcji hls</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:set relativenumber</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Włączenie trybu względnej numeracji. Numery linii wyswietlaja się względnie do pozycji kursora.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:set ve=all</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ustawia tryb virtualedit, w którym kursor może poruszać się gdziekolwiek (bez ograniczeń końcem linii itp.)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_język_vim">Język VIM</h3>
+<div class="paragraph">
+<p>Język Vim to specyficzna składnia poleceń w trybie normalnym, której zrozumienie znacznie przyspieszy opanowanie edytora. Składa się z kombinacji działania i przedmiotu. Działaniem (ang. operator) jest akcja, np. <em>d</em> - delete (usuwanie), Przedmiotem może być:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>obiekt np. <em>w</em> - word (słowo) albo</p>
+</li>
+<li>
+<p>ruch (ang. motion), np. <em>j</em> (przejście linię w dół)</p>
+</li>
+<li>
+<p>funkcja.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Obiekt i ruch można poprzedzić liczbą. <strong>Siłę Vim</strong> stanowi fakt, że dowolna kombinacja działania, liczebnika i przedmiotu  stanowi unikalne polecenie.</p>
+</div>
+<div class="paragraph">
+<p>Więcej informacji (w tym np. bardziej kompletną listę operatorów i obiektów/ruchów) można znaleźć w pliku <em>motion.txt</em> (<em>:help motion</em>). Więcej informacji o funkcjach jest w <em>:help usr_41.txt</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_akcje_na_obiektach_większych_niż_jeden_znak">Akcje na obiektach większych niż jeden znak</h4>
+<div class="paragraph">
+<p>Zazwyczaj służą do usuwania i zmiany tekstu. Więcej w <em>:help operator</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>d</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete - wycięcie tekstu i pozostanie w trybie normalnym. <strong>Ważne</strong> - usunięty tekst pozostaje w schowku do czasu kolejnej operacji usunięcia/wycięcia/skopiowania tekstu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>c</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change - zmiana tekstu, czyli usunięcie go i przejście do trybu edycji</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yank - kopiowanie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&gt;, &lt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indent - wcięcie, unindent - zlikwidowanie wcięcia</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>g~</em>, <em>gu</em>, <em>gU</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zmiana dużych liter na małe (g~ wykonuje zamianę, gu - zmienia wszystkie litery na małe, gU - na  duże).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Polecenia takie, jak np. <em>d</em>, <em>c</em> i <em>y</em> można poprzedzić oznaczeniem rejestru (np. <em>"x</em>), dzięki czemu wynik polecenia zostanie skopiowany do tego rejestru. Więcej - patrz Rejestry poniżej.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ruchy_motion">Ruchy (motion)</h4>
+<div class="paragraph">
+<p>Definiują ruch do wykonania dla powyższych poleceń (np. <em>d</em> czy <em>y</em>)</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>$</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Do końca linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>^</em>, <em>0</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Do początku linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>+</em>, <em>-</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dwie linie: bieżąca i następna lub poprzednia</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{a}G</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Go - od kursora do linii o podanym numerze <em>a</em> lub (jeśli nie jest podana liczba) do końca pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>f</em>, <em>F</em>, <em>t</em>, <em>T</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find - do wystąpienia kolejnego znaku, np. fa - do kolejnego 'a'. Kapitalik - szukanie wstecz. T = To - do znaku, ale bez uwzględnienia tego znaku.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>h</em>, <em>j</em>, <em>k</em>, <em>l</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ruch w lewo, dół, górę i w prawo. <em>15j</em> Przykład ruchu - kolejne 15 linii. <em>10l</em> to kolejny przykład ruchu - 10 znaków w prawo.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>H</em>, <em>L</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Od pozycji kursora do góry ekranu lub do dołu ekranu</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Warto podkreślić, że dwie poprzednie sekcje (czynności, ich krotności i ruchy) można składać w dowolne kombinacje, np. 9 czynności * 10 krotności * 10 ruchów daje w sumie 900 unikalnych poleceń, a to ułamek możliwości Vim.</p>
+</div>
+<div class="paragraph">
+<p>Przykłady:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>d0</em> - wycięcie całego tekstu od początku linii do kursora</p>
+</li>
+<li>
+<p><em>y$</em> - skopiowanie tekstu od bieżącego miejsca kursora do końca linii</p>
+</li>
+<li>
+<p><em>y2j</em> - kopiuje do schowka bieżącą linię oraz dwie poniżej</p>
+</li>
+<li>
+<p><em>ctw</em> - change to 'w' - zmiana całego tekstu do następnego wystąpienia 'w'</p>
+</li>
+<li>
+<p><em>dG</em> - wycina znaki od bieżącego wiersza do końca pliku</p>
+</li>
+<li>
+<p><em>d20G</em> - wycina od bieżącego wiersza do wiersza 20</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_obiekty_tekstowe">Obiekty tekstowe</h4>
+<div class="paragraph">
+<p>Określenie obiektu tekstowego ma swoją składnię: pierwsza litera (opcjonalna) wskazuje:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>i</em> - czy obiekt jest <em>exclusive</em>, tj. bez spacji przed i po,</p>
+</li>
+<li>
+<p><em>a</em> - <em>inclusive</em> - włącznie ze spacjami przed i po.
+Użycie opcjonalnego określenia sprawia, że polecenie działa, gdy kursor jest gdziekolwiek w środku obiektu, niekoniecznie na jego początku.</p>
+</li>
+<li>
+<p>brak pierwszej litery oznacza, że działanie zostanie wykonane od miejsca kursora do końca obiektu.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Druga litera definiuje sam obiekt, np. <em>w</em> - słowo.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>w</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">słowo (od kursora do końca słowa)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>iw</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inner word - wewnątrz słowa; ogólnie <em>a</em> w <em>aw</em> oznacza obiekt razem ze spacjami dookoła niego, natomiast <em>i</em> w <em>iw</em> oznacza pominięcie spacji</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>aw</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Word - słowo (razem ze spacjami)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">do końca słowa (pozostawiając spację po słowie)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>p</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">paragraph - akapit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>s</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sentence - zdanie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>"</em>, <em>', _`</em>, <em>)</em>, <em>], _}, _b</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wewnątrz cudzysłowiu, nawiasu, np. tagu HTML</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>i", _i', _i`</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inner quote - tekst otoczony cudzyslowiem danego typu bez cudzysłowi.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>a)</em>, <em>a], _a}, _ab</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">brackets - wewnątrz nawiasów (<em>tekst</em>) - włącznie ze znakami nawiasów. <strong>Uwaga!</strong> Znaczenie nawiasów tutaj się zmienia, bowiem użycie samych znaków <em>)</em>, <em>}</em> ma inne znaczenie, niż gdy są poprzedzone przez <em>a</em> lub <em>i</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>i)</em>, <em>i], _i}, _ib</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inner brackets - wewnątrz nawiasów (<em>tekst</em>) - bez znaków cudzysłowiu</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Podobnie jak z ruchami, akcje i obiekty można dowolnie ze sobą łączyć produkując kolejne setki (jeśli nie tysiące) możliwych unikalnych poleceń.</p>
+</div>
+<div class="paragraph">
+<p>Przykłady:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>dw</em> - usunięcie znaków od kursora do końca słowa,</p>
+</li>
+<li>
+<p><em>dap</em> - usunięcie całego akapitu od początku do końca razem z pustymi liniami,</p>
+</li>
+<li>
+<p><em>yis</em> - skopiowanie całego zdania od początku do końca bez białych znaków z początku i końca zdania,</p>
+</li>
+<li>
+<p><em>ci"</em> - zmiana całego tekstu pomiędzy znakami "</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Inny przykład połączenia działania z funkcją:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>d:call search("Następny")</em> - kasuje wszystko pomiędzy kursorem i następnym wystąpieniem słowa "Następny"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Działania (operatory) można też połączyć z wyszukiwaniem:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>d/tekst</em> - usuwanie tekstu od pozycji kursora do kolejnego wystąpienia <em>tekst</em></p>
+</li>
+<li>
+<p><em>y?słowo</em> - kopiowanie tekstu od pozycji kursora wstecz do pierwszego wcześniejszego wystąpienia <em>słowo</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>oraz ze znacznikami (ang. marks) - więcej o znacznikach poniżej. Przykład:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>d&#8217;a</em> -usuwanie tekstu od bieżącej pozycji kursora do znacznika <em>a</em></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tryb_wizualny">Tryb wizualny</h4>
+<div class="paragraph">
+<p>Alternatywą dla składni operator - obiekt/ruch jest użycie trybu wizualnego. W tym trybie wpierw zaznacza się fragment tekstu, który zostaje podświetlony na ekranie, a potem wykonuje się akcję (operator).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>v</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visually select - zaznaczenie tekstu do zmiany</p>
+<p class="tableblock">Więcej opcji wejścia w ten tryb opisanych jest poniżej.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_składnia_polecenia_złożonego">Składnia polecenia złożonego</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>xay</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">składnia: operator - liczba - obiekt/ruch; a - liczba powtórzeń, x - operator, y - obiekt/ruch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>raxby</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">na początku opcjonalnie można podać r - rejestr, do którego skopiowany zostanie wynik polecenia. Gdy podane są dwie liczby (<em>a</em> i <em>b</em>), polecenie wykonane zostanie <em>a*b</em> liczbę razy.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_działania_na_pojedynczych_znakach">Działania na pojedynczych znakach</h3>
+<div class="paragraph">
+<p>Mimo, że poniższe polecenia definiują czynności, nie przyjmują rzeczownika/obiektu do działania. Dlatego np. <em>'2x'</em> jest skończonym poleceniem (kasuje dwa znaki poczynając od znaku pod kursorem).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>s</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Substitute - zastępuje znak pod kursorem, po wykonaniu pozostaje w trybie wstawiania. Np. wpisując <em>3s</em> usuwamy trzy znaki licząc od kursora i możemy wpisać nowy tekst o dowolnej długości.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>r</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace - zastępuje jeden znak pod kursorem, po wykonaniu pozostaje w trybie normalnym</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cross out - usuwa pojedynczy znak pod kursorem, po wykonaniu pozostaje w trybie normalnym</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_polecenia_w_trybie_normalnym">Polecenia w trybie normalnym</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_poruszanie_kursorem">Poruszanie kursorem</h3>
+<div class="paragraph">
+<p>Więcej pomocy w <em>:help motion.txt</em></p>
+</div>
+<div class="sect3">
+<h4 id="_poruszanie_się_w_ramach_wiersza_lub_pojedynczych_znaków">Poruszanie się w ramach wiersza lub pojedynczych znaków</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>h</em>, <em>j</em>, <em>k</em>, <em>l</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">poruszanie w czterech kierunkach (lewo, dół, góra, prawo)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>^</em>, <em>0</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">początek bieżącego wiersza, przy czym <em>^</em> oznacza pierwszy znak nie będący białą spacją, a <em>0</em> to rzeczywiście początek linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>$</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">koniec bieżącego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>w</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(word) początek następnego słowa, polecenie złożone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>b</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(before, beginning) początek poprzedniego słowa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>e</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(end) przejście na koniec słowa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>%</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(gdy kursor wskazuje otwierający nawias) przeskok do zamykającego nawiasu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(</em>, <em>)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok do początku lub końca zdania, w którym stoi kursor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{n}|</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok do <em>n</em>-tej kolumny w wierszu</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_poruszanie_się_pomiędzy_wierszami_w_pliku">Poruszanie się pomiędzy wierszami w pliku</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{a}G</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(go) przeskok do a-tej linii pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>G</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok do ostatniej linii pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>gg</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok na początek pliku (to samo co <em>1G</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>+</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do początku kolejnego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>-</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do początku poprzedniego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-E</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(extra) wyświetlenie dodatkowej linii (jedna linia w dół)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-Y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jedna linia w górę</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{</em>, <em>}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok do początku lub końca akapitu, w którym stoi kursor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_przeskoki">Przeskoki</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-]</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wejście w link (wspomaga nawigację po plikach pomocy Vim)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-O</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(older) powrót do poprzedniego miejsca po przeskoku (np po przeskoku do innej linii lub po wejściu w link). Można wykonywać wiele razy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-I</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do nowszej pozycji w odwrotnej kolejności jak <em>CTRL-O</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>``</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powrót po przeskoku (cofnięcie do poprzedniej pozycji).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:jumps</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetlenie listy przeskoków</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_przenoszenie_kursora_na_wyświetlanej_stronie">Przenoszenie kursora na wyświetlanej stronie</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>H</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Home) przeniesienie kursora na górę strony</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>M</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Middle) przeniesienie kursora na środek strony</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>L</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Last) przeniesienie kursora na dół strony</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_przeskok_o_stronę_lub_pół_strony">Przeskok o stronę lub pół strony</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-U</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(up) przewinięcie o pół strony w górę</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-D</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(down) przewinięcie o pół strony w dół</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-F</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(forward) przewinięcie tekstu w przód o stronę</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-B</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(backward) przewinięcie tekstu w tył o stronę</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_zmiana_widoku">Zmiana widoku</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>zz</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycentrowanie ekranu na wierszu, w którym jest kursor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>zt</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(top) ustawienie ekranu tak, że linia z kursorem jest na górze ekranu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>zb</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(bottom) jw. ale jest na dole</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zmiany_tekstu">Zmiany tekstu</h3>
+<div class="paragraph">
+<p>Wiele z opisywanych tu poleceń przyjmuje argument numeryczny z przodu. Np. <em>10i{tekst}</em> po naciśnięciu &lt;Esc&gt; powtarza wpisany tekst dziesięciokrotnie.</p>
+</div>
+<div class="paragraph">
+<p>Więcej dostępnych poleceń służących do zmiany tekstu (usuwania, wstawiania, przesuwania, formatowania, sortowania) jest opisanych w pliku pomocy <em>:help change</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_wchodzenie_w_tryb_edycji">Wchodzenie w tryb edycji</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>i</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(insert) wstawienie znaku w bieżącym miejscu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>I</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wstawianie znaków na początku bieżącego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>o</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(open) rozpoczęcie następnego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>O</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rozpoczęcie nowego wiersza w bieżącym wierszu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(add) dodanie znaku zaraz za kursorem</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>A</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wejście w edycję na końcu bieżącego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>~</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmiana rozmiaru znaku (z dużego na mały i odwrotnie)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_usuwanie_i_wycinanie">Usuwanie i wycinanie</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>x</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usuwanie znaku pod kursorem</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>d</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(delete) wycinanie wiersza lub jego części - przeniesienie do schowka, polecenie złożone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>D</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie wiersza od pozycji kursora do końca linii (to samo co <em>d$</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>J</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(join) łączenie dwóch wierszy że sobą - bieżącego i następnego. Działając z argumentem numerycznym z przodu łączy podaną liczbę wierszy.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_kopiowanie">Kopiowanie</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(yank) kopiowanie do schowka, polecenie złożone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kopiowanie całego bieżącego wiersza (inaczej niż w przypadku <em>D</em> czy <em>C</em>, <em>Y</em> jest synonimem <em>yy</em>, a kopiowanie do końca linii osiągamy tylko przez <em>y$</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>yy</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to samo, działa jak Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>y$</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kopiowanie od bieżącego znaku do końca linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>yl</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kopiowanie znaku pod kursorem (lub określonej liczby znaków, gdy polecenie jest poprzedzone liczbą.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_wklejanie">Wklejanie</h4>
+<div class="paragraph">
+<p>Więcej w pomocy - <em>:help insert.txt</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>p</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(put) wklejanie zawartości schowka za kursorem lub poniżej bieżącego wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>P</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wklejenie przed/powyżej bieżącego wiersza</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_korekta">Korekta</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>r</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(replace), np. ra zastępuje bieżący znak pod kursorem przez literę 'a' i wraca d trybu poleceń</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>R</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">korekta wielu znaków (każdy napisany znak zastępuje znak pod kursorem). W tym trybie Backspace przywraca zmiany</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>c</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(change) wycięcie tekstu i wejście w tryb edycji, polecenie złożone (składnia jak d czy y)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>C</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">analogicznie do <em>D</em>, to polecenie działa jak <em>c$</em> - wycinanie do końca linii z jednoczesnym wejściem w tryb edycji</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ce</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(change to the end) pozwala skorygować bieżące słowo (usuwa je do końca i wchodzi w tryb edycji)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>s</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(substitute) zamień znak pod kursorem (tożsame z <em>cl</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>S</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kasuje całą bieżącą linię i wchodzi w tryb edycji (tożsame z <em>cc</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>xp</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana kolejności dwóch liter (poprawa szwedzkiego błędu)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>@{a}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonywanie korekty za pomocą sekwencji klawiszy zapisanej w makrze. Patrz sekcja 'Makra'</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modyfikatory_poleceń_złożonych">Modyfikatory poleceń złożonych</h3>
+<div class="paragraph">
+<p>Patrz też sekcja 'Język VIM' powyżej. Poniżej zamieszczone są inne przykłady poleceń służących do wycinania: <em>d</em> oraz kopiowania: <em>y</em>).</p>
+</div>
+<div class="paragraph">
+<p>Niektóre z poniższych przykładów działają liniowo (ang. linewise), w odróżnieniu od wcześniejszych poleceń, które działały znakowo (ang. characterwise). Oznacza to, że działają na cały wiersz lub wiersze, a nie na fragmenty wierszy.</p>
+</div>
+<div class="paragraph">
+<p>Poniższe przykłady oparto na poleceniu usuwania <em>d</em>, ale działają analogicznie z <em>c</em>, <em>y</em> i innymi operatorami.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>dd</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie (wycięcie) całego wiersza, 2dd - wycinanie dwóch całych linii (d2d działa tak samo)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>dl</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie jednego znaku pod kursorem (to samo co <em>x</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>dh</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie jednego znaku przed kursorem (to samo co <em>X</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>dw</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie całego słowa. Tak samo działa <em>W</em>, np. <em>d2W</em> - wycinanie dwóch słów. Powoduje wycinanie całego słowa (od miejsca kursora) włącznie z białym znakiem (bez usuwania pierwszego znaku następnego słowa).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Niewielka różnica między <em>w</em> i <em>W</em> dotyczy znaków niealfanumerycznych w środku słowa. Różnicę można zauważyć ćwicząc <em>dw</em> i <em>dW</em> na słowie 'doesn&#8217;t'.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>daw</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(A Word) wycinanie całego słowa (niezależnie w którym miejscu jest kursor) włącznie z białym znakiem na końcu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>diw</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Inner Word) wycinanie słowa bez usuwania białych znaków</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>das</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(A Sentence) wycinanie całego zdania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>dis</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Inner Sentence) wycinanie całego zdania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>dap</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(A paragraph) usunięcie całego akapitu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>de</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie całego słowa (od kursora do ostatniego znaku) pozostawiając białe znaki</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>d$</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie od bieżącego miejsca do końca wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>d^</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wycinanie od pierwszego znaku nie będącego białym znakiem w bieżącym wierszu do bieżącego znaku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>d0</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">od początku wiersza do bieżącego znaku</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_cofanie_zmian">Cofanie zmian</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>u</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(undo) cofa ostatnią zmianę w pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>U</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przywraca linie do oryginalnego stanu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-R</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(redo) cofa zmiany włącznie z undo (można wycofać się z undo)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_szukanie">Szukanie</h3>
+<div class="paragraph">
+<p>Sekcja prezentuje różne polecenia, zarówno w trybie normalnym jak i poleceń cmd-line.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>f</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(find) wyszukanie pojedynczego znaku w bieżącym wierszu po bieżącym miejscu. Odmiany tego polecenia opisane wyżej to <em>F</em>, <em>t</em> i <em>T</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gdy klawisz ten zostaje wciśnięty po wyszukiwaniu za pomocą <em>f</em>, <em>F</em>, <em>t</em> i <em>T</em>, uruchamia następne wyszukanie w bieżącym wierszu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>/word</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyszukanie w pliku kolejnego wzorca wyrażenia regularnego (wystąpienia 'word')</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>?word</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyszukanie w pliku poprzedniego wzorca</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>*</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyszukiwanie do przodu słowa, na którym właśnie stoi kursor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>#</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyszukiwanie w tył słowa, na którym stoi kursor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(next) wyszukanie wzorca w pliku w tym samym kierunku (dla <em>/</em> w przód, dla <em>?</em> w tył)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>N</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyszukanie wzorca w pliku w przeciwnym kierunku co poprzednie wyszukiwanie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-O</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powrót do miejsca gdzie rozpoczęte zostało wyszukiwanie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-I</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do przodu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>/word/b+1</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyszukuje <em>'word'</em> i umieszcza kursor na drugiej pozycji od początku. Oprócz <em>'b'</em> można używać też innych poleceń: <em>'e'</em>(pozycja od końca), cyfra oznacza liczbę linii po znalezionym słowie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:help pattern.txt</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">więcej pomocy na temat wyszukiwania za pomocą wyrażeń regularnych (Perl). Można też uzych :help usr_27.txt</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modyfikatory_poleceń_w_trybie_normalnym">Modyfikatory poleceń w trybie normalnym</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>!!date</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wstawia datę w bieżącym wierszu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>!command</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonanie polecenia w zewnętrznym programie, a dokładnie filtrowanie określonego zakresu wierszy przez ten program, np. <em>!5Gsort</em> sortuje linie od bieżącej do 5 (zauważmy, że po wpisaniu <em>!5G</em> polecenie to jest konwertowane do trybu cmd-line: <em>:.,/+3!</em>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_polecenia_ex">Polecenia ex</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aby znaleźć pomoc o danym poleceniu wystarczy wpisać <em>:help {polecenie}</em> podając całą jego nazwę lub tylko początek. Można użyć <em>CTRL-D</em> lub <em>&lt;Tab&gt;</em> aby wyświetlić opcje autouzupelniania. Ponowne naciśnięcie <em>&lt;Tab&gt;</em> lub <em>CTRL-P</em> pozwala przewijać pomiędzy opcjami.</p>
+</div>
+<div class="paragraph">
+<p>Po wpisaniu <em>:</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>klawisze <em>&lt;Up&gt;</em> i <em>&lt;Down&gt;</em> scrollują historię komend.</p>
+</li>
+<li>
+<p>Za pomocą symbolu <em>\|</em> można wykonać więcej niż dwie komendy na raz, np. <code>:w \| !ls</code> zapisuje plik i wyświetla zawartość bieżącego katalogu.</p>
+</li>
+<li>
+<p>Kombinacja <em>CTRL-F</em> otwiera okno poleceń, w którym widać np. historię poprzednich poleceń. Można z niego wyjść wpisując <em>:quit</em> lub wciskając <em>CTRL-C</em>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Szczegółowa pomoc o poleceniach ex, tj. o trybie poleceń, edytowaniu, zakresach działania, flagach, znakach specjalnych znajduje się w pliku <em>:help cmdline.txt</em>.</p>
+</div>
+<div class="paragraph">
+<p>Listę wszystkich poleceń ex można znaleźć w <em>:help ex-cmd-index</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="_podstawowe_polecenia_2">Podstawowe polecenia</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:m</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(move) przesunięcie wierszy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:d</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(delete) usunięcie wierszy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:co</em>, <em>:t</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(copy) skopiowanie wierszy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:p</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(print) wydrukowanie u dołu ekranu wiersza</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:760,780m20</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przesunięcie wierszy od 760 do 780 do pozycji wiersza 20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:m+1</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przesunięcie bieżącego wiersza o jedną linię w dół.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:m10</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przesunięcie bieżącego wiersza do wiersza o numerze 10.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:p5</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wypisanie bieżącego i czterech kolejnych wierszy na dole ekranu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:w</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zapisanie zmian w bieżącym buforze do bieżącego pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:10,15w nowy_plik</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zapisanie linijek od 10 do 15 w nowym pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:10,15w &gt;&gt; plik</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">doklejenie linijek od 10 do 15 do pliku <em>plik</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:r plik</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odczytanie zawartosci pliku <em>plik</em> i wstawienie go począwszy od linii pod kursorem</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:{polecenie}!</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modyfikator polecenia wymuszający jego wykonanie bez zapisania zmian, np. <em>:q!</em> - wyjście z programu z porzuceniem zmian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:!{polecenie}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonuje polecenie z powłoki. Przykład: <em>:!ls -al</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_zastępowanie">Zastępowanie</h3>
+<div class="paragraph">
+<p>Dokładny opis w <em>:help substitute</em>. Opcje modyfikujące proces zamiany takie jak <em>g</em> czy <em>c</em> opisane są w <em>:help s_flags</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:[range]s[ubstitute]/from/to/[flags]</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ogólną składnia polecenia do zamiany tekstu 'from' na 'to'.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:s/b/A</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(substitute) zamiana b na A w bieżącym wierszu (jeden raz)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:s/a/A/g</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana a na A w bieżącym wierszu (wszystkie wystąpienia)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:%s/a/A/g</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana w całym pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:%s/a/A/gc</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana w całym pliku z potwierdzeniem każdej zamiany. Wciskając <em>y</em> lub <em>n</em> można potwierdzić lub odrzucić daną zmianę, <em>a</em> potwierdza wszystkie późniejsze zmiany, <em>q</em> i <em>l</em> kończy procees zamian.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:5,10s/a/A/g</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana w wierszach od 5 do 10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:.,$s/a/A/g</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana w wierszach od bieżącego do końca pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>5:s/a/A/g</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana w pięciu wierszach licząc od bieżącego</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_różne_polecenia_w_ex">Różne polecenia w ex</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:!python %</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonanie otwartego obecnie skryptu w python. Symbol <em>%</em> symbolizuje nazwę aktywnego pliku.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:r 'nazwa'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(read) odczytanie pliku 'nazwa' i wstawienie go w bieżącym pliku w pozycji kursora</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:read !ls</em> lub <em>r! {polecenie}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wczytuje wynik polecenia ls do bieżącego pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:history</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetlenie historii komend w trybie cmd-line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>q:</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwiera okno poleceń</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:history /</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetlenie historii wyszukiwań</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:browse oldfiles</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetla listę uprzednio edytowanych plików, można podać numer i otworzyć wybrany plik do edycji</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_wielokrotne_wykonywanie_poleceń">Wielokrotne wykonywanie poleceń</h3>
+<div class="paragraph">
+<p>Więcej pomocy w <em>:help usr_26.txt</em> oraz <em>:help multi-repeat</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powtórzenie ostatniej operacji edycji/kasowania/korekty. <strong>Bardzo</strong> przydatna funkcją do szybkiego ponowienia tej samej komendy skrótem.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:[rangę][:]g[lobal]/{pattern}/{command}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(global) wyszukanie wzorca pattern i wykonanie w każdym pasującym wierszu polecenia command.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>W powyższym:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>znak <em>:</em> pomiędzy zakresem i słowem global jest opcjonalny,</p>
+</li>
+<li>
+<p><em>Command</em> to polecenie w trybie cmd-line. Wydając polecenie <em>normal</em> można zdefiniować polecenie w trybie normalnym.</p>
+</li>
+<li>
+<p>różne przykłady <em>range</em> zostały omówione w sekcji dot. zastępowania (np. % - cały plik),</p>
+</li>
+<li>
+<p><em>Pattern</em> to wyrażenie regularne w odpowiednim dla wersji Vim standardzie (np. POSIX). Więcej: <em>:help pattern</em>.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:2,20g/txt/normal 0i*</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Przykład multi-polecenia. W wierszach od 2 do 20 wyszukiwany jest tekst 'txt'. W wierszach, gdzie został on znaleziony wykonywane jest polecenie 0i* - co powoduje wstawienie na początku wiersza znaku '*'.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:g/^/m 0</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">^ pasuje do każdego wiersza w pliku a 'm' przesuwa wiersz na początek pliku. W efekcie następuje odwrócenie kolejności wierszy w całym pliku.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:g/^$/d</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie wszystkich pustych linii z pliku</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wizualna_selekcja">Wizualna selekcja</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>W tym trybie wiele poleceń zyskuje nowe znaczenie.</p>
+</div>
+<div class="sect2">
+<h3 id="_wejście_w_tryb_wizualnej_selekcji">Wejście w tryb wizualnej selekcji</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>v</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wchodzi w tryb selekcji, po zaznaczeniu tekstu można na nim wykonać polecenie zwykłe lub polecenie ex (np <em>:w</em> nazwa zapisze fragment w pliku nazwa)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>V</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tryb selekcji, można zaznaczać całe linie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-V</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tryb blokowy, w którym zaznacza się prostokątny obszar</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_edycja_w_trybie_wizualnej_selekcji">Edycja w trybie wizualnej selekcji</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>o/O</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(other) w trybie wizualnej selekcji powzwala na przejście kursorem na drugi koniec zaznaczonego obszaru</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>I{tekst}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">w trybie blokowym polecenie pozwala na wstawienie przed blokiem w każdym wierszu tego samego tekstu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>c{tekst}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">w trybie blokowym polecenie pozwala na wstawienie zamiast bloku w każdym wierszu tego samego tekstu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>A{tekst}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">w trybie blokowym polecenie pozwala na wstawienie za blokiem w każdym wierszu tego samego tekstu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>~</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana małych liter na duże i odwrotnie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>r{a}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamiana każdej litery na {a}</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_polecenia_w_trybie_edycji_tryb_insert">Polecenia w trybie edycji (tryb Insert)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>W tym trybie można wykonać wiele poleceń za pomocą klawiszy funkcyjnych lub skrótów z CTRL.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-Left</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok o całe słowo w lewo (tak samo działa z Shift, w prawo z drugą strzałką)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-Home</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok na początek pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-End</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskok na koniec pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-P</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autouzupelnianie (Vim zgaduje resztę słowa na podstawie innych wpisanych w pliku słów oraz innych plików)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-N</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autouzupelnianie, ale Vim szuka słów z przodu Inne</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-X CTRL-F</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autouzupelnienie nazwami plików. Inne opcje autouzupelniania są w helpie <em>usr_24.txt</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-X CTRL-L</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autouzupelnianie całymi liniami</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-A</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powtórzenie ostatniej edycji w trybie Insert. Dobry skrót, aby wykonać tę samą modyfikację w wielu miejscach. <em>CTRL-2</em> (lub <em>CTRL-@</em>) wykonuje to samo i jednocześnie wychodzi z trybu edycji.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-Y</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kopiuje znak powyżej kursora</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-W</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie ostatniego napisanego słowa (słowa tuż przed kursorem)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-U</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie całego wiersza od początku do miejsca kursora</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-V{znaki}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pozwala na wstawienie znaków specjalnych. Liczba trzycyfrową (od 000 do 255) pozwala na wpisanie znaków ascii. Wpisując <em>'x'</em> możemy podać liczbę w układzie szesnastkowym (np. <em>CTRL-Vxff</em> - bez spacji w środku) a <em>'o'</em> - ósemkowym. Podając u lub U możemy wstawić znak Unicode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-K{znaki}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wstawienie symboli. Lista symboli jest dostępna komenda :digraphs. Np. <em>CTRL-KC*</em> produkuje Ξ (ponownie - bez spacji w środku). Inny przykład to <em>CTRL-KCo</em> ©.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:CTRL-O{polecenie}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pozwala na wykonanie w trybie edycji jednego polecenia z trybu normalnego (bez wychodzenia z trybu edycji).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inne_polecenia_w_różnych_trybach">Inne polecenia w różnych trybach</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_wybrane_polecenia_rozpoczynające_się_od_g">Wybrane polecenia rozpoczynające się od <em>'g'</em></h3>
+<div class="paragraph">
+<p>Polecenia te najczęściej modyfikują znaczenie komendy wymienionej po <em>g</em>. Szczegółową lista jest w pliku <em>index.txt</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ga</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetla wartość ASCII znaku pod kursorem</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>g8</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetla wartość hex znaku UTF-8 pod kursorem</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>gm</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskoczenie kursorem na środek ekranu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>gM</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przeskoczenie kursorem na środek bieżącej linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{N}{"x}gp</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(put) wstawienie N razy tekstu że schowka (lub rejestru <em>{x}</em>, jeśli podany)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_formatowanie_tekstu">Formatowanie tekstu</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:set textwidth={x}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ustawienie szerokości linii. Jeśli nowe słowo spowoduje że linia będzie dłuższa niż maksimum, zostanie wstawiony znak nowej linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>gqap</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uporządkowanie akapitu tak aby w każdej linii znalazło się maksimum słów względem dostępnej szerokości linii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>gq}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jw.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:{zakres}center {szerokość}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyśrodkowanie tekstu w liniach opisanych zakresem. {szerokość} opisuje szerokość linii użyta do wyśrodkowania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:{zakres}right {szerokość}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jw. ale dosunięcie tekstu do prawej</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:{zakres}left {margines}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jw ale dosunięcie do lewej. Margines określa liczbę spacji po lewej stronie tekstu.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:8,15le4</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przykład jak wciąć tekst z 4 spacjami na początku każdego wiersza od nr 8 do 15</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_znaczniki_ang_marks">Znaczniki (ang. Marks)</h3>
+<div class="paragraph">
+<p>Oznaczenia pozwalające definiować zakres pliku lub miejsca do których można przeskoczyć. Znaczniki nie są widzialne, są tylko pozycjami w pliku. Znaczniki i rejestry nie są przechowywane w tym samym miejscu, można mieć jednocześnie znacznik <em>'a</em> i rejestr <em>"a</em> bowiem są czymś innym</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>m{t}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wstawienie znacznika <em>t</em> w bieżącej pozycji. Znaczniki można nazywać małymi lub dużymi literami</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>'{t}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do pierwszego znaku linii, w której jest znacznik <em>t</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>`{t}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do właściwego znaku, na którym jest znacznik <em>t</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:marks</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetla listę aktywnych znaków, przede wszystkich znaków globalnych (o numerach 0-9), które są tworzone przy każdym wyjściu z Vim</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>'0</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do miejsca, gdzie ostatnio Vim został zamknięty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:delm {marks}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie znacznika</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>'&lt;</em>, <em>'&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">początek i koniec zakresu wizualnej selekcji</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_rejestry">Rejestry</h3>
+<div class="paragraph">
+<p>Pozwalają zapisać fragment tekstu do przeklejenia lub wykonać ten tekst jako polecenie.</p>
+</div>
+<div class="paragraph">
+<p>Więcej w pliku pomocy change.txt - <em>:help registers</em></p>
+</div>
+<div class="sect3">
+<h4 id="_rejestry_użytkownika">Rejestry użytkownika</h4>
+<div class="paragraph">
+<p>Rejestry użytkownika oznaczane są małymi literami. Użycie dużej litery pozwala na doklejenie kolejnego tekstu do istniejącego rejestru.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>"{x}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Użyj rejestru <em>'x'</em> do następnej czynności (takiej jak <em>'d'</em>, <em>'y'</em> lub <em>'p'</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>"{x}y{ruch/obiekt}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">skopiuj do rejestru <em>'x'</em> wynik następnego ruchu; np. <em>"ay$</em> kopiuje do rejestru <em>'a'</em> tekst do końca linii; w przypadku podania obiektu czynność wykonana jest na tym obiekcie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>"ayas</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">skopiowanie całego bieżącego zdania do rejestru <em>'a'</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>"ap</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wklejenie zawartości rejestru <em>'a'</em> w bieżącym miesjcu</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-R{x}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">w trybie edycji wstawienie zawartości rejestru <em>'x'</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rejestry_wbudowane">Rejestry wbudowane</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>"{cyfra}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rejestry oznaczone cyframi od 1 do 9 zawierają ostatnich dziewięć schowków. Np. <em>"3p"</em> wstawia do linii poniżej kursora trzecią ostatnio skopiowaną linię tekstu.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_makra">Makra</h3>
+<div class="paragraph">
+<p>Umożliwia zapisanie sekwencji poleceń i wykonanie ich wielokrotnie, przez np. 10@a</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>q{a}{sekw}q</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zapisanie sekwencji klawiszy <em>'sekw'</em> w rejestrze 'a'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>@{a}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonanie sekwencji klawiszy zapisanej w rejestrze. Sekwencja będzie wykonana w trybie poleceń</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>@@</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonanie poprzedniej sekwencji klawiszy</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_skróty">Skróty</h3>
+<div class="paragraph">
+<p>Więcej w pliku <em>help usr_24.txt</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:iabbrev {skrót} {tekst}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pozwala zdefiniować skrót. Wpisanie w tekście (w trybie edycji) skrótu i potem spacji spowoduje zastąpienie skrótu tekstem. Tekst może mieć jedno lub wiele słów. Jeśli na początku lub na końcu tekstu ma być spacja należy zdefiniować ją jako .</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:iab {skrót} {tekst}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">krótsza forma polecenia do definiwania skrótu.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:abbreviate</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetla listę zdefiniowanych skrótów</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_okna">Okna</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:[v]split 'plik'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">podzielenie bieżącego okna na dwa; podając opcjonalna nazwę pliku można otworzyć inny plik w drugim oknie; <em>[v]</em> pozwala na podział pionowy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:[v]new</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie nowego pustego okna</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-W w</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do innego okna</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-W hjkl</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przechodzenie między oknami (lewo, dół, góra, prawo)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-W J</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przemieszczenie obecnego okna w dół (tak samo pozostałe klawisze - <em>H</em>, <em>K</em> i <em>L</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{x}CTRL-W +/-</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zwiększenie/zmniejszenie wysokości bieżącego okna. Parametr {x} określa o ile linii następuje zmiana</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:[vertical] resize {x}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmiana rozmiaru bieżącego okna o wartość {x} (w pikselach). Słowo vertical pozwala na pionową zmianę</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:close</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamknięcie bieżącego okna</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:only</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zamknięcie wszystkich okien z wyjątkiem bieżącego</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:qall</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">całkowite wyjście z Vim; analogicznie <em>:wqall</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_bufory_praca_z_plikami">Bufory. Praca z plikami</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:open 'plik'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie do nowego bufora pliku o nazwie <em>'plik'</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:buffers</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wyświetlenie listy otwartych plików (tak samo działa <em>:ls</em>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:buffer {x}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przełączenie się do pliku o numerze <em>{x}</em>; działa też skrót <em>'b'</em> lub <em>'bu'</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:bdel {x}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie z pamięci bufora o numerze <em>{x}</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:bn</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(buffer next) edycja następnego otwartego pliku (w pętli)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:bp</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(buffer previous) edycja poprzedniego otwartego pliku</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_sesje">Sesje</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:mksession 'nazwa'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">utworzenie sesji o nazwie 'nazwa'; opcjonalnie można użyć skrótu 'mk' zamiast 'mksession'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:mksession! 'nazwa'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nadpisanie sesji o nazwie 'nazwa'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:source 'nazwa'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wczytanie sesji o nazwie 'nazwa'</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_zakładki_tabs">Zakładki (tabs)</h3>
+<div class="paragraph">
+<p>Pomoc na temat zakładek - <em>:help tabpage.txt</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:tabe</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(edit) tworzenie nowej zakładki (inaczej tabnew)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:tabc</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(close) zamknięcie aktualnej zakładki</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:tabn</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(next) przejście do następnej zakładki</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:tab {polecenie}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wykonuje polecenie w nowej zakładce (np otwarcie pliku pomocy poleceniem help)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:tab split</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwiera nową zakładkę z tym samym plikiem co bieżący</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>{x]gt</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do kolejnej zakładki; opcjonalnie x to numer zakładki</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>gT</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">przejście do poprzedniej zakładki</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_mapowania_klawiszy">Mapowania klawiszy</h3>
+<div class="paragraph">
+<p>Vim daje możliwość definiowania mapowań w wielu trybach pracy. Więcej w pliku <strong>:help map.txt</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:map</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Polecenie bez argumentu wyświetla wszystkie mapowania w trybach: normalnym, wizualnym i zawieszenia. Z jednym argumetem wyświetla mapowanie dla tego klawisza. Z dwoma tworzy nowe mapowanie.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:unmap</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usuwa dane mapowanie</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Inne polecenia służące do listowania i poprawiania istniejących mapowań są wymienione w pomocy.</p>
+</div>
+<div class="paragraph">
+<p>Poniżej polecenia służące do tworzenia nowych mapowań. Ogólna składnia to <em>:map {klawisz} {sekwencja}</em> - to polecenie pozwala zmapować klawisz na sekwencję poleceń.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:nmap {k} {s}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mapowanie w trybie normalnym</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:vmap {k} {s}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mapowanie w trybie wizualnej selekcji i zastępowania. <em>:smap {k} {s}</em> i <em>:xmap {k} {s}</em> pozwalają zdefiniowaniać mapowania osobno w tych dwóch trybach.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:omap {k} {s}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mapowanie w trybie zawieszenia po wprowadzeniu operatora</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:imap {k} {s}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mapowanie w trybie wstawiania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:cmap {k} {s}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mapowanie w trybie wiersza poleceń</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_przeglądarka_plików">Przeglądarka plików</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:edit .</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwiera zawatosc bieżącego katalogu w oknie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:Explore 'folder'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">włączenie przeglądarki określonego katalogu, w tym katalogów sieciowych (ftp)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>:split ~/</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dzieli okno na dwa: przeglądarkę plików i puste okno</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>P</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">podgląd wybranego pliku w drugim oknie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>o</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">horyzontalny podział okien i otwarcie pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>v</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie pliku w nowym vertykalnym oknie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>t</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie pliku w nowej zakładce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_ _</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">otwarcie pliku</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>CTRL-O</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">powrót do poprzedniej zawartości okna</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>s</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmiana sposobu sortowania</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>i</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmiana sposobu wyświetlania plików</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>r</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odwrócenie kolejności sortowania</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_przydatne_pluginy">Przydatne pluginy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vim posiada wiele pluginów, które rozszerzają jego funkcjonalności.</p>
+</div>
+<div class="sect2">
+<h3 id="_surround">Surround</h3>
+<div class="paragraph">
+<p>Plugin Surround pozwala w łatwy sposób dodawać znaki okalające dany tekst, np. tagi html, pogrubienia w Markdown czy inne oznaczenia w podobnych formatach (np. AsciiDoc).</p>
+</div>
+<div class="paragraph">
+<p>Instalacja i krótkie wprowadzenie do Surround zawarte są na stronie GitHub: <a href="https://github.com/tpope/vim-surround" class="bare">https://github.com/tpope/vim-surround</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>cs{aktualny}{nowy}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">polecenie wydane, gdy kursor stoi wewnątrz aktualnych znaczników zamieni znacznik na nowy. Np. dla tekstu "Lorem ipsum" polecenie <em>cs"'</em> zamieni go na 'Lorem ipsum'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ysaw{znacznik}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wklejenie <em>znacznika</em> w obiekt <em>aw</em>. Polecenie działa analogicznie dla innych obiektów/ruchów.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ds{znacznik}</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">usunięcie <em>znacznika</em> okalającego pozycję kursora</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>v{zaznaczenie}S&lt;b&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">po zaznaczeniu tekstu w trybie wizualnej selekcji kombinacja <em>S{znacznik}</em> wklei otwierający i zamykający znacznik przed i po zaznaczeniu</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inne_zasoby_o_vim">Inne zasoby o Vim</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Główna strona projektu Vim</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vim.org" class="bare">https://vim.org</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Vim as language</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.youtube.com/watch?v=wlR5gYd6um0" class="bare">https://www.youtube.com/watch?v=wlR5gYd6um0</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>You need to grok vi</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118" class="bare">https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Definitive guide to text objects</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/" class="bare">https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-12-01 01:52:43 UTC
+</div>
+</div>
+</body>
+</html>
